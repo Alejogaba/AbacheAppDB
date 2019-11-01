@@ -12,7 +12,6 @@ export const BASE_URL = new InjectionToken<string>('BASE_URL');
 })
 export class ProductosDataService {
 
-  private productoUrl = 'api/productos';
   constructor(private http: HttpClient,@Inject('BASE_URL') private baseUrl:string) { }
   get(): Observable<Producto[]> {
     return this.http.get<Producto[]>(this.baseUrl+'api/product').pipe(
