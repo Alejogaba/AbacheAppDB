@@ -1,0 +1,38 @@
+
+form {
+	width: 35%;
+	border: 1px solid #ccc;
+    margin: 0 auto;
+    margin-top: 15%;
+	padding: 20px;
+    background: #27A2FF;
+    position: middle;
+}
+#result{
+	color: white;
+
+	}
+label {
+
+	font-size: px;
+	display: block;
+	width: 100;
+	color: black;
+}
+input, textarea{
+	margin-bottom: 20px;
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+input:focus, textarea:focus, select:focus {
+	border: 1px solid #1668C4;
+
+}
+input{
+	margin-bottom: o;
+	background: #B4E2FD;
+}
+input[type="radio"] {
+display: contents;
+}

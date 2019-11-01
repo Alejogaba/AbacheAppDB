@@ -1,0 +1,47 @@
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" href="index.html">Abache app
+  </a>
+
+  <div class="collapse navbar-collapse" class="d-flex justify-content-end" >
+      <button type="button" [routerLink]="['carrito']" class="btn btn-primary btn-color btn-bg-color btn-sm"><img src="../../assets/images/shopping-cart.svg" width="30" height="30" class="d-inline-block mr-2" alt="carro"><b>Carrito de compras</b>
+      </button> 
+    <button type="button" [routerLink]="['inicio-sesion']" class="btn btn-primary btn-color btn-bg-color btn-sm"><img src="../../assets/images/login.svg" width="30" height="30" class="d-inline-block mr-2" alt="login"><b>Iniciar sesion</b>
+      </button>
+      <a href="/registro-usuario">
+        <button type="button" class="btn btn-primary btn-color btn-bg-color btn-sm ml-2"><img src="../../assets/images/key.svg" width="30" height="30" class="d-inline-block mr-2" alt="registro"><b>Registro</b>
+        </button>
+      </a>
+      <button type="button" [routerLink]="['/perfil', { outlets: {'submenu-perfil':['editar-perfil']}}]" class="btn btn-primary btn-color btn-bg-color btn-sm"><img src="../../assets/images/login.svg" width="30" height="30" class="d-inline-block mr-2" alt="login"><b>Usuario</b>
+      </button>
+      
+      
+  </div>
+</nav>
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg sticky-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent_01" aria-controls="navbarSupportedContent_01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent_01">
+        <div class="navbar-nav mr-auto text-center">
+            <a class="nav-item nav-link active text-light"[routerLink]="['/inicio']">Inicio</a>
+            <a class="nav-item nav-link text-light" [routerLink]="['/lista-productos']">Productos</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav">
+                <span class="text-white"><b>Categorias</b></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <div class="navbar-nav" *ngFor="let persona of personas">
+                    <a *ngFor="let categoria of categorias" class="nav-item nav-link text-light" href="#" id="navbarDropdownMenuLink" role="button">
+                        {{categoria.nombre}}
+                      </a>
+                </div>
+            </div>
+           </div>
+            <div class="d-flex flex-row justify-content-end">
+              <img src="../../assets/images/store-1.svg" class="mr-2" height="40px" width="40px" alt="buscar">
+               <input class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+            </div>
+            
+    </div>
+  
+</nav>
+    <router-outlet></router-outlet>

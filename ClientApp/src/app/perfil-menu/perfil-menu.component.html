@@ -1,0 +1,21 @@
+<br><br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 ">
+		     <div class="list-group ">
+              <button [routerLink]="['/perfil', { outlets: {'submenu-perfil':['editar-perfil']}}]" class="list-group-item list-group-item-action">Perfil</button>
+              <button [routerLink]="['/perfil', { outlets: {'submenu-perfil':['historial-compras']}}]" class="list-group-item list-group-item-action">Historial de compras</button>
+              <a href="#" class="list-group-item list-group-item-action">Cerrar sesion</a>
+              
+              
+            </div> 
+		</div>
+		<div class="col-md-9">
+		    <div class="card">
+		        <div class="card-body">
+                        <router-outlet name="submenu-perfil"></router-outlet>
+                </div>
+		    </div>
+		</div>
+	</div>
+</div>

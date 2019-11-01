@@ -1,0 +1,50 @@
+<nav class="navbar navbar-light bg-light">
+         <div class="dropdown mr-auto texto-header">
+                                        <button class="btn btn-outline-primary dropdown-toggle texto-header" type="button" data-toggle="dropdown">
+                                                <img src="../../assets/images/filter.svg" class="mr-1 mb-1" height="15px" width="15px" alt="Filtro">Filtro
+                                        </button>
+                                                <div class="dropdown-menu dropdown-menu-left">
+                                                        <h6 class="dropdown-header">asd</h6>
+                                                        <a class="dropdown-item" href="#">Action</a>
+                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <h6 class="dropdown-header">Dropdown header</h6>
+                                                        <a class="dropdown-item" href="#">Action</a>
+                                                        <a class="dropdown-item" href="#">Another action</a>
+                                        </div>
+                </div>
+        
+                <div class="dropdown ml-auto texto-header">
+                                <button class="btn btn-outline-primary dropdown-toggle texto-header" type="button" data-toggle="dropdown">
+                                                <img src="../../assets/images/sortby.svg" class="mr-1 mb-1" height="15px" width="15px" alt="Filtro">Ordenar
+                                </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                                <h6 class="dropdown-header">Ordenar</h6>
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <div class="dropdown-divider"></div>
+                                                <h6 class="dropdown-header">Dropdown header</h6>
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                </div>
+        </div>
+        
+              
+</nav>
+<a *ngFor="let persona of personas">
+        <div  *ngIf="persona.tipo==='admin';" class="module producto">
+                <a routerLink="/registro-producto"><h4><b>+ Añadir nuevo producto</b></h4></a>
+        </div>
+</a>
+
+<div class="grid grid-pad">
+        <a *ngFor="let producto of productos"   class="col-md-4"
+            routerLink="/detalles/{{producto.id}}">
+          <div class="module producto">
+              <img src={{producto.imagen}} alt="producto_img" class="thumbnail">
+                    <h3><b>Precio:</b>${{producto.precio}}</h3>
+          </div>
+          <h4>{{producto.titulo}}</h4>
+        </a>
+        
+      </div>

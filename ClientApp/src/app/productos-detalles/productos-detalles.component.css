@@ -1,0 +1,128 @@
+.thumbnail {
+    position: relative;
+    height:100%;
+    width: 100%;
+    object-fit: fill;
+}
+.c-imagen{
+    width: 300px;
+    height: 300px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.item {
+    padding: 60px;
+    width: 22%;
+    background-color:whitesmoke;
+  }
+  [class*='col-'] {
+    float: left;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+  [class*='col-']:last-of-type {
+    padding-right: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  *, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .h2{
+      font-size: 3vh;
+  }
+  h3 {
+    text-align: middle;
+    transform: translate( 0%, -50% );
+    font-size: 1vw;
+    color: black;
+  }
+  h4 {
+    font-size: 5vh;
+    color:gray;
+    display: inline-block;
+  }
+  h5 {
+    font-size: 5vh;
+    display: inline-block;
+  }
+  h6{
+    font-size: 2.5vh;
+    display: inline-block;
+    padding-top: 0%;
+    scroll-padding-bottom: 5%;
+    color:gray;
+  }
+  .texto-categoria{
+    font-size: 3vh;
+    display: inline-block;
+    padding-top: 0%;
+    scroll-padding-bottom: 5%;
+    color: grey;
+  }
+  .texto-categoria:link{
+    font-size: 3vh;
+    display: inline-block;
+    padding-top: 0%;
+    scroll-padding-bottom: 5%;
+    color: grey;
+  }
+  h1{
+    display: inline-block;
+    padding-bottom: 0%;
+  }
+  .grid {
+    margin: 0;
+  }
+  .col-md-4{
+    width: 15%;
+  }
+  .module {
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    color:#D7D8FC;
+    max-height: 3px;
+    min-width: 3px;
+    background-color:#D7D8FC;
+    border-radius: 2px;
+  }
+  .module:hover {
+    background-color: #EEE;
+    cursor: pointer;
+    color: #607d8b;
+  }
+  .grid-pad {
+    padding: 10px 0;
+  }
+  
+  .grid-pad > [class*='col-']:last-of-type {
+    padding-right: 20px;
+  }
+  @media (max-width: 600px) {
+    .module {
+      font-size: 10px;
+      max-height: 75px; }
+  }
+  @media (max-width: 1024px) {
+    .grid {
+      margin: 0;
+    }
+    .module {
+      min-width: 60px;
+    }
+  }
+  .cantidad-entrada{
+    display: inline-block;
+    font-size: 4.5vh;
+    width:80px;
+    font-style: normal;
+    border:0px;
+    color: gray;
+  }

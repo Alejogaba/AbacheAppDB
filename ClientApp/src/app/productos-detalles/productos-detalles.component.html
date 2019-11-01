@@ -1,0 +1,39 @@
+<strong><label class="texto-categoria">Categorias><a href="#" class="texto-categoria">nombre-categoria</a></label></strong>
+<div *ngIf='producto'>
+<div class="container">
+<div class="row">
+<div class="col-lg-4 c-imagen">
+    <img src={{producto.imagen}} alt="producto_img" class="thumbnail img-rounded">
+</div>
+<div class="col-lg-8">
+    <h1>{{producto.titulo}}</h1><br>
+    <h6>Vendido por nombre proveedor</h6><br>
+    <h2 class="ml-3">Tipo:</h2>
+    <div class="grid grid-pad">
+            <a class="col-md-4">
+              <div class="module producto">
+                   <h3>{{producto.tipo}}</h3>
+              </div>
+            </a>
+          </div>
+<div class="col-lg-12">
+<h5>Precio: </h5><h4 class="ml-2"> ${{producto.precio}}</h4>
+</div>
+<div class="col-lg-12">
+    <h5>Cantidad: </h5><input type="number" class="formcontrol ml-2 cantidad-entrada" value="1">
+    </div>
+<div class="col-lg-12">
+       <img src="../../assets/images/shopping-cart-2.svg" width="48px" height="48px" alt="carrito"> <button class="btn btn-outline-success ml-2">Añadir al carrito</button>
+</div>
+</div>
+</div>
+<div class="row">
+    <div class="col-lg-11">
+    <h1>Descripcion del articulo</h1><br>
+    <p>{{producto.descripcion}}</p>
+</div>
+</div>
+</div>
+
+
+  </div>

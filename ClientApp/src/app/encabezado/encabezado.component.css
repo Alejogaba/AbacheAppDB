@@ -1,0 +1,9 @@
+.encabezado{
+    background-color: #4A9BFF;
+}
+.texto-encabezado{
+    color: white;
+}
+.mr-2{
+    display: inline-block;
+}

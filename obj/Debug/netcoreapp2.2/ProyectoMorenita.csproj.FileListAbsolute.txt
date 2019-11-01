@@ -1,0 +1,48 @@
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.deps.json
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.runtimeconfig.json
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.runtimeconfig.dev.json
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.dll
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.pdb
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.Views.dll
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.Views.pdb
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.csprojAssemblyReference.cache
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.csproj.CoreCompileInputs.cache
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.RazorAssemblyInfo.cache
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.RazorAssemblyInfo.cs
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.AssemblyInfoInputs.cache
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.AssemblyInfo.cs
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.TagHelpers.input.cache
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.TagHelpers.output.cache
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.RazorCoreGenerate.cache
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\Razor\Pages\Error.g.cshtml.cs
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewImports.g.cshtml.cs
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.RazorTargetAssemblyInfo.cache
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.RazorTargetAssemblyInfo.cs
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.Views.pdb
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.dll
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.pdb
+D:\Usuario\MIKE\Documents\ProgramacionWeb\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.csproj.CopyComplete
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.deps.json
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.runtimeconfig.json
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.runtimeconfig.dev.json
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.dll
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.pdb
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.Views.dll
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\bin\Debug\netcoreapp2.2\ProyectoMorenita.Views.pdb
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.csprojAssemblyReference.cache
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.csproj.CoreCompileInputs.cache
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.RazorAssemblyInfo.cache
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.RazorAssemblyInfo.cs
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.AssemblyInfoInputs.cache
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.AssemblyInfo.cs
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.TagHelpers.input.cache
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.TagHelpers.output.cache
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.RazorCoreGenerate.cache
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\Razor\Pages\Error.g.cshtml.cs
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\Razor\Pages\_ViewImports.g.cshtml.cs
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.RazorTargetAssemblyInfo.cache
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.RazorTargetAssemblyInfo.cs
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.Views.pdb
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.dll
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.pdb
+C:\Users\DIEGO\OneDrive\Documentos\Nueva carpeta\ProyectoMorenita\ProyectoMorenita\obj\Debug\netcoreapp2.2\ProyectoMorenita.csproj.CopyComplete
