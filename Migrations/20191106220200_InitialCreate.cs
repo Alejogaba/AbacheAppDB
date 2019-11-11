@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Oracle.EntityFrameworkCore.Metadata;
 
 namespace ProyectoMorenita.Migrations
@@ -52,7 +53,7 @@ namespace ProyectoMorenita.Migrations
                     Descripcion = table.Column<string>(nullable: true),
                     Tipo = table.Column<string>(nullable: true),
                     Precio = table.Column<int>(nullable: false),
-                    Imagen = table.Column<string>(nullable: true),
+                    Imagen = table.Column<byte[]>(nullable: true),
                     Categoria = table.Column<string>(nullable: true),
                     Subgrupo = table.Column<string>(nullable: true)
                 },

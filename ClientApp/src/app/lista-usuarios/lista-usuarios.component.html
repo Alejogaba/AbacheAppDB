@@ -1,0 +1,29 @@
+<h6>Lista de usuarios</h6><br>
+<div class="row col-lg-12">
+Buscar por identificacion<input type="text" ><button>Buscar</button>
+</div><br>
+
+<table class="table" *ngFor="let persona of personas">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Identificacion</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">E-mail</th>
+            <th scope ="col">Proveedor</th>
+          </tr>
+        </thead>
+        <tr scope="row" >
+          <td>{{persona.identificacion}}</td>
+          <td>{{persona.nombre}}</td>
+          <td>{{persona.apellido}}</td>
+          <td>{{persona.telefono}}</td>
+          <td>{{persona.direccion}}</td>
+          <td>{{persona.email}}</td>
+          <td *ngIf="persona.tipo==='proveedor'; else esfalso" ><input type="checkbox" checked class="form-control text-center">
+        </td>
+        <ng-template #esfalso><td><input type="checkbox" ></td></ng-template>
+        </tr>
+      </table>

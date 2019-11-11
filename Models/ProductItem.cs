@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.Text;
 
 namespace TaskSharpHTTP.Models
 {
@@ -20,5 +21,6 @@ namespace TaskSharpHTTP.Models
         public string Categoria { get; set; }
          [JsonProperty("subgrupo")]
         public string Subgrupo { get; set; }
+        
     }
 }

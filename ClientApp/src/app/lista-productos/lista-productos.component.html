@@ -31,8 +31,8 @@
         
               
 </nav>
-<a *ngFor="let persona of personas">
-        <div  *ngIf="persona.tipo==='admin';" class="module producto">
+<a >
+        <div  class="module producto">
                 <a routerLink="/registro-producto"><h4><b>+ Añadir nuevo producto</b></h4></a>
         </div>
 </a>
@@ -41,7 +41,7 @@
         <a *ngFor="let producto of productos"   class="col-md-4"
             routerLink="/detalles/{{producto.id}}">
           <div class="module producto">
-              <img src={{producto.imagen}} alt="producto_img" class="thumbnail">
+              <img src={{producto.imagen}} alt="Imagen no disponible" class="thumbnail" onerror="this.src='../../assets/images/NoDisponible.jpg'" >
                     <h3><b>Precio:</b>${{producto.precio}}</h3>
           </div>
           <h4>{{producto.titulo}}</h4>

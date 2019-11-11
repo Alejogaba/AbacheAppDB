@@ -3,7 +3,7 @@
 <div class="container">
 <div class="row">
 <div class="col-lg-4 c-imagen">
-    <img src={{producto.imagen}} alt="producto_img" class="thumbnail img-rounded">
+    <img src={{producto.imagen}} alt="Imagen no disponible" class="thumbnail img-rounded" onerror="this.src='../../assets/images/NoDisponible.jpg'">
 </div>
 <div class="col-lg-8">
     <h1>{{producto.titulo}}</h1><br>

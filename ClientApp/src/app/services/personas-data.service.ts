@@ -4,6 +4,7 @@ import{Persona} from '../models/persona';
 import { Observable, of } from 'rxjs';
 import { catchError,tap } from 'rxjs/operators';
 import { Inject } from '@angular/core';
+const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 export const BASE_URL = new InjectionToken<string>('BASE_URL');
 
 @Injectable({
@@ -19,6 +20,18 @@ export class PersonasDataService {
     return this.http.get<Persona[]>(this.baseUrl+"api/personas").pipe(
       catchError(this.handleError<Persona[]>('get', [])));
   }
+  addPersona(task: Persona): Observable<Persona> {
+    return this.http.post<Persona>(this.baseUrl+'api/personas', task, httpOptions).pipe(
+      tap((newProducto: Persona) => this.log(`Se registro la informacion con el id=${newProducto.id}`)),
+      catchError(this.handleError<Persona>('addPersona'))
+      );
+    }
+    login(username:string, password:string) {
+      return this.http.post(this.baseUrl+'api/personas', {
+        email: username,password: password,}).pipe(
+          catchError(this.handleError<Persona[]>('login', [])));     
+    }
+  
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
        

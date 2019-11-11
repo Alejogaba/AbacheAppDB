@@ -13,7 +13,7 @@ import{PerfilComponent} from './perfil/perfil.component'
 import{ PerfilMenuComponent } from './perfil-menu/perfil-menu.component'
 import{LayoutComponent} from './layout/layout.component'
 import{HistorialComprasComponent} from './historial-compras/historial-compras.component'
-
+import{ListaUsuariosComponent} from './lista-usuarios/lista-usuarios.component';
 
 
 const routes: Routes = [
@@ -29,7 +29,8 @@ const routes: Routes = [
 {path:'perfil',component:PerfilMenuComponent,children:[
   { path: '', component: LayoutComponent },
   {path:'editar-perfil',component:PerfilComponent,outlet:'submenu-perfil'},
-{path:'historial-compras',component:HistorialComprasComponent,outlet:'submenu-perfil'}]},
+{path:'historial-compras',component:HistorialComprasComponent,outlet:'submenu-perfil'},
+{path:'lista-usuarios',component:ListaUsuariosComponent,outlet:'submenu-perfil'}]},
   
   ];
 

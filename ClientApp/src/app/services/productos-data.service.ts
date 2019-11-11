@@ -25,7 +25,24 @@ export class ProductosDataService {
       tap(_ => this.log(`fallo busqueda id=${id}`)),
       catchError(this.handleError<Producto>(`getbyid id=${id}`))
     );
+    
   }
+  addProducto(task: Producto): Observable<Producto> {
+    return this.http.post<Producto>(this.baseUrl+'api/product', task, httpOptions).pipe(
+      tap((newProducto: Producto) => this.log(`Se registro la informacion con el id=${newProducto.id}`)),
+      catchError(this.handleError<Producto>('addProducto'))
+      );
+    }
+    
+  public uploadImage(image: File): Observable<Object> {
+    const formData = new FormData();
+
+    formData.append('image', image);
+
+    return this.http.post(this.baseUrl + 'api/product', formData);
+  }
+
+  
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
        

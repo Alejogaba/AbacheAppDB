@@ -24,6 +24,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { PerfilMenuComponent } from './perfil-menu/perfil-menu.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HistorialComprasComponent } from './historial-compras/historial-compras.component';
+import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 
 
 
@@ -46,7 +47,8 @@ import { HistorialComprasComponent } from './historial-compras/historial-compras
     PerfilComponent,
     PerfilMenuComponent,
     LayoutComponent,
-    HistorialComprasComponent
+    HistorialComprasComponent,
+    ListaUsuariosComponent
 
   ],
   imports: [

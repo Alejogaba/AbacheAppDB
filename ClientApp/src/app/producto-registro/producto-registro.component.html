@@ -1,35 +1,39 @@
 <div class="container">
-    <form>
-            <div class="form-group">
-                    <label>Imagen producto </label><br>
-                    <input type="file">
+   
+            <div #myform class="form-group">
+                    <img [src]="imgURL" *ngIf="imgURL" class="avatar img-circle img-thumbnail" alt="alt">
+                                            <h6>Imagen producto</h6>
+                                            <input #imageInput type="file" accept="image/*"
+                                            (change)="processFile(imageInput)" [(ngModel)]="producto.imagen">
                 </div>
+                
                 <div class="form-group">
                         <label>Nombre producto</label>
-                        <input type="text" class="form-control" name="nombre">
+                        <input type="text" class="form-control" name="nombre" [(ngModel)]="producto.titulo">
                     </div>
                     <div class="form-group">
                             <label>Precio</label>
-                            <input type="number" class="form-control" name="precio">
+                            <input type="number" class="form-control" name="precio" [(ngModel)]="producto.precio">
                         </div>
                         <div class="form-group">
                                 <label>Tipo/color</label>
-                                <input type="text" class="form-control" name="color">
+                                <input type="text" class="form-control" name="color" [(ngModel)]="producto.tipo">
                             </div>
                             <div class="form-group">
                                     <label>Categoria</label>
-                                    <select class="form-control" name="categoria"><option value="nuevo">Nueva categoria</option></select>
+                                    <select class="form-control" name="categoria" [(ngModel)]="producto.categoria"><option value="nuevo">Nueva categoria</option></select>
+                            
                                 </div>
                              <div class="form-group">
                                         <label>Grupo</label>
-                                        <select class="form-control" name="categoria"><option value="nuevo">Nuevo subgrupo</option></select>
+                                        <select class="form-control" name="subgrupo" [(ngModel)]="producto.subgrupo"><option value="nuevo">Nuevo subgrupo</option></select>
                                </div>
                     <div class="form-group">
                             <label>Descripcion de producto</label>
-                            <textarea class="form-control" rows="8" id="comment"></textarea>
+                            <textarea class="form-control" rows="8" id="comment"[(ngModel)]="producto.descripcion"></textarea>
                         </div>
-                        <button class="btn btn-primary mr-3">Limpiar</button><button class="btn btn-primary">Registrar</button>
-    </form>
+                        <button class="btn btn-primary mr-3">Limpiar</button><button class="btn btn-primary" (click)="add()">Registrar</button>
+
 </div>
     
     

@@ -6,42 +6,27 @@
 <div class="container">
 	<form>
 		<div class="form-group">
-			<label>Nombre completo</label>
-			<input type="text" class="form-control" placeholder="Juan garcia Rodriguez"  name="nombres" id="nombres">
+			<label>Nombres</label>
+			<input type="text" class="form-control" placeholder="Juan Aledaño"  name="nombres" id="nombres" [(ngModel)]="persona.nombre">
 
 		</div>
+		<div class="form-group">
+			<label>Apellidos</label>
+			<input type="text" class="form-control" placeholder="Garcia Espinosa"  name="apellidos" id="apellidos" [(ngModel)]="persona.apillido">
+
+		</div>
+		
 		
 
 		<div class="form-group">
 			<label>identificacion</label>
-			<input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="1065544433">
+			<input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="1065544433" [(ngModel)]="persona.identificacion">
 		</div>
 
 
-
-		
-
-		
-
-		<div class="form-group" >
-		<label>fecha de nacimiento</label>
-		
-
-	<input type="date" class="form-control" name="user_date" id="user_date" />
-   		 </div>
-  
     
     <div class="form-group" id="result"></div>
 		
-
-
- 
-
-		
-
-
-
-
         <div class="form-group">
 		<label>seleccione departameto</label>
 		<select name="departamento" class="form-control" id="departamento" title="departamento">
@@ -51,10 +36,6 @@
 		</select>
 		</div>
 		
-
-
-
-
 		<div class="form-group">
 		<label>seleccione ciudad</label>
 		<select name="ciudad" class="form-control" id="ciudad" title="ciudad">
@@ -65,27 +46,31 @@
 		</div>
 		<br> 
 
-
+		<div class="form-group">
+			<label>Direccion</label>
+			<input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="Calle 11 #12-22" [(ngModel)]="persona.direccion"> 
+			</div>
 
 
         <div class="form-group">
 		<label>Correo electronico</label>
-		<input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="Ejemplo@gmail.com">
+		<input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="Ejemplo@gmail.com" [(ngModel)]="persona.email">
 		</div>
 		
-
-
-
+		<div class="form-group">
+			<label>Telefono</label>
+			<input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="542342" [(ngModel)]="persona.telefono">
+			</div>
 
         <div class="form-group">
 		<label>Contraseña</label>
 		<input type="Password" class="form-control" name="Contraseña" id="Contraseña" placeholder="Digite su contraseña">
-		<input type="Password" class="form-control" name="Contraseña" id="Contraseña" placeholder="Repetir contraseña">
+		<input type="Password" class="form-control" name="Contraseña" id="Contraseña" placeholder="Repetir contraseña" [(ngModel)]="persona.password">
 		
 	</div>
 		
 
-		<button class="btn btn-primary">Registrarse</button>
+		<button class="btn btn-primary" (click)="add()">Registrarse</button>
 
 
 	</form>

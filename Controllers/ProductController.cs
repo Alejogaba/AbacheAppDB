@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskSharpHTTP.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+
 
 namespace TaskSharpHTTP.Controllers
 {
@@ -12,10 +14,12 @@ namespace TaskSharpHTTP.Controllers
     [ApiController]
     public class ProductController : Controller
     {
+        
         private readonly AbacheContext _context;
         public ProductController(AbacheContext context)
         {
             _context=context;
+      
         }
         //GET: api/product
         [HttpGet]
@@ -34,6 +38,8 @@ namespace TaskSharpHTTP.Controllers
             }
             return productitem;
         }
+
+        
         //Post: api/product
         [HttpPost]
         public async Task<ActionResult<ProductItem>> PostProducto(ProductItem productItem)

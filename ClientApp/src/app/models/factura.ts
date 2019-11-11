@@ -9,5 +9,6 @@ export class Factura {
     id_producto:number;
     titulo:string;
     tipo:string;
+    cantidad:number;
     precio:number;
 }
