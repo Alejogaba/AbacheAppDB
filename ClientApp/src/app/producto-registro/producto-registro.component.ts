@@ -47,7 +47,7 @@ export class ProductoRegistroComponent implements OnInit {
       .subscribe( categoria  => {
         this.toastr.success('Se agrego nueva categoria con id: '+categoria.id);
              });
-             this.getCategorias();
+             this.refresh();
   }
   refresh(): void {
     window.location.reload();

@@ -16,12 +16,12 @@
                             <input type="number" class="form-control" name="precio" [(ngModel)]="producto.precio">
                         </div>
                         <div class="form-group">
-                                <label>Tipo/color</label>
+                                <label>Estilo/Color</label>
                                 <input type="text" class="form-control" name="color" [(ngModel)]="producto.tipo">
                             </div>
                             <div class="form-group">
                                     <label>Categoria</label>
-                                    <select class="form-control" *ngFor="let categoria of categorias" name="categoria" [(ngModel)]="producto.categoria"><option value="{{categoria.nombre}}">{{categoria.nombre}}</option></select>
+                                    <select class="form-control"  name="categoria" [(ngModel)]="producto.categoria"><option *ngFor="let categoria of categorias" value="{{categoria.nombre}}">{{categoria.nombre}}</option></select>
                                     <div class="container">
                                         <div class="row">
                                         <div id="filter-panel" class="collapse filter-panel">
@@ -44,8 +44,8 @@
                              <div class="form-group">
                                         <label>Etiquetas</label>
                                         <input type="text" class="form-control" name="etiqueta" [(ngModel)]="producto.etiqueta">
-                             <!-- <tag-input placeholder="Añadir etiqueta" [(ngModel)]="producto.subgrupo" secondaryPlaceholder="Ingrese Etiquetas"></tag-input>
-                                         -->     </div>
+                              <tag-input placeholder="Añadir etiqueta" [(ngModel)]="producto.subgrupo" secondaryPlaceholder="Ingrese Etiquetas"></tag-input>
+                                             </div>
                                          <div class="form-group">
                                             <label>Cantidad</label>
                                             <input type="number" class="form-control" name="cantidad" [(ngModel)]="producto.cantidad">
@@ -54,7 +54,7 @@
                             <label>Descripcion de producto</label>
                             <textarea class="form-control" rows="8" id="comment"[(ngModel)]="producto.descripcion"></textarea>
                         </div>
-                        <button class="btn btn-primary mr-3">Limpiar</button><button class="btn btn-primary" (click)="addproducto()">Registrar</button>
+                        <button class="btn btn-primary mr-3" (click)="refresh()">Refrescar</button><button class="btn btn-primary" (click)="addproducto()">Registrar</button>
 
 </div>
     

@@ -1,4 +1,4 @@
-<strong><label class="texto-categoria">Categorias><a href="#" class="texto-categoria">nombre-categoria</a></label></strong>
+<strong><label *ngIf='producto' class="texto-categoria">Categorias><a href="#" class="texto-categoria">{{producto.categoria}}</a></label></strong>
 <div *ngIf='producto'>
 <div class="container">
 <div class="row">
@@ -7,8 +7,8 @@
 </div>
 <div class="col-lg-8">
     <h1>{{producto.titulo}}</h1><br>
-    <h6>Vendido por nombre proveedor</h6><br>
-    <h2 class="ml-3">Tipo:</h2>
+   <!-- <h6>Vendido por nombre proveedor</h6><br>-->
+    <h2 class="ml-3">Estilo/Color:</h2>
     <div class="grid grid-pad">
             <a class="col-md-4">
               <div class="module producto">

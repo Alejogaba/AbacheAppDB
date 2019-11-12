@@ -27,8 +27,8 @@ export class ProductosDataService {
     );
     
   }
-  addProducto(task: Producto): Observable<Producto> {
-    return this.http.post<Producto>(this.baseUrl+'api/product', task, httpOptions).pipe(
+  addProducto(producto: Producto): Observable<Producto> {
+    return this.http.post<Producto>(this.baseUrl+'api/product', producto, httpOptions).pipe(
       tap((newProducto: Producto) => this.log(`Se registro la informacion con el id=${newProducto.id}`)),
       catchError(this.handleError<Producto>('addProducto'))
       );
