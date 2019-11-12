@@ -25,7 +25,11 @@ import { PerfilMenuComponent } from './perfil-menu/perfil-menu.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HistorialComprasComponent } from './historial-compras/historial-compras.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
-
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TagInputModule } from 'ngx-chips';
 
 
 @NgModule({
@@ -54,7 +58,13 @@ import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.componen
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    TagInputModule,
     FormsModule,
+    ReactiveFormsModule, 
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), 
+    
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },

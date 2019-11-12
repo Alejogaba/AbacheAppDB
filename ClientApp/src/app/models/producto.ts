@@ -1,3 +1,5 @@
+import{ IEtiquetas } from '../Interfaces/ietiquetas'
+
 export class Producto {
     id:number;
     titulo:string;
@@ -6,5 +8,6 @@ export class Producto {
     precio:number;
     imagen:string;
     categoria:string;
-    subgrupo:string;
+    cantidad:number;
+    etiqueta:string;
 }

@@ -21,18 +21,40 @@
                             </div>
                             <div class="form-group">
                                     <label>Categoria</label>
-                                    <select class="form-control" name="categoria" [(ngModel)]="producto.categoria"><option value="nuevo">Nueva categoria</option></select>
-                            
+                                    <select class="form-control" *ngFor="let categoria of categorias" name="categoria" [(ngModel)]="producto.categoria"><option value="{{categoria.nombre}}">{{categoria.nombre}}</option></select>
+                                    <div class="container">
+                                        <div class="row">
+                                        <div id="filter-panel" class="collapse filter-panel">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <form class="form-inline" role="form">
+                                                        <label>Nombre categoria</label>
+                                                        <input type="text" [(ngModel)]="categoria.nombre" class="form-control ml-2" name="ncategoria">
+                                                        <button class="btn btn-success mr-3 ml-2" (click)="addcategoria()">Registrar categoria</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
+                                            <span class="glyphicon glyphicon-cog"></span>+ Añadir nueva categoria
+                                        </button>
+                                        </div>
+                                </div>
                                 </div>
                              <div class="form-group">
-                                        <label>Grupo</label>
-                                        <select class="form-control" name="subgrupo" [(ngModel)]="producto.subgrupo"><option value="nuevo">Nuevo subgrupo</option></select>
-                               </div>
+                                        <label>Etiquetas</label>
+                                        <input type="text" class="form-control" name="etiqueta" [(ngModel)]="producto.etiqueta">
+                             <!-- <tag-input placeholder="Añadir etiqueta" [(ngModel)]="producto.subgrupo" secondaryPlaceholder="Ingrese Etiquetas"></tag-input>
+                                         -->     </div>
+                                         <div class="form-group">
+                                            <label>Cantidad</label>
+                                            <input type="number" class="form-control" name="cantidad" [(ngModel)]="producto.cantidad">
+                                        </div>
                     <div class="form-group">
                             <label>Descripcion de producto</label>
                             <textarea class="form-control" rows="8" id="comment"[(ngModel)]="producto.descripcion"></textarea>
                         </div>
-                        <button class="btn btn-primary mr-3">Limpiar</button><button class="btn btn-primary" (click)="add()">Registrar</button>
+                        <button class="btn btn-primary mr-3">Limpiar</button><button class="btn btn-primary" (click)="addproducto()">Registrar</button>
 
 </div>
     

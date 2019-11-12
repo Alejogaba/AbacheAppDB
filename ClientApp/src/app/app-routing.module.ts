@@ -16,6 +16,7 @@ import{HistorialComprasComponent} from './historial-compras/historial-compras.co
 import{ListaUsuariosComponent} from './lista-usuarios/lista-usuarios.component';
 
 
+
 const routes: Routes = [
   {path:'inicio',component:HomepageComponent},
   {path:'registro-usuario',component:RegistroComponent},

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Oracle.EntityFrameworkCore.Metadata;
 
 namespace ProyectoMorenita.Migrations
@@ -8,6 +7,22 @@ namespace ProyectoMorenita.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "CarroItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Id_cliente = table.Column<int>(nullable: false),
+                    Id_producto = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    Total_a_pagar = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CarroItems", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "CategoriaItems",
                 columns: table => new
@@ -20,6 +35,20 @@ namespace ProyectoMorenita.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CategoriaItems", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EtiquetaItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Id_categoria = table.Column<int>(nullable: false),
+                    Nombre = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EtiquetaItems", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,9 +82,10 @@ namespace ProyectoMorenita.Migrations
                     Descripcion = table.Column<string>(nullable: true),
                     Tipo = table.Column<string>(nullable: true),
                     Precio = table.Column<int>(nullable: false),
-                    Imagen = table.Column<byte[]>(nullable: true),
+                    Imagen = table.Column<string>(nullable: true),
                     Categoria = table.Column<string>(nullable: true),
-                    Subgrupo = table.Column<string>(nullable: true)
+                    Cantidad = table.Column<int>(nullable: false),
+                    Etiquetas = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -66,7 +96,13 @@ namespace ProyectoMorenita.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "CarroItems");
+
+            migrationBuilder.DropTable(
                 name: "CategoriaItems");
+
+            migrationBuilder.DropTable(
+                name: "EtiquetaItems");
 
             migrationBuilder.DropTable(
                 name: "PersonaItems");

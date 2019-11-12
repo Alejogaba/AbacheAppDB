@@ -1,5 +1,7 @@
 using Newtonsoft.Json;
-using System.Text;
+using System;
+using System.Collections.Generic;
+
 
 namespace TaskSharpHTTP.Models
 {
@@ -19,8 +21,10 @@ namespace TaskSharpHTTP.Models
         public string Imagen { get; set; }
          [JsonProperty("categoria")]
         public string Categoria { get; set; }
-         [JsonProperty("subgrupo")]
-        public string Subgrupo { get; set; }
+        [JsonProperty("cantidad")]
+        public int Cantidad { get; set; }
+         [JsonProperty("etiqueta")]
+        public string Etiquetas { get; set; }
         
     }
 }
