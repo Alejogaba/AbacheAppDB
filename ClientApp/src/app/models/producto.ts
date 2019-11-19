@@ -4,10 +4,11 @@ export class Producto {
     id:number;
     titulo:string;
     descripcion:string;
-    tipo:string;
+    estilo_color:string;
     precio:number;
-    imagen:string;
-    categoria:string;
-    cantidad:number;
-    etiqueta:string;
+  imagen: string;
+  id_categoria: number;
+  cantidad: number;
+  id_etiqueta: number;
+  id_proveedor: number;
 }

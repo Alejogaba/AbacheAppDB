@@ -1,15 +1,17 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace TaskSharpHTTP.Models
 {
-    public class EtiquetaItem
+    public class DepartamentoItem
     {
-        [Key][JsonProperty("id")][Column("ID_ETIQUETA")]
+        [Key][JsonProperty("id")][Column("ID_DEPARTAMENTO")]
         public int Id { get; set; }
-        [ForeignKey("ID_CATEGORIA")][JsonProperty("id_categoria")][Column("ID_CATEGORIA")]
-        public virtual CategoriaItem Id_categoria { get; set; }
         [JsonProperty("nombre")][Column("NOMBRE")]
         public string Nombre { get; set; }
     }

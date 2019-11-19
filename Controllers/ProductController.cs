@@ -27,6 +27,7 @@ namespace TaskSharpHTTP.Controllers
         {
             return await _context.ProductItems.ToListAsync();
         }
+
         //Get: api/product:id
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductItem>> GetProducto(int id)
@@ -38,8 +39,15 @@ namespace TaskSharpHTTP.Controllers
             }
             return productitem;
         }
+        [HttpGet("buscar")]
+        public async Task<List<ProductItem>> Buscarproducto(string nombre)
+        {
+            var productitem = await _context.ProductItems.Where(p => p.Titulo == nombre).ToListAsync();
+          
+            return productitem;
+        }
 
-        
+
         //Post: api/product
         [HttpPost]
         public async Task<ActionResult<ProductItem>> PostProducto(ProductItem productItem)

@@ -25,7 +25,7 @@ namespace ProyectoMorenita
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-              var oraConn = "User Id=hr;Password=hr;Data Source=(DESCRIPTION = (ADDRESS_LIST =(ADDRESS =(PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = xe)))";
+              var oraConn = "User Id=diego;Password=diego;Data Source=(DESCRIPTION = (ADDRESS_LIST =(ADDRESS =(PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = xepdb1)))";
     
            services.AddDbContext<AbacheContext>(opt =>
             opt.UseOracle(oraConn));

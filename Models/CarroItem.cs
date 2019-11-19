@@ -17,8 +17,6 @@ namespace TaskSharpHTTP.Models
         public int Id_producto { get; set; }
         [JsonProperty("cantidad")]
         public int Cantidad { get; set; }
-        [JsonProperty("total_a_pagar")]
-        public int Total_a_pagar { get; set; }
 
     }
 }
