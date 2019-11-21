@@ -34,6 +34,17 @@ export class ProductosDataService {
       tap(_ =>this.log('Se consulta producto por nombre')), 
       catchError(this.handleError<Producto[]>('getbyname', [])));
   }
+  buscar(term: string): Observable<Producto[]> {
+    const url = `${this.baseUrl + 'api/product/buscar?nombre='}${term}`;
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Producto[]>(url).pipe(
+      tap(_ => this.log(`Encontrado el producto "${term}"`)),
+      catchError(this.handleError<Producto[]>('buscar', []))
+    );
+  }
   addProducto(producto: Producto): Observable<Producto> {
     return this.http.post<Producto>(this.baseUrl+'api/product', producto, httpOptions).pipe(
       tap((newProducto: Producto) => this.log(`Se registro la informacion con el id=${newProducto.id}`)),

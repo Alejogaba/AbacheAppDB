@@ -3,7 +3,7 @@ import{Producto} from '../models/producto';
 import{ProductosDataService} from '../services/productos-data.service'
 import{Persona} from '../models/persona';
 import{PersonasDataService} from '../services/personas-data.service';
-
+import{EncabezadoComponent} from '../encabezado/encabezado.component';
 
 @Component({
   selector: 'app-lista-productos',
@@ -13,10 +13,11 @@ import{PersonasDataService} from '../services/personas-data.service';
 export class ListaProductosComponent implements OnInit {
   productos:Producto[];
   constructor(private productoservice:ProductosDataService,
-    private personaservice:PersonasDataService) { }
+    private personaservice:PersonasDataService,
+    public encabezado:EncabezadoComponent) { }
 
   ngOnInit() {
-    this.getProductos();
+    this.encabezado.getProductos();
   }
   getProductos() {
     this.productoservice.get().subscribe(productos => {

@@ -10,8 +10,8 @@ using TaskSharpHTTP.Models;
 namespace ProyectoMorenita.Migrations
 {
     [DbContext(typeof(AbacheContext))]
-    [Migration("20191119025638_CxDiego")]
-    partial class CxDiego
+    [Migration("20191121163423_CxAbache")]
+    partial class CxAbache
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

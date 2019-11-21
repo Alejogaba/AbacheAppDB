@@ -29,7 +29,7 @@
                                                 <div class="panel-body">
                                                     <form class="form-inline" role="form">
                                                         <label>Nombre categoria</label>
-                                                        <input type="text" [(ngModel)]="categoria.nombre" class="form-control ml-2" name="ncategoria">
+                                                        <input type="text" class="form-control ml-2" name="ncategoria">
                                                         <button class="btn btn-success mr-3 ml-2" (click)="addcategoria()">Registrar categoria</button>
                                                     </form>
                                                 </div>
@@ -44,7 +44,7 @@
                              <div class="form-group">
                                         <label>Etiquetas</label>
                                         <input type="text" class="form-control" name="etiqueta" [(ngModel)]="producto.etiqueta">
-                              <tag-input placeholder="Añadir etiqueta" [(ngModel)]="producto.subgrupo" secondaryPlaceholder="Ingrese Etiquetas"></tag-input>
+                              <tag-input placeholder="Añadir etiqueta" secondaryPlaceholder="Ingrese Etiquetas"></tag-input>
                                              </div>
                                          <div class="form-group">
                                             <label>Cantidad</label>

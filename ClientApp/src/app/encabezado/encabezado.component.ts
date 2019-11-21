@@ -24,15 +24,24 @@ export class EncabezadoComponent implements OnInit {
   ngOnInit() {
   
   }
+  getProductos() {
+    this.productoservice.get().subscribe(productos => {
+      return this.productos = productos;
+    });
+    }
   getCategoria() {
     this.categoriaservice.get().subscribe(categorias => {
       return this.categorias = categorias;
     });
     }
     buscarproducto(producto:string){
-      this.productoservice.getbyname(producto).subscribe(productos => {
-        return productos = productos;
-      });
+      if(producto==''){
+      this.getProductos();
+      }else{
+        this.productoservice.buscar(producto).subscribe(productos => {
+          return this.productos = productos;
+        });
+      }
     }
   getAll() {
     this.personaservice.get().subscribe(personas => {

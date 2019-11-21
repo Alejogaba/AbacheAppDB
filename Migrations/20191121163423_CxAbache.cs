@@ -4,7 +4,7 @@ using Oracle.EntityFrameworkCore.Metadata;
 
 namespace ProyectoMorenita.Migrations
 {
-    public partial class CxDiego : Migration
+    public partial class CxAbache : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
