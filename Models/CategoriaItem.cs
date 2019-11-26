@@ -10,7 +10,5 @@ namespace TaskSharpHTTP.Models
         public int Id { get; set; }
         [JsonProperty("nombre")][Column("NOMBRE")]
         public string Nombre { get; set; }
-        [JsonProperty("imagen")][Column("IMAGEN")]
-        public byte[] Imagen { get; set; }
     }
 }

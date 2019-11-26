@@ -30,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
+import { FiltroClientePipe } from './pipes/filtro-cliente.pipe';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { TagInputModule } from 'ngx-chips';
     PerfilMenuComponent,
     LayoutComponent,
     HistorialComprasComponent,
-    ListaUsuariosComponent
+    ListaUsuariosComponent,
+    FiltroClientePipe
 
   ],
   imports: [

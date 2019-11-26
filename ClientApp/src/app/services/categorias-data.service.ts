@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import{Categoria} from '../models/categoria';
 import { Observable, of } from 'rxjs';
 import { catchError,tap } from 'rxjs/operators';
+import { Etiqueta } from '../models/etiqueta';
 export const BASE_URL = new InjectionToken<string>('BASE_URL');
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 @Injectable({
@@ -17,6 +18,15 @@ export class CategoriasDataService {
   get(): Observable<Categoria[]> {
     return this.http.get<Categoria[]>(this.baseUrl+"api/categoria").pipe(
       catchError(this.handleError<Categoria[]>('get', [])));
+  }
+  getbyid(id: number): Observable<Categoria> {
+    const url = `${this.baseUrl + 'api/categoria'}/${id}`;
+
+    return this.http.get<Categoria>(url).pipe(
+      tap(_ => this.log(`fallo busqueda id=${id}`)),
+      catchError(this.handleError<Categoria>(`getbyid id=${id}`))
+    );
+    
   }
   addCategoria(task: Categoria): Observable<Categoria> {
     return this.http.post<Categoria>(this.baseUrl+'api/categoria', task, httpOptions).pipe(

@@ -29,8 +29,7 @@ namespace ProyectoMorenita.Migrations
                 {
                     ID_CATEGORIA = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    NOMBRE = table.Column<string>(nullable: true),
-                    IMAGEN = table.Column<byte[]>(nullable: true)
+                    NOMBRE = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -80,6 +79,31 @@ namespace ProyectoMorenita.Migrations
                     table.PrimaryKey("PK_EtiquetaItems", x => x.ID_ETIQUETA);
                     table.ForeignKey(
                         name: "FK_EtiquetaItems_CategoriaItems_ID_CATEGORIA",
+                        column: x => x.ID_CATEGORIA,
+                        principalTable: "CategoriaItems",
+                        principalColumn: "ID_CATEGORIA",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductItems",
+                columns: table => new
+                {
+                    ID_PRODUCTO = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    TITULO = table.Column<string>(nullable: true),
+                    DESCRIPCION = table.Column<string>(nullable: true),
+                    ESTILO_COLOR = table.Column<string>(nullable: true),
+                    PRECIO = table.Column<int>(nullable: false),
+                    IMAGEN = table.Column<byte[]>(nullable: true),
+                    ID_CATEGORIA = table.Column<int>(nullable: true),
+                    CANTIDAD = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductItems", x => x.ID_PRODUCTO);
+                    table.ForeignKey(
+                        name: "FK_ProductItems_CategoriaItems_ID_CATEGORIA",
                         column: x => x.ID_CATEGORIA,
                         principalTable: "CategoriaItems",
                         principalColumn: "ID_CATEGORIA",
@@ -147,45 +171,6 @@ namespace ProyectoMorenita.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "ProductItems",
-                columns: table => new
-                {
-                    ID_PRODUCTO = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    TITULO = table.Column<string>(nullable: true),
-                    DESCRIPCION = table.Column<string>(nullable: true),
-                    ESTILO_COLOR = table.Column<string>(nullable: true),
-                    PRECIO = table.Column<int>(nullable: false),
-                    IMAGEN = table.Column<byte[]>(nullable: true),
-                    ID_CATEGORIA = table.Column<int>(nullable: true),
-                    CANTIDAD = table.Column<int>(nullable: false),
-                    ID_ETIQUETA = table.Column<int>(nullable: true),
-                    ID_PERSONA = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductItems", x => x.ID_PRODUCTO);
-                    table.ForeignKey(
-                        name: "FK_ProductItems_CategoriaItems_ID_CATEGORIA",
-                        column: x => x.ID_CATEGORIA,
-                        principalTable: "CategoriaItems",
-                        principalColumn: "ID_CATEGORIA",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ProductItems_EtiquetaItems_ID_ETIQUETA",
-                        column: x => x.ID_ETIQUETA,
-                        principalTable: "EtiquetaItems",
-                        principalColumn: "ID_ETIQUETA",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ProductItems_PersonaItems_ID_PERSONA",
-                        column: x => x.ID_PERSONA,
-                        principalTable: "PersonaItems",
-                        principalColumn: "ID_PERSONA",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_CiudadItem_ID_DEPARTAMENTO",
                 table: "CiudadItem",
@@ -215,16 +200,6 @@ namespace ProyectoMorenita.Migrations
                 name: "IX_ProductItems_ID_CATEGORIA",
                 table: "ProductItems",
                 column: "ID_CATEGORIA");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductItems_ID_ETIQUETA",
-                table: "ProductItems",
-                column: "ID_ETIQUETA");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductItems_ID_PERSONA",
-                table: "ProductItems",
-                column: "ID_PERSONA");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -233,22 +208,22 @@ namespace ProyectoMorenita.Migrations
                 name: "CarroItems");
 
             migrationBuilder.DropTable(
-                name: "ProductItems");
-
-            migrationBuilder.DropTable(
                 name: "EtiquetaItems");
 
             migrationBuilder.DropTable(
                 name: "PersonaItems");
 
             migrationBuilder.DropTable(
-                name: "CategoriaItems");
+                name: "ProductItems");
 
             migrationBuilder.DropTable(
                 name: "CiudadItem");
 
             migrationBuilder.DropTable(
                 name: "RolItem");
+
+            migrationBuilder.DropTable(
+                name: "CategoriaItems");
 
             migrationBuilder.DropTable(
                 name: "DepartamentoItem");

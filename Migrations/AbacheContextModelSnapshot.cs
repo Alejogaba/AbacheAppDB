@@ -41,9 +41,6 @@ namespace ProyectoMorenita.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ID_CATEGORIA");
 
-                    b.Property<byte[]>("Imagen")
-                        .HasColumnName("IMAGEN");
-
                     b.Property<string>("Nombre")
                         .HasColumnName("NOMBRE");
 
@@ -166,10 +163,6 @@ namespace ProyectoMorenita.Migrations
 
                     b.Property<int?>("ID_CATEGORIA");
 
-                    b.Property<int?>("ID_ETIQUETA");
-
-                    b.Property<int?>("ID_PERSONA");
-
                     b.Property<byte[]>("Imagen")
                         .HasColumnName("IMAGEN");
 
@@ -182,10 +175,6 @@ namespace ProyectoMorenita.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ID_CATEGORIA");
-
-                    b.HasIndex("ID_ETIQUETA");
-
-                    b.HasIndex("ID_PERSONA");
 
                     b.ToTable("ProductItems");
                 });
@@ -247,14 +236,6 @@ namespace ProyectoMorenita.Migrations
                     b.HasOne("TaskSharpHTTP.Models.CategoriaItem", "Id_categoria")
                         .WithMany()
                         .HasForeignKey("ID_CATEGORIA");
-
-                    b.HasOne("TaskSharpHTTP.Models.EtiquetaItem", "Id_etiqueta")
-                        .WithMany()
-                        .HasForeignKey("ID_ETIQUETA");
-
-                    b.HasOne("TaskSharpHTTP.Models.PersonaItem", "Id_proveedor")
-                        .WithMany()
-                        .HasForeignKey("ID_PERSONA");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,6 +11,8 @@ import{EncabezadoComponent} from '../encabezado/encabezado.component';
   styleUrls: ['./lista-productos.component.css']
 })
 export class ListaProductosComponent implements OnInit {
+
+
   productos:Producto[];
   constructor(private productoservice:ProductosDataService,
     private personaservice:PersonasDataService,
@@ -19,6 +21,7 @@ export class ListaProductosComponent implements OnInit {
   ngOnInit() {
     this.encabezado.getProductos();
   }
+  
   getProductos() {
     this.productoservice.get().subscribe(productos => {
       return this.productos = productos;

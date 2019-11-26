@@ -4,6 +4,8 @@ import{ProductosDataService} from '../services/productos-data.service';
 import{Persona} from '../models/persona';
 import{PersonasDataService} from '../services/personas-data.service';
 import { ActivatedRoute } from '@angular/router';
+import{EncabezadoComponent} from '../encabezado/encabezado.component';
+
 
 @Component({
   selector: 'app-productos-detalles',
@@ -15,7 +17,7 @@ export class ProductosDetallesComponent implements OnInit {
   productos:Producto[];
   constructor(private productoservice:ProductosDataService,
     private personaservice:PersonasDataService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,private encabezado:EncabezadoComponent) { }
 
   ngOnInit() {
     this.getProductos();

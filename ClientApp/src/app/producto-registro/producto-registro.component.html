@@ -4,7 +4,7 @@
                     <img [src]="imgURL" *ngIf="imgURL" class="avatar img-circle img-thumbnail" alt="alt">
                                             <h6>Imagen producto</h6>
                                             <input #imageInput type="file" accept="image/*"
-                                            (change)="processFile(imageInput)" [(ngModel)]="producto.imagen">
+                                            (change)="processFile(imageInput)" >
                 </div>
                 
                 <div class="form-group">
@@ -17,33 +17,33 @@
                         </div>
                         <div class="form-group">
                                 <label>Estilo/Color</label>
-                                <input type="text" class="form-control" name="color" [(ngModel)]="producto.tipo">
+                                <input type="text" class="form-control" name="color" [(ngModel)]="producto.estilo_color">
                             </div>
                             <div class="form-group">
                                     <label>Categoria</label>
-                                    <select class="form-control"  name="categoria" [(ngModel)]="producto.categoria"><option *ngFor="let categoria of categorias" value="{{categoria.nombre}}">{{categoria.nombre}}</option></select>
+                                    <select class="form-control"  name="categoria" ><option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}</option></select>
                                     <div class="container">
                                         <div class="row">
+                                                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
+                                                        <span class="glyphicon glyphicon-cog"></span>+ Añadir nueva categoria
+                                                    </button>
                                         <div id="filter-panel" class="collapse filter-panel">
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
                                                     <form class="form-inline" role="form">
                                                         <label>Nombre categoria</label>
-                                                        <input type="text" class="form-control ml-2" name="ncategoria">
+                                                        <input type="text" [(ngModel)]="categoria.nombre" class="form-control ml-2" name="ncategoria">
                                                         <button class="btn btn-success mr-3 ml-2" (click)="addcategoria()">Registrar categoria</button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>    
-                                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
-                                            <span class="glyphicon glyphicon-cog"></span>+ Añadir nueva categoria
-                                        </button>
+                                        
                                         </div>
                                 </div>
                                 </div>
                              <div class="form-group">
                                         <label>Etiquetas</label>
-                                        <input type="text" class="form-control" name="etiqueta" [(ngModel)]="producto.etiqueta">
                               <tag-input placeholder="Añadir etiqueta" secondaryPlaceholder="Ingrese Etiquetas"></tag-input>
                                              </div>
                                          <div class="form-group">

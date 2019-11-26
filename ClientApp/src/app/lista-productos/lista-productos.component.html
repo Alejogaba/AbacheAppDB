@@ -37,8 +37,8 @@
         </div>
 </a>
 
-<div class="grid grid-pad">
-        <a *ngFor="let producto of encabezado.productos"   class="col-md-4"
+<div  class="grid grid-pad">
+        <a  *ngFor="let producto of encabezado.productos | filtroCliente:encabezado.searchText; index as i" (click)="encabezado.seleccionar(producto)" class="col-md-4"
             routerLink="/detalles/{{producto.id}}">
           <div class="module producto">
               <img src={{producto.imagen}} alt="Imagen no disponible" class="thumbnail" onerror="this.src='../../assets/images/NoDisponible.jpg'" >

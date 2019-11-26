@@ -1,4 +1,5 @@
 import{ IEtiquetas } from '../Interfaces/ietiquetas'
+import {Categoria} from '../models/categoria';
 
 export class Producto {
     id:number;
@@ -7,8 +8,6 @@ export class Producto {
     estilo_color:string;
     precio:number;
   imagen: string;
-  id_categoria: number;
+  id_categoria: Categoria[];
   cantidad: number;
-  id_etiqueta: number;
-  id_proveedor: number;
 }

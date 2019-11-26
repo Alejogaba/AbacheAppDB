@@ -3,6 +3,7 @@ import {Producto} from '../models/producto';
 import {ProductosDataService} from '../services/productos-data.service';
 import {Categoria} from '../models/categoria';
 import {CategoriasDataService} from '../services/categorias-data.service';
+
 import { AstMemoryEfficientTransformer } from '@angular/compiler';
 import { ToastrService } from 'ngx-toastr';
 
@@ -34,13 +35,18 @@ export class ProductoRegistroComponent implements OnInit {
     });
     }
 
+
+
+
   addproducto(): void {
     if (!this.producto) { return; }
+
     this.productodataservice.addProducto(this.producto)
       .subscribe( producto  => {
         this.toastr.success('Se agrego un nuevo producto con id: '+producto.id);
              });
   }
+  
   addcategoria(): void {
     if (!this.categoria) { return; }
     this.categoriadataservice.addCategoria(this.categoria)

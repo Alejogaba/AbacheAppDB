@@ -7,7 +7,7 @@
 </div>
 <div class="col-lg-8">
     <h1>{{producto.titulo}}</h1><br>
-   <!-- <h6>Vendido por nombre proveedor</h6><br>-->
+   <h6>Vendido por nombre proveedor</h6><br>
     <h2 class="ml-3">Estilo/Color:</h2>
     <div class="grid grid-pad">
             <a class="col-md-4">
@@ -23,7 +23,7 @@
     <h5>Cantidad: </h5><input type="number" class="formcontrol ml-2 cantidad-entrada" value="1">
     </div>
 <div class="col-lg-12">
-       <img src="../../assets/images/shopping-cart-2.svg" width="48px" height="48px" alt="carrito"> <button class="btn btn-outline-success ml-2">Añadir al carrito</button>
+       <img src="../../assets/images/shopping-cart-2.svg" width="48px" height="48px" alt="carrito"> <button (click)="encabezado.incrementCounter()" class="btn btn-outline-success ml-2">Añadir al carrito</button>
 </div>
 </div>
 </div>

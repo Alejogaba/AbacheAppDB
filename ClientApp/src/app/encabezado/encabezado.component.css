@@ -7,3 +7,39 @@
 .mr-2{
     display: inline-block;
 }
+.num {
+    position:absolute;
+    top:0;
+    transform: translate( -80%, 0% );
+    width:15px;
+    height:15px;
+    border-radius:60%;
+    background:#8AE1DC;
+}
+.carrito-btn:hover .num{
+    position:absolute;
+    top:0;
+    transform: translate( -80%, 0% );
+    width:15px;
+    height:15px;
+    border-radius:60%;
+    background:#84C4C4; 
+}
+.num:hover {
+    position:absolute;
+    top:0;
+    transform: translate( -80%, 0% );
+    width:15px;
+    height:15px;
+    border-radius:60%;
+    background:#84C4C4;
+}
+.cont{
+    position:absolute;
+    top:0;
+    color:#fff;
+    font-weight: bold;
+    font-family:sans-serif;
+    font-size: 0.9vw;
+    transform: translate( -50%, -5% );
+}

@@ -24,10 +24,6 @@ namespace TaskSharpHTTP.Models
         public virtual CategoriaItem Id_categoria { get; set; }
         [JsonProperty("cantidad")][Column("CANTIDAD")]
         public int Cantidad { get; set; }
-         [ForeignKey("ID_ETIQUETA")][JsonProperty("id_etiqueta")][Column("ID_ETIQUETA")]
-        public virtual EtiquetaItem Id_etiqueta { get; set; }
-        [ForeignKey("ID_PERSONA")][JsonProperty("id_proveedor")][Column("ID_PROVEEDOR")]
-        public virtual PersonaItem Id_proveedor { get; set; }
-
+        
     }
 }
