@@ -3,19 +3,19 @@
   </a>
 
   <div class="collapse navbar-collapse" class="d-flex justify-content-end" >
-      <button type="button" [routerLink]="['carrito']" class="btn btn-primary btn-color btn-bg-color btn-sm carrito-btn">
+      <button type="button" *ngIf="isAuthenticated()"[routerLink]="['carrito']" class="btn btn-primary btn-color btn-bg-color btn-sm carrito-btn">
         <div *ngIf="currentCount!=null" class="num d-inline-block"><span class="cont">{{currentCount}}</span></div><img src="../../assets/images/shopping-cart.svg" width="30" height="30" class="d-inline-block mr-2" alt="carro"><b>Carrito de compras</b>
       </button> 
-    <button type="button" [routerLink]="['inicio-sesion']" class="btn btn-primary btn-color btn-bg-color btn-sm"><img src="../../assets/images/login.svg" width="30" height="30" class="d-inline-block mr-2" alt="login"><b>Iniciar sesion</b>
+    <button type="button" *ngIf="!isAuthenticated()" [routerLink]="['inicio-sesion']" class="btn btn-primary btn-color btn-bg-color btn-sm"><img src="../../assets/images/login.svg" width="30" height="30" class="d-inline-block mr-2" alt="login"><b>Iniciar sesion</b>
       </button>
       <a href="/registro-usuario">
-        <button type="button" class="btn btn-primary btn-color btn-bg-color btn-sm ml-2"><img src="../../assets/images/key.svg" width="30" height="30" class="d-inline-block mr-2" alt="registro"><b>Registro</b>
+        <button type="button" *ngIf="!isAuthenticated()" class="btn btn-primary btn-color btn-bg-color btn-sm ml-2"><img src="../../assets/images/key.svg" width="30" height="30" class="d-inline-block mr-2" alt="registro"><b>Registro</b>
         </button>
       </a>
-      <button type="button" [routerLink]="['/perfil', { outlets: {'submenu-perfil':['editar-perfil']}}]" class="btn btn-primary btn-color btn-bg-color btn-sm"><img src="../../assets/images/login.svg" width="30" height="30" class="d-inline-block mr-2" alt="login"><b>Usuario</b>
+      <button type="button" *ngIf="isAuthenticated()" [routerLink]="['/perfil', { outlets: {'submenu-perfil':['editar-perfil']}}]" class="btn btn-primary btn-color btn-bg-color btn-sm"><img src="../../assets/images/login.svg" width="30" height="30" class="d-inline-block mr-2" alt="login"><b>{{username()}}</b>
       </button>
-      
-      
+      <button [routerLink]="['/lista-productos']" (click)="logout()" type="button" *ngIf="isAuthenticated()" class="btn btn-primary btn-color btn-bg-color btn-sm"><img src="../../assets/images/logout.svg" width="30" height="30" class="d-inline-block mr-2" alt="login"><b>Cerrar sesion</b>
+      </button>
   </div>
 </nav>
 <nav class="navbar navbar-dark bg-primary navbar-expand-lg sticky-top">

@@ -31,7 +31,7 @@
         
               
 </nav>
-<a >
+<a *ngIf="encabezado.isAuthenticated()" >
         <div  class="module producto">
                 <a routerLink="/registro-producto"><h4><b>+ Añadir nuevo producto</b></h4></a>
         </div>

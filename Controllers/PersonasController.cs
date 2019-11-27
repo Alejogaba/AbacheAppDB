@@ -38,7 +38,16 @@ namespace TaskSharpHTTP.Controllers
             }
             return personaitem;
         }
-
+        [HttpGet("autenticar")]
+        public async Task<ActionResult<PersonaItem>> Login(string email,string password)
+        {
+            var personaitem = await _context.PersonaItems.Where(p => p.Email == email && p.Password==password).FirstOrDefaultAsync();
+          if (personaitem==null)
+            {
+                return NotFound();
+            }
+            return personaitem;
+        }
         
         [HttpPost]
         public async Task<ActionResult<PersonaItem>> PostPersona(PersonaItem personaitem)

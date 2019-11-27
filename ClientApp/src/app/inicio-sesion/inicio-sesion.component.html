@@ -10,7 +10,7 @@
                             <label>Contraseña</label>
                             <input type="Password" #password class="form-control" name="Contraseña" id="Contraseña" placeholder="Digite su contraseña">
                             </div>
-                            <button id="login-button" class="btn btn-primary">Iniciar sesion</button>
+                            <button id="login-button" (click)="Login(username.value,password.value)" class="btn btn-primary">Iniciar sesion</button>
             </form>
        
         </div>

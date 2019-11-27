@@ -5,6 +5,7 @@ import{Persona} from '../models/persona';
 import{PersonasDataService} from '../services/personas-data.service';
 import { ActivatedRoute } from '@angular/router';
 import{EncabezadoComponent} from '../encabezado/encabezado.component';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -15,12 +16,14 @@ import{EncabezadoComponent} from '../encabezado/encabezado.component';
 export class ProductosDetallesComponent implements OnInit {
   producto:Producto;
   productos:Producto[];
+  rateControl: any;
   constructor(private productoservice:ProductosDataService,
     private personaservice:PersonasDataService,
     private route: ActivatedRoute,private encabezado:EncabezadoComponent) { }
 
   ngOnInit() {
     this.getProductos();
+    this.rateControl = new FormControl("1", [Validators.max(100), Validators.min(0)])
   }
   getTodoslosProductos() {
     this.productoservice.get().subscribe(productos => {

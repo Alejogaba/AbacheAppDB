@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonasDataService} from '../services/personas-data.service';
 import { Location } from '@angular/common';
+import{Persona} from '../models/persona';
+import{AuthserviceService} from '../services/authservice.service'
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -9,16 +12,12 @@ import { Location } from '@angular/common';
 })
 export class InicioSesionComponent implements OnInit {
 
-  constructor(private personasservice:PersonasDataService, private location:Location) { }
+  constructor(private personasservice:PersonasDataService, private location:Location, private autenticacion:AuthserviceService) { }
 
   ngOnInit() {
   }
-  Login(Username:string,Password:string,event:Event){
-    event.preventDefault(); // Avoid default action for the submit button of the login form
-
-    this.personasservice.login(Username, Password).subscribe(res => {
-       console.log(res);
-      },error => {console.error(error); },() => this.goBack());
+  Login(Username:string,Password:string){
+    this.autenticacion.login(Username, Password);
   }
 
   goBack(): void {
