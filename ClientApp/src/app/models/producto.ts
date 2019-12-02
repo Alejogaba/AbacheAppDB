@@ -8,6 +8,6 @@ export class Producto {
     estilo_color:string;
     precio:number;
   imagen: string;
-  id_categoria: Categoria[];
+  id_categoria: number;
   cantidad: number;
 }

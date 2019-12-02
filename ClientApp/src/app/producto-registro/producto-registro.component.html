@@ -1,7 +1,7 @@
 <div class="container">
    
             <div #myform class="form-group">
-                    <img [src]="imgURL" *ngIf="imgURL" class="avatar img-circle img-thumbnail" alt="alt">
+                    <img [src]="imgURL"  *ngIf="imgURL" class="avatar img-circle img-thumbnail" alt="alt">
                                             <h6>Imagen producto</h6>
                                             <input #imageInput type="file" accept="image/*"
                                             (change)="processFile(imageInput)" >
@@ -54,7 +54,7 @@
                             <label>Descripcion de producto</label>
                             <textarea class="form-control" rows="8" id="comment"[(ngModel)]="producto.descripcion"></textarea>
                         </div>
-                        <button class="btn btn-primary mr-3" (click)="refresh()">Refrescar</button><button class="btn btn-primary" (click)="addproducto()">Registrar</button>
+                        <button class="btn btn-primary mr-3" (click)="refresh()">Refrescar</button><button class="btn btn-primary" (click)="uploadf()">Registrar</button>
 
 </div>
     

@@ -35,6 +35,18 @@ namespace ProyectoMorenita.Migrations
                     b.ToTable("CarroItems");
                 });
 
+            modelBuilder.Entity("TaskSharpHTTP.Models.Carrousel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<byte[]>("Imagen");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Carrousels");
+                });
+
             modelBuilder.Entity("TaskSharpHTTP.Models.CategoriaItem", b =>
                 {
                     b.Property<int>("Id")

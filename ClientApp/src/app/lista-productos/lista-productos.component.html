@@ -37,10 +37,12 @@
         </div>
 </a>
 
-<div  class="grid grid-pad">
-        <a  *ngFor="let producto of encabezado.productos | filtroCliente:encabezado.searchText; index as i" (click)="encabezado.seleccionar(producto)" class="col-md-4"
+<div *ngFor="let producto of encabezado.productos | filtroCliente:encabezado.searchText; index as i"  class="grid grid-pad">
+        <div class="editar" routerLink="/editar-producto/{{producto.id}}"><img src="../../assets/images/edit.svg" class="minithumbnail" alt="edit"></div>  
+        <a  (click)="encabezado.seleccionar(producto)" class="col-md-4"
             routerLink="/detalles/{{producto.id}}">
           <div class="module producto">
+                
               <img src={{producto.imagen}} alt="Imagen no disponible" class="thumbnail" onerror="this.src='../../assets/images/NoDisponible.jpg'" >
                     <h3><b>Precio:</b>${{producto.precio}}</h3>
           </div>

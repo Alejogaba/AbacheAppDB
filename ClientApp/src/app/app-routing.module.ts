@@ -14,6 +14,7 @@ import{ PerfilMenuComponent } from './perfil-menu/perfil-menu.component'
 import{LayoutComponent} from './layout/layout.component'
 import{HistorialComprasComponent} from './historial-compras/historial-compras.component'
 import{ListaUsuariosComponent} from './lista-usuarios/lista-usuarios.component';
+import{ProductoEditarComponent} from './producto-editar/producto-editar.component';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'registro-usuario',component:RegistroComponent},
   {path:'',redirectTo:'/inicio',pathMatch:'full'},
   {path:'lista-productos',component:ListaProductosComponent},
+  {path:'editar-producto/:id',component:ProductoEditarComponent},
   {path:'detalles/:id',component:ProductosDetallesComponent},
 {path:'inicio-sesion',component:InicioSesionComponent},
 {path:'registro-producto',component:ProductoRegistroComponent},

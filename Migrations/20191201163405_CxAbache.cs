@@ -24,6 +24,19 @@ namespace ProyectoMorenita.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Carrousels",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Imagen = table.Column<byte[]>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Carrousels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CategoriaItems",
                 columns: table => new
                 {
@@ -206,6 +219,9 @@ namespace ProyectoMorenita.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CarroItems");
+
+            migrationBuilder.DropTable(
+                name: "Carrousels");
 
             migrationBuilder.DropTable(
                 name: "EtiquetaItems");

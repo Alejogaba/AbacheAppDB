@@ -31,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { FiltroClientePipe } from './pipes/filtro-cliente.pipe';
+import { ProductoEditarComponent } from './producto-editar/producto-editar.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { FiltroClientePipe } from './pipes/filtro-cliente.pipe';
     LayoutComponent,
     HistorialComprasComponent,
     ListaUsuariosComponent,
-    FiltroClientePipe
+    FiltroClientePipe,
+    ProductoEditarComponent
 
   ],
   imports: [

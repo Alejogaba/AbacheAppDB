@@ -53,12 +53,37 @@ export class ProductosDataService {
       );
     }
     
+    Upload(image: File,producto: Producto): Observable<Producto> {
+      const formData = new FormData();
+
+    formData.append('image', image);
+      return this.http.post<Producto>(this.baseUrl+'api/product',producto, httpOptions).pipe(
+        tap((newProducto: Producto) => this.log(`Se registro la informacion con el id=${newProducto.id}`)),
+        catchError(this.handleError<Producto>('addProducto'))
+        );
+      } 
   public uploadImage(image: File): Observable<Object> {
     const formData = new FormData();
 
     formData.append('image', image);
 
     return this.http.post(this.baseUrl + 'api/product', formData);
+  }
+  modificar(producto: Producto): Observable<any> {
+    const url = `${this.baseUrl + 'api/product'}/${producto.id}`;
+  return this.http.put(url, producto, httpOptions).pipe(
+    tap(_ => this.log(`Se actualizo el producto con id=${producto.id}`)),
+    catchError(this.handleError<any>('modificar'))
+  );
+}
+
+  delete(producto: Producto | number): Observable<Producto> {
+    const id = typeof producto === 'number' ? producto : producto.id;
+    const url = `${this.baseUrl + 'api/producto'}/${id}`;
+    return this.http.delete<Producto>(url, httpOptions).pipe(
+      tap(_ => this.log(`Se elimino el producto con id=${id}`)),
+      catchError(this.handleError<any>('delete'))
+    );
   }
 
   

@@ -1,0 +1,31 @@
+<div *ngIf="producto" class="container">
+            
+            <div class="form-group">
+                    <label>Nombre producto</label>
+                    <input type="text" class="form-control" value='{{producto.titulo}}' name="nombre" [(ngModel)]="producto.titulo">
+                </div>
+                <div class="form-group">
+                        <label>Precio</label>
+                        <input type="number" class="form-control" value="{{producto.precio}}" name="precio" [(ngModel)]="producto.precio">
+                    </div>
+                    <div class="form-group">
+                            <label>Estilo/Color</label>
+                            <input type="text" class="form-control" name="color" value="{{producto.estilo_color}}" [(ngModel)]="producto.estilo_color">
+                        </div>
+                         <div class="form-group">
+                                    <label>Etiquetas</label>
+                          <tag-input placeholder="Añadir etiqueta" secondaryPlaceholder="Ingrese Etiquetas"></tag-input>
+                                         </div>
+                                     <div class="form-group">
+                                        <label>Cantidad</label>
+                                        <input type="number" class="form-control" name="cantidad" value="{{producto.cantidad}}" [(ngModel)]="producto.cantidad">
+                                    </div>
+                <div class="form-group">
+                        <label>Descripcion de producto</label>
+                        <textarea class="form-control" rows="8" id="comment"[(ngModel)]="producto.descripcion"></textarea>
+                    </div>
+                    <button class="btn btn-primary mr-3" (click)="refresh()">Refrescar</button><button class="btn btn-primary" (click)="actualizar()">Registrar</button>
+
+</div>
+
+

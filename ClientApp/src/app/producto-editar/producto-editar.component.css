@@ -1,0 +1,14 @@
+h3 {
+    text-align: middle;
+    transform: translate( 0%, -50% );
+    font-size: 1vw;
+    color: black;
+  }
+  .container{
+    margin-top:30px;
+  }
+  
+  .filter-col{
+    padding-left:10px;
+    padding-right:10px;
+  }

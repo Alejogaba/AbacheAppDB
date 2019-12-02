@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskSharpHTTP.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
-
+using System.IO;
 
 namespace TaskSharpHTTP.Controllers
 {
@@ -28,6 +28,7 @@ namespace TaskSharpHTTP.Controllers
             return await _context.ProductItems.ToListAsync();
         }
 
+
         //Get: api/product:id
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductItem>> GetProducto(int id)
@@ -47,9 +48,6 @@ namespace TaskSharpHTTP.Controllers
             return productitem;
         }
 
-
-
-
         //Post: api/product
         [HttpPost]
         public async Task<ActionResult<ProductItem>> PostProducto(ProductItem productItem)
@@ -58,6 +56,7 @@ namespace TaskSharpHTTP.Controllers
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetProducto), new { id = productItem.Id }, productItem);
         }
+        
 
         //Put: api/product:id
         [HttpPut("{id}")]

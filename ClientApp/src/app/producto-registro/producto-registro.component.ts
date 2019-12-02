@@ -47,6 +47,16 @@ export class ProductoRegistroComponent implements OnInit {
              });
   }
   
+  uploadf(): void {
+    if (!this.producto) { return; }
+    this.producto=this.imgURL;
+    this.productodataservice.addProducto(this.producto)
+      .subscribe( producto  => {
+        this.toastr.success('Se agrego un nuevo producto con id: '+producto.id);
+             });
+  }
+  
+
   addcategoria(): void {
     if (!this.categoria) { return; }
     this.categoriadataservice.addCategoria(this.categoria)
@@ -70,11 +80,7 @@ export class ProductoRegistroComponent implements OnInit {
 
       this.selectedFile = new ImageSnippet(event.target.result, file);
 
-      this.productodataservice.uploadImage(this.selectedFile.file).subscribe(
-        (res) => {
-        },(err) => {
-        
-        })
+
     });
 
     reader.readAsDataURL(file);

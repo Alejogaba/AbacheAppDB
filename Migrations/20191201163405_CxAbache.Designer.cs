@@ -10,7 +10,7 @@ using TaskSharpHTTP.Models;
 namespace ProyectoMorenita.Migrations
 {
     [DbContext(typeof(AbacheContext))]
-    [Migration("20191126170905_CxAbache")]
+    [Migration("20191201163405_CxAbache")]
     partial class CxAbache
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,18 @@ namespace ProyectoMorenita.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CarroItems");
+                });
+
+            modelBuilder.Entity("TaskSharpHTTP.Models.Carrousel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<byte[]>("Imagen");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Carrousels");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.CategoriaItem", b =>
