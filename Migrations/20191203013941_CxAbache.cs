@@ -9,21 +9,6 @@ namespace ProyectoMorenita.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CarroItems",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Id_cliente = table.Column<int>(nullable: false),
-                    Id_producto = table.Column<int>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CarroItems", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Carrousels",
                 columns: table => new
                 {
@@ -63,6 +48,23 @@ namespace ProyectoMorenita.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MensajeItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Cliente = table.Column<string>(nullable: true),
+                    Mensaje = table.Column<string>(nullable: true),
+                    Vendedor = table.Column<string>(nullable: true),
+                    fecha = table.Column<DateTime>(nullable: false),
+                    Enviado_por = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MensajeItems", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RolItem",
                 columns: table => new
                 {
@@ -84,7 +86,7 @@ namespace ProyectoMorenita.Migrations
                 {
                     ID_ETIQUETA = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    ID_CATEGORIA = table.Column<int>(nullable: true),
+                    ID_CATEGORIA = table.Column<int>(nullable: false),
                     NOMBRE = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -95,7 +97,7 @@ namespace ProyectoMorenita.Migrations
                         column: x => x.ID_CATEGORIA,
                         principalTable: "CategoriaItems",
                         principalColumn: "ID_CATEGORIA",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -109,7 +111,7 @@ namespace ProyectoMorenita.Migrations
                     ESTILO_COLOR = table.Column<string>(nullable: true),
                     PRECIO = table.Column<int>(nullable: false),
                     IMAGEN = table.Column<byte[]>(nullable: true),
-                    ID_CATEGORIA = table.Column<int>(nullable: true),
+                    ID_CATEGORIA = table.Column<int>(nullable: false),
                     CANTIDAD = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -120,7 +122,7 @@ namespace ProyectoMorenita.Migrations
                         column: x => x.ID_CATEGORIA,
                         principalTable: "CategoriaItems",
                         principalColumn: "ID_CATEGORIA",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -130,7 +132,7 @@ namespace ProyectoMorenita.Migrations
                     ID_CIUDAD = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     NOMBRE = table.Column<string>(nullable: true),
-                    ID_DEPARTAMENTO = table.Column<int>(nullable: true)
+                    ID_DEPARTAMENTO = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -140,7 +142,7 @@ namespace ProyectoMorenita.Migrations
                         column: x => x.ID_DEPARTAMENTO,
                         principalTable: "DepartamentoItem",
                         principalColumn: "ID_DEPARTAMENTO",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,13 +155,13 @@ namespace ProyectoMorenita.Migrations
                     NOMBRES = table.Column<string>(nullable: true),
                     APELLIDOS = table.Column<string>(nullable: true),
                     TELEFONO = table.Column<string>(nullable: true),
-                    ID_DEPARTAMENTO = table.Column<int>(nullable: true),
-                    ID_CIUDAD = table.Column<int>(nullable: true),
+                    ID_DEPARTAMENTO = table.Column<int>(nullable: false),
+                    ID_CIUDAD = table.Column<int>(nullable: false),
                     DIRECCION = table.Column<string>(nullable: true),
                     APODO = table.Column<string>(nullable: true),
                     EMAIL = table.Column<string>(nullable: true),
                     PASSWORD = table.Column<string>(nullable: true),
-                    ID_ROL = table.Column<int>(nullable: true)
+                    ID_ROL = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -169,20 +171,59 @@ namespace ProyectoMorenita.Migrations
                         column: x => x.ID_CIUDAD,
                         principalTable: "CiudadItem",
                         principalColumn: "ID_CIUDAD",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PersonaItems_DepartamentoItem_ID_DEPARTAMENTO",
                         column: x => x.ID_DEPARTAMENTO,
                         principalTable: "DepartamentoItem",
                         principalColumn: "ID_DEPARTAMENTO",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PersonaItems_RolItem_ID_ROL",
                         column: x => x.ID_ROL,
                         principalTable: "RolItem",
                         principalColumn: "ID_ROL",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "CarroItems",
+                columns: table => new
+                {
+                    Id_carro = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Id_persona = table.Column<int>(nullable: false),
+                    Id_producto = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    Total = table.Column<int>(nullable: false),
+                    Estado = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CarroItems", x => x.Id_carro);
+                    table.ForeignKey(
+                        name: "FK_CarroItems_PersonaItems_Id_persona",
+                        column: x => x.Id_persona,
+                        principalTable: "PersonaItems",
+                        principalColumn: "ID_PERSONA",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CarroItems_ProductItems_Id_producto",
+                        column: x => x.Id_producto,
+                        principalTable: "ProductItems",
+                        principalColumn: "ID_PRODUCTO",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CarroItems_Id_persona",
+                table: "CarroItems",
+                column: "Id_persona");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CarroItems_Id_producto",
+                table: "CarroItems",
+                column: "Id_producto");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CiudadItem_ID_DEPARTAMENTO",
@@ -225,6 +266,9 @@ namespace ProyectoMorenita.Migrations
 
             migrationBuilder.DropTable(
                 name: "EtiquetaItems");
+
+            migrationBuilder.DropTable(
+                name: "MensajeItems");
 
             migrationBuilder.DropTable(
                 name: "PersonaItems");

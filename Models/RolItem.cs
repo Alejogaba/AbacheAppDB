@@ -11,7 +11,7 @@ namespace TaskSharpHTTP.Models
     public class RolItem
     {
         [Key] [JsonProperty("id")] [Column("ID_ROL")]
-        public int Id { get; set; }
+        public int Id_rol { get; set; }
         [JsonProperty("nombre")][Column("NOMBRE")]
         public string Nombre { get; set; }
         [JsonProperty("permiso_compra")][Column("PERMISO_COMPRA")]
@@ -20,5 +20,7 @@ namespace TaskSharpHTTP.Models
         public string Permiso_venta { get; set; }
         [JsonProperty("gestion_usuarios")][Column("GESTION_USUARIOS")]
         public string Gestion_usuarios { get; set; }
+         [JsonIgnore]
+        public ICollection<PersonaItem> PersonaItems { get; set; }
     }
 }

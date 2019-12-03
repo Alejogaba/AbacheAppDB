@@ -22,11 +22,19 @@ export class ProductoRegistroComponent implements OnInit {
     private categoriadataservice: CategoriasDataService) { }
   producto:Producto;
   categoria:Categoria;
+  id:number;
+  categoria_producto:Categoria;
   categorias:Categoria[];
   ngOnInit() {
     this.producto=new Producto;
     this.categoria=new Categoria;
+    this.categoria_producto = new Categoria;
     this.getCategorias();
+  }
+  buscarcategoria(id:number){
+    this.categoriadataservice.getbyid(id)
+    .subscribe(c => this.categoria_producto= c);
+  
   }
   
   getCategorias() {
@@ -34,9 +42,6 @@ export class ProductoRegistroComponent implements OnInit {
       return this.categorias = categorias;
     });
     }
-
-
-
 
   addproducto(): void {
     if (!this.producto) { return; }

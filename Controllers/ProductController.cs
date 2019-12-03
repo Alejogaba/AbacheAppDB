@@ -54,7 +54,7 @@ namespace TaskSharpHTTP.Controllers
         {
             _context.ProductItems.Add(productItem);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetProducto), new { id = productItem.Id }, productItem);
+            return CreatedAtAction(nameof(GetProducto), new { id = productItem.Id_producto }, productItem);
         }
         
 
@@ -62,7 +62,7 @@ namespace TaskSharpHTTP.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProducto(int id,ProductItem item)
         {
-            if (id != item.Id)
+            if (id != item.Id_producto)
             {
                 return BadRequest();
             }

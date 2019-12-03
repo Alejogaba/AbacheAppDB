@@ -21,9 +21,8 @@ export class CategoriasDataService {
   }
   getbyid(id: number): Observable<Categoria> {
     const url = `${this.baseUrl + 'api/categoria'}/${id}`;
-
     return this.http.get<Categoria>(url).pipe(
-      tap(_ => this.log(`fallo busqueda id=${id}`)),
+      tap(_ => this.log(`se encontro categoria en id=${id}`)),
       catchError(this.handleError<Categoria>(`getbyid id=${id}`))
     );
     

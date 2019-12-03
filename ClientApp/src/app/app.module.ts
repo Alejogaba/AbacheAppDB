@@ -32,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TagInputModule } from 'ngx-chips';
 import { FiltroClientePipe } from './pipes/filtro-cliente.pipe';
 import { ProductoEditarComponent } from './producto-editar/producto-editar.component';
+import { PerfilChatComponent } from './perfil-chat/perfil-chat.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { ProductoEditarComponent } from './producto-editar/producto-editar.compo
     HistorialComprasComponent,
     ListaUsuariosComponent,
     FiltroClientePipe,
-    ProductoEditarComponent
+    ProductoEditarComponent,
+    PerfilChatComponent
 
   ],
   imports: [

@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="producto" class="container">
    
             <div #myform class="form-group">
                     <img [src]="imgURL"  *ngIf="imgURL" class="avatar img-circle img-thumbnail" alt="alt">
@@ -9,19 +9,21 @@
                 
                 <div class="form-group">
                         <label>Nombre producto</label>
-                        <input type="text" class="form-control" name="nombre" [(ngModel)]="producto.titulo">
+                        <input type="text" class="form-control"  value='{{producto.titulo}}' name="nombre" [(ngModel)]="producto.titulo">
                     </div>
                     <div class="form-group">
                             <label>Precio</label>
-                            <input type="number" class="form-control" name="precio" [(ngModel)]="producto.precio">
+                            <input type="number" class="form-control" min="1" value='1' name="precio" value='{{producto.precio}}' [(ngModel)]="producto.precio">
                         </div>
                         <div class="form-group">
                                 <label>Estilo/Color</label>
-                                <input type="text" class="form-control" name="color" [(ngModel)]="producto.estilo_color">
+                                <input type="text" class="form-control" name="color" value='{{producto.estilo_color}}' [(ngModel)]="producto.estilo_color">
                             </div>
                             <div class="form-group">
                                     <label>Categoria</label>
-                                    <select class="form-control"  name="categoria" ><option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}}</option></select>
+                                    {{categoria_producto.nombre}}
+                                    <select class="form-control" [(ngModel)]="producto.id_categoria" name="categoria" ><option *ngFor="let categoria of categorias"  value="{{categoria.id}}">{{categoria.nombre}}</option></select>
+                                {{producto.id_categoria}}
                                     <div class="container">
                                         <div class="row">
                                                 <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
@@ -48,13 +50,13 @@
                                              </div>
                                          <div class="form-group">
                                             <label>Cantidad</label>
-                                            <input type="number" class="form-control" name="cantidad" [(ngModel)]="producto.cantidad">
+                                            <input type="number" value="1" min="1" class="form-control" name="cantidad"value='{{producto.cantidad}}' [(ngModel)]="producto.cantidad">
                                         </div>
                     <div class="form-group">
                             <label>Descripcion de producto</label>
-                            <textarea class="form-control" rows="8" id="comment"[(ngModel)]="producto.descripcion"></textarea>
+                            <textarea class="form-control" rows="8" id="comment" value='{{producto.descripcion}}'[(ngModel)]="producto.descripcion"></textarea>
                         </div>
-                        <button class="btn btn-primary mr-3" (click)="refresh()">Refrescar</button><button class="btn btn-primary" (click)="uploadf()">Registrar</button>
+                        <button class="btn btn-primary mr-3" (click)="refresh()">Refrescar</button><button class="btn btn-primary" (click)="addproducto()">Registrar</button>
 
 </div>
     

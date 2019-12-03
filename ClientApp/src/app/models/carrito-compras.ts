@@ -3,5 +3,6 @@ export class CarritoCompras {
     id_clliente:number;
     id_producto:number;
     cantidad:number;
-    total_a_pagar:number;
+    total:number;
+    estado:string;
 }

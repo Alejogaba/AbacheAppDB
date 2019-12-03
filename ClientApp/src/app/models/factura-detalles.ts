@@ -6,4 +6,5 @@ export class FacturaDetalles {
     precio_producto:number;
     cantidad_producto:number;
     total:number;
+    vendedor:string;
 }

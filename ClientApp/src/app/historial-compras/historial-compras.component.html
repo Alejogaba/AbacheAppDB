@@ -3,21 +3,23 @@
         <thead class="thead-light">
           <tr>
             <th scope="col">Fecha pedido</th>
-            <th scope="col">N° pedido</th>
+            <th scope="col">N°pedido</th>
             <th scope="col">Nombre producto</th>
             <th scope="col">Tipo producto</th>
             <th scope="col">Precio producto</th>
             <th scope="col">Cantidad</th>
+            <th scope="col">Total</th>
             <th scope ="col">Factura</th>
           </tr>
         </thead>
-        <tr scope="row">
+        <tr scope="row" *ngFor="let factura of facturadetalles">
           <td>12/12/2012</td>
-          <td>12344</td>
-          <td>Mouse hp</td>
-          <td>negro</td>
-          <td>25000</td>
-          <td>1</td>
-          <td><a href="#">ver factura</a></td>
+          <td>{{factura.id_factura}}</td>
+          <td>{{factura.titulo_producto}}</td>
+          <td>{{factura.estilo_color}}</td>
+          <td>{{factura.precio_producto}}</td>
+          <td>{{factura.cantidad_producto}}</td>
+          <td>{{factura.total}}</td>
+          <td><a href="#">Enviar mensaje al vendedor</a></td>
         </tr>
       </table>

@@ -21,16 +21,24 @@ namespace ProyectoMorenita.Migrations
 
             modelBuilder.Entity("TaskSharpHTTP.Models.CarroItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Id_carro")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Cantidad");
 
-                    b.Property<int>("Id_cliente");
+                    b.Property<string>("Estado");
+
+                    b.Property<int>("Id_persona");
 
                     b.Property<int>("Id_producto");
 
-                    b.HasKey("Id");
+                    b.Property<int>("Total");
+
+                    b.HasKey("Id_carro");
+
+                    b.HasIndex("Id_persona");
+
+                    b.HasIndex("Id_producto");
 
                     b.ToTable("CarroItems");
                 });
@@ -49,71 +57,93 @@ namespace ProyectoMorenita.Migrations
 
             modelBuilder.Entity("TaskSharpHTTP.Models.CategoriaItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Id_categoria")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ID_CATEGORIA");
 
                     b.Property<string>("Nombre")
                         .HasColumnName("NOMBRE");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id_categoria");
 
                     b.ToTable("CategoriaItems");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.CiudadItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Id_ciudad")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ID_CIUDAD");
 
-                    b.Property<int?>("ID_DEPARTAMENTO");
+                    b.Property<int>("Id_departamento")
+                        .HasColumnName("ID_DEPARTAMENTO");
 
                     b.Property<string>("Nombre")
                         .HasColumnName("NOMBRE");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id_ciudad");
 
-                    b.HasIndex("ID_DEPARTAMENTO");
+                    b.HasIndex("Id_departamento");
 
                     b.ToTable("CiudadItem");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.DepartamentoItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Id_departamento")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ID_DEPARTAMENTO");
 
                     b.Property<string>("Nombre")
                         .HasColumnName("NOMBRE");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id_departamento");
 
                     b.ToTable("DepartamentoItem");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.EtiquetaItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Id_etiqueta")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ID_ETIQUETA");
 
-                    b.Property<int?>("ID_CATEGORIA");
+                    b.Property<int>("Id_categoria")
+                        .HasColumnName("ID_CATEGORIA");
 
                     b.Property<string>("Nombre")
                         .HasColumnName("NOMBRE");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id_etiqueta");
 
-                    b.HasIndex("ID_CATEGORIA");
+                    b.HasIndex("Id_categoria");
 
                     b.ToTable("EtiquetaItems");
                 });
 
-            modelBuilder.Entity("TaskSharpHTTP.Models.PersonaItem", b =>
+            modelBuilder.Entity("TaskSharpHTTP.Models.MensajeItem", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Cliente");
+
+                    b.Property<string>("Enviado_por");
+
+                    b.Property<string>("Mensaje");
+
+                    b.Property<string>("Vendedor");
+
+                    b.Property<DateTime>("fecha");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MensajeItems");
+                });
+
+            modelBuilder.Entity("TaskSharpHTTP.Models.PersonaItem", b =>
+                {
+                    b.Property<int>("Id_persona")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ID_PERSONA");
 
@@ -129,11 +159,14 @@ namespace ProyectoMorenita.Migrations
                     b.Property<string>("Email")
                         .HasColumnName("EMAIL");
 
-                    b.Property<int?>("ID_CIUDAD");
+                    b.Property<int>("Id_ciudad")
+                        .HasColumnName("ID_CIUDAD");
 
-                    b.Property<int?>("ID_DEPARTAMENTO");
+                    b.Property<int>("Id_departamento")
+                        .HasColumnName("ID_DEPARTAMENTO");
 
-                    b.Property<int?>("ID_ROL");
+                    b.Property<int>("Id_rol")
+                        .HasColumnName("ID_ROL");
 
                     b.Property<byte[]>("Imagen")
                         .HasColumnName("IMAGEN");
@@ -147,20 +180,20 @@ namespace ProyectoMorenita.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnName("TELEFONO");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id_persona");
 
-                    b.HasIndex("ID_CIUDAD");
+                    b.HasIndex("Id_ciudad");
 
-                    b.HasIndex("ID_DEPARTAMENTO");
+                    b.HasIndex("Id_departamento");
 
-                    b.HasIndex("ID_ROL");
+                    b.HasIndex("Id_rol");
 
                     b.ToTable("PersonaItems");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.ProductItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Id_producto")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ID_PRODUCTO");
 
@@ -173,7 +206,8 @@ namespace ProyectoMorenita.Migrations
                     b.Property<string>("Estilo_color")
                         .HasColumnName("ESTILO_COLOR");
 
-                    b.Property<int?>("ID_CATEGORIA");
+                    b.Property<int>("Id_categoria")
+                        .HasColumnName("ID_CATEGORIA");
 
                     b.Property<byte[]>("Imagen")
                         .HasColumnName("IMAGEN");
@@ -184,16 +218,16 @@ namespace ProyectoMorenita.Migrations
                     b.Property<string>("Titulo")
                         .HasColumnName("TITULO");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id_producto");
 
-                    b.HasIndex("ID_CATEGORIA");
+                    b.HasIndex("Id_categoria");
 
                     b.ToTable("ProductItems");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.RolItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Id_rol")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ID_ROL");
 
@@ -209,45 +243,64 @@ namespace ProyectoMorenita.Migrations
                     b.Property<string>("Permiso_venta")
                         .HasColumnName("PERMISO_VENTA");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id_rol");
 
                     b.ToTable("RolItem");
                 });
 
+            modelBuilder.Entity("TaskSharpHTTP.Models.CarroItem", b =>
+                {
+                    b.HasOne("TaskSharpHTTP.Models.PersonaItem", "PersonaItem")
+                        .WithMany("CarroItems")
+                        .HasForeignKey("Id_persona")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TaskSharpHTTP.Models.ProductItem", "ProductItem")
+                        .WithMany("CarroItems")
+                        .HasForeignKey("Id_producto")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("TaskSharpHTTP.Models.CiudadItem", b =>
                 {
-                    b.HasOne("TaskSharpHTTP.Models.DepartamentoItem", "Id_departamento")
-                        .WithMany()
-                        .HasForeignKey("ID_DEPARTAMENTO");
+                    b.HasOne("TaskSharpHTTP.Models.DepartamentoItem", "departamentoItem")
+                        .WithMany("CiudadItems")
+                        .HasForeignKey("Id_departamento")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.EtiquetaItem", b =>
                 {
-                    b.HasOne("TaskSharpHTTP.Models.CategoriaItem", "Id_categoria")
-                        .WithMany()
-                        .HasForeignKey("ID_CATEGORIA");
+                    b.HasOne("TaskSharpHTTP.Models.CategoriaItem", "categoriaItem")
+                        .WithMany("EtiquetaItems")
+                        .HasForeignKey("Id_categoria")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.PersonaItem", b =>
                 {
-                    b.HasOne("TaskSharpHTTP.Models.CiudadItem", "Id_ciudad")
-                        .WithMany()
-                        .HasForeignKey("ID_CIUDAD");
+                    b.HasOne("TaskSharpHTTP.Models.CiudadItem", "ciudadItem")
+                        .WithMany("PersonaItems")
+                        .HasForeignKey("Id_ciudad")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TaskSharpHTTP.Models.DepartamentoItem", "Id_departamento")
-                        .WithMany()
-                        .HasForeignKey("ID_DEPARTAMENTO");
+                    b.HasOne("TaskSharpHTTP.Models.DepartamentoItem", "departamentoItem")
+                        .WithMany("PersonaItems")
+                        .HasForeignKey("Id_departamento")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TaskSharpHTTP.Models.RolItem", "Id_rol")
-                        .WithMany()
-                        .HasForeignKey("ID_ROL");
+                    b.HasOne("TaskSharpHTTP.Models.RolItem", "rolItem")
+                        .WithMany("PersonaItems")
+                        .HasForeignKey("Id_rol")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.ProductItem", b =>
                 {
-                    b.HasOne("TaskSharpHTTP.Models.CategoriaItem", "Id_categoria")
-                        .WithMany()
-                        .HasForeignKey("ID_CATEGORIA");
+                    b.HasOne("TaskSharpHTTP.Models.CategoriaItem", "CategoriaItem")
+                        .WithMany("ProductItems")
+                        .HasForeignKey("Id_categoria")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

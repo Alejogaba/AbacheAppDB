@@ -14,5 +14,6 @@ public DbSet <PersonaItem> PersonaItems { get ; set ;}
 public DbSet <EtiquetaItem> EtiquetaItems { get; set; }
 public DbSet<CarroItem> CarroItems { get; set; }
 public DbSet<Carrousel> Carrousels { get; set; }
+public DbSet<MensajeItem> MensajeItems { get; set; }
     }
 }

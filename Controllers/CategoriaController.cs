@@ -45,7 +45,7 @@ namespace TaskSharpHTTP.Controllers
         {
             _context.CategoriaItems.Add(categoriaitem);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetPersona), new { id = categoriaitem.Id }, categoriaitem);
+            return CreatedAtAction(nameof(GetPersona), new { id = categoriaitem.Id_categoria }, categoriaitem);
         }
 
      

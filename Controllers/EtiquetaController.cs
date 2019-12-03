@@ -45,7 +45,7 @@ namespace TaskSharpHTTP.Controllers
         {
             _context.EtiquetaItems.Add(etiquetaitem);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetPersona), new { id = etiquetaitem.Id }, etiquetaitem);
+            return CreatedAtAction(nameof(GetPersona), new { id = etiquetaitem.Id_etiqueta }, etiquetaitem);
         }
 
      
