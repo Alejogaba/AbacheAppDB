@@ -29,13 +29,14 @@ clase:string;
   constructor(private carroservice:CarroDataService, private encabezado:EncabezadoComponent,
     private facturaservice:FacturaDataService,private toastr:ToastrService,private router:Router) { }
   ngOnInit() {
-    this.buscarproducto();
+    
     this.buscarcarro();
     this.factura=new Factura;
    setTimeout(() => {
+    this.buscarproducto();
     this.factura.id_persona=+sessionStorage.getItem('id');;
     this.calcular_total_general()
-}, 5000);
+}, 3000);
   }
   ejecutar_metodos(){
     this.definir_estado();
@@ -50,7 +51,11 @@ clase:string;
         this.router.navigate(['/factura',f.id]);
     }, 3000); });
           }
-  
+  eliminar_producto(id:number){
+    this.carroservice.delete(id).subscribe(t =>{ 
+    this.toastr.info("Eliminando..."),
+    this.ngOnInit()});
+  }
   definir_estado(){
  
       if (this.cantidad_a_llevar<= 10){

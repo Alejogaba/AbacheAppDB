@@ -25,6 +25,7 @@ export class EncabezadoComponent implements OnInit {
   public currentCount = null;
   personas:Persona[];
   categorias:Categoria[];
+  category:Categoria;
   productos:Producto[];
   carros:CarritoCompras[];
   
@@ -36,6 +37,7 @@ export class EncabezadoComponent implements OnInit {
    private carroservice:CarroDataService) { }
 
   ngOnInit() {
+    this.getCategoria;
     if(this.isAuthenticated){
   this.buscarcarro();
   setTimeout(() => {
@@ -57,8 +59,8 @@ export class EncabezadoComponent implements OnInit {
         return this.authservice.isAuthenticated();
     }
   getCategoria() {
-    this.categoriaservice.get().subscribe(categorias => {
-      return this.categorias = categorias;
+    this.categoriaservice.get().subscribe(c => {
+      return this.categorias = c;
     });
     }
   buscarproducto(producto:string){
@@ -69,6 +71,11 @@ export class EncabezadoComponent implements OnInit {
           return this.productos = productos;
         });
       }
+    }
+    buscarcategoria(categoria:number){
+        this.productoservice.buscarcategoria(categoria).subscribe(productos => {
+          return this.productos = productos;
+        });
     }
     username(): string {
       return this.authservice.getUserName();

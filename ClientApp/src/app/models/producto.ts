@@ -10,4 +10,5 @@ export class Producto {
   imagen: string;
   id_categoria: number;
   inventario: number;
+  id_vendedor:number;
 }

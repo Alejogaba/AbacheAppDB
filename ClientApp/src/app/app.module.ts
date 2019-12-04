@@ -33,6 +33,7 @@ import { TagInputModule } from 'ngx-chips';
 import { FiltroClientePipe } from './pipes/filtro-cliente.pipe';
 import { ProductoEditarComponent } from './producto-editar/producto-editar.component';
 import { PerfilChatComponent } from './perfil-chat/perfil-chat.component';
+import { HistorialVentasComponent } from './historial-ventas/historial-ventas.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { PerfilChatComponent } from './perfil-chat/perfil-chat.component';
     ListaUsuariosComponent,
     FiltroClientePipe,
     ProductoEditarComponent,
-    PerfilChatComponent
+    PerfilChatComponent,
+    HistorialVentasComponent
 
   ],
   imports: [

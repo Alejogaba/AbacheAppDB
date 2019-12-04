@@ -41,6 +41,7 @@ export class ProductosDetallesComponent implements OnInit {
     this.carroservice.addCarro(this.carro_compras)
       .subscribe( carro_compras  => {
         this.toastr.success('Se agrego al carrito de compras');
+        this.encabezado.incrementCounter();
              });
     this.encabezado.incrementCounter();
   }

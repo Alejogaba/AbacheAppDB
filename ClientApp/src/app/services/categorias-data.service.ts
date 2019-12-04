@@ -16,7 +16,8 @@ export class CategoriasDataService {
   private categoriasUrl = 'api/categoria';
   constructor(private http: HttpClient,@Inject('BASE_URL') private baseUrl:string) { }
   get(): Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(this.baseUrl+"api/categoria").pipe(
+    return this.http.get<Categoria[]>(this.baseUrl+'api/categoria').pipe(
+      tap(_ =>this.log('Se consulta categorias')), 
       catchError(this.handleError<Categoria[]>('get', [])));
   }
   getbyid(id: number): Observable<Categoria> {

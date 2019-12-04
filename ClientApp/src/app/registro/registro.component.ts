@@ -5,6 +5,9 @@ import {Ciudad} from '../models/ciudad';
 import {Departamento} from '../models/departamento';
 import {CiudadDataService} from '../services/ciudad-data.service';
 import {DepartamentoDataService} from '../services/departamento-data.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-registro',
@@ -15,12 +18,15 @@ export class RegistroComponent implements OnInit {
 persona:Persona;
   constructor(private personadataservice:PersonasDataService,
     private ciudadservice:CiudadDataService,
-    private departamentoservice:DepartamentoDataService) { }
+    private departamentoservice:DepartamentoDataService,
+    private toastr:ToastrService,
+    private router:Router) { }
 departamentos:Departamento[];
 departament:Departamento;
 ciudades:Ciudad[]
   ngOnInit() {
     this.persona= new Persona();
+    this.persona.id_rol=1;
     this.getDepartamento();
   }
   getDepartamento() {
@@ -37,7 +43,8 @@ ciudades:Ciudad[]
     if (!this.persona) { return; }
     this.personadataservice.addPersona(this.persona)
       .subscribe( task  => {
-          alert('Se registro exitosamente');
+          this.toastr.success('Registro exitoso');
+          this.router.navigate(['/lista-productos']);
              });
   }
 }

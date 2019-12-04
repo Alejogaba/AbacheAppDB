@@ -20,7 +20,7 @@
 
 		<div class="form-group">
 			<label>identificacion</label>
-			<input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="1065544433" [(ngModel)]="persona.identificacion">
+			<input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="1065544433" [(ngModel)]="persona.id">
 		</div>
 
 
@@ -29,15 +29,15 @@
 		
         <div class="form-group">
 		<label>seleccione departameto</label>
-		<select *ngFor="let departamento of departamentos" (change)="buscarciudad(persona.id_departamento)" [(ngModel)]="persona.id_departamento"  name="departamento" class="form-control" id="departamento" title="departamento">
-			<option value="{{departamento.id}}"  id="departamento">{{departamento.nombre}}</option>
+		<select  (change)="buscarciudad(persona.id_departamento)" [(ngModel)]="persona.id_departamento"  name="departamento" class="form-control" id="departamento" title="departamento">
+			<option *ngFor="let departamento of departamentos" value="{{departamento.id}}"  id="departamento">{{departamento.nombre}}</option>
 		</select>
 		</div>
 		
 		<div class="form-group">
 		<label>seleccione ciudad</label>
 		<select *ngFor="let ciudad of ciudades" value="{{ciudad.id}}" [(ngModel)]="persona.id_ciudad" name="ciudad" class="form-control" id="ciudad" title="ciudad">
-			<option>{{ciudad.nombre}}</option>
+			<option value="{{ciudad.id}}">{{ciudad.nombre}}</option>
 			
 		</select>
 		</div>

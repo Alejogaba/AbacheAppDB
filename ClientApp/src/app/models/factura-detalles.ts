@@ -8,5 +8,4 @@ export class FacturaDetalles {
     cantidad_producto:number;
     total_producto:number;
     id_vendedor:number;
-    nombre_vendedor:string;
 }

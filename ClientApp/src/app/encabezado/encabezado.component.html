@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-primary">
-  <a class="navbar-brand" href="index.html">Abache app
+  <a class="navbar-brand" href="index.html">Tienda Abuchaibe
   </a>
 
   <div class="collapse navbar-collapse" class="d-flex justify-content-end" >
@@ -30,8 +30,8 @@
                 <span class="text-white"><b>Categorias</b></span>
             </button>
             <div class="collapse navbar-collapse" id="mainNav">
-                <div class="navbar-nav" *ngFor="let persona of personas">
-                    <a *ngFor="let categoria of categorias" class="nav-item nav-link text-light" href="#" id="navbarDropdownMenuLink" role="button">
+                <div class="navbar-nav" *ngFor="let categoria of categorias">
+                    <a  (click)="buscarcategoria(categoria.id)"class="nav-item nav-link text-light" href="#" id="navbarDropdownMenuLink" role="button">
                         {{categoria.nombre}}
                       </a>
                 </div>

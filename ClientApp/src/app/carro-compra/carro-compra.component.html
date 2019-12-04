@@ -15,7 +15,7 @@
                     <tr *ngFor="let producto of productos;let i = index">
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="../../assets/images/mouse.png" style="width: 72px; height: 72px;"> </a>
+                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="../../assets/images/NoDisponible.jpg" style="width: 72px; height: 72px;"> </a>
                             <div class="media-body">
                                 <h4 class="media-heading"><a routerLink="/detalles/{{producto.id}}">{{productos[i].titulo}}</a></h4>
                                 <h5 class="media-heading">Vendido por <a>nombre proveedor</a></h5>
@@ -23,12 +23,12 @@
                             </div>
                         </div></td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
-                        <input type="number" class="form-control" value="{{carros[i].cantidad}}"  id="entradanumero" min="1" pattern="^[0-9]+">
+                            <strong>{{carros[i].cantidad}}</strong>
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>{{productos[i].precio}}</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>${{carros[i].total}}</strong></td>
                         <td class="col-sm-1 col-md-1">
-                        <button (click)="calcular_total_general()" type="button" class="btn btn-danger">
+                        <button (click)='eliminar_producto(carros[i].id)' type="button" class="btn btn-danger">
                                 <img src="../../assets/images/trash.svg" width="20"   height="20" class="d-inline-block mr-1 mb-1" alt="trash">Remover
                         </button></td>
                     </tr>

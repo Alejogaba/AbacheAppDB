@@ -16,6 +16,7 @@ import{HistorialComprasComponent} from './historial-compras/historial-compras.co
 import{ListaUsuariosComponent} from './lista-usuarios/lista-usuarios.component';
 import{ProductoEditarComponent} from './producto-editar/producto-editar.component';
 import{PerfilChatComponent} from './perfil-chat/perfil-chat.component';
+import { HistorialVentasComponent } from './historial-ventas/historial-ventas.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: '', component: LayoutComponent },
   {path:'editar-perfil',component:PerfilComponent,outlet:'submenu-perfil'},
 {path:'historial-compras',component:HistorialComprasComponent,outlet:'submenu-perfil'},
+{path:'historial-ventas',component:HistorialVentasComponent,outlet:'submenu-perfil'},
 {path:'lista-usuarios',component:ListaUsuariosComponent,outlet:'submenu-perfil'},
 {path:'mensajes',component:PerfilChatComponent,outlet:'submenu-perfil'}]},
   

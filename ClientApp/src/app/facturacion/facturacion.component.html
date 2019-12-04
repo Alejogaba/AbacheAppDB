@@ -7,7 +7,7 @@
                                                     <address>
                                                        <p><strong>Tienda Abuchaibe</strong></p>
                                                         <p>
-                                                        <em>Cliente.{{factura.nombre_persona}} Lopez</em>
+                                                        <em>Cliente. {{factura.nombre_persona}} {{factura.apellido_persona}}</em>
                                                         </p>
                                                         <p>
                                                         <em>Identificacion. {{factura.id_persona}}</em>
@@ -15,7 +15,7 @@
                                                         <em>Telefono. {{factura.telefono}}</em>
                                                         </p>
                                                         <p>
-                                                                        <em>Direccion. {{factura.direccion}}, Valledupar, Cesar</em>
+                                                                        <em>Direccion. {{factura.direccion}}, {{factura.ciudad}}, {{factura.departamento}}</em>
                                                                     </p>
                                                     </address>
                                                 </div>
@@ -24,7 +24,7 @@
                                                         <em>N° Factura. {{factura.id}}</em>
                                                     </p>
                                                     <p>
-                                                        <em>Fecha:{{factura.fecha}}</em>
+                                                        <em>Fecha y hora: {{factura.fecha}}</em>
                                                     </p>
                                                     
                                                 </div>
@@ -53,30 +53,15 @@
                                                         <tr>
                                                             <td>   </td>
                                                             <td>   </td>
-                                                            <td class="text-right">
-                                                            <p>
-                                                                <strong>Subtotal: </strong>
-                                                            </p>
-                                                            </td>
-                                                            <td class="text-center">
-                                                          
-                                                            <p>
-                                                                <strong>$6.94</strong>
-                                                            </p></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>   </td>
-                                                            <td>   </td>
                                                             <td class="text-right"><h4><strong>Total: </strong></h4></td>
-                                                            <td class="text-center text-danger"><h4><strong>$31.53</strong></h4></td>
+                                                            <td class="text-center text-danger"><h4><strong>${{total_general}}</strong></h4></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                                 <div class="grc">
                                                     <h1 class="text-center">
-                                                        Gracias por su compra
-                                                    </h1>
-                                                    
+                                                        !Gracias por su compra!
+                                                    </h1> 
                                                 </div>
                                             </div>
                                         </div>

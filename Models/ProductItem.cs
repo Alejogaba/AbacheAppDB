@@ -27,6 +27,10 @@ namespace TaskSharpHTTP.Models
         public CategoriaItem CategoriaItem { get; set; }
         [JsonProperty("inventario")][Column("INVENTARIO")]
         public int Cantidad { get; set; }
+        [JsonProperty("id_vendedor")][Column("ID_VENDEDOR")]
+        public int Id_persona { get; set; }
+        [JsonIgnore]
+        public PersonaItem PersonaItem { get; set; }
         [JsonIgnore]
         public ICollection<CarroItem> CarroItems { get; set; }
     }

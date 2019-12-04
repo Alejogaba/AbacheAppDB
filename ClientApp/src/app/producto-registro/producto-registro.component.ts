@@ -30,6 +30,9 @@ export class ProductoRegistroComponent implements OnInit {
     this.categoria=new Categoria;
     this.categoria_producto = new Categoria;
     this.getCategorias();
+    setTimeout(() => {
+      this.producto.id_vendedor= parseInt(sessionStorage.getItem('id') != null ? sessionStorage.getItem('id'):'0');
+  }, 3000);
   }
   buscarcategoria(id:number){
     this.categoriadataservice.getbyid(id)

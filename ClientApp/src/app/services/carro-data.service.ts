@@ -37,6 +37,14 @@ export class CarroDataService {
         catchError(this.handleError<CarritoCompras[]>('buscarcarro', []))
       );
     }
+    delete(producto: CarritoCompras | number): Observable<CarritoCompras> {
+      const id = typeof producto === 'number' ? producto : producto.id;
+      const url = `${this.baseUrl + 'api/Carro'}/${id}`;
+      return this.http.delete<CarritoCompras>(url, httpOptions).pipe(
+        tap(_ => this.log(`Se elimino el producto con id=${id}`)),
+        catchError(this.handleError<any>('delete'))
+      );
+    }
     buscarusuario(term: number): Observable<Persona> {
       const url = `${this.baseUrl + 'api/Carro/buscar-persona?user='}${term}`;
       return this.http.get<Persona>(url).pipe(

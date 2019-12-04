@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EncabezadoComponent } from '../encabezado/encabezado.component';
+
 
 @Component({
   selector: 'app-perfil-menu',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private encabezado:EncabezadoComponent) { }
 
   ngOnInit() {
   }

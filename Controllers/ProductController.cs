@@ -48,6 +48,14 @@ namespace TaskSharpHTTP.Controllers
             return productitem;
         }
 
+        [HttpGet("buscarcategoria")]
+        public async Task<List<ProductItem>> Buscarcategoria(int categoria)
+        {
+            var productitem = await _context.ProductItems.Where(p => p.Id_categoria == categoria).ToListAsync();
+          
+            return productitem;
+        }
+
         //Post: api/product
         [HttpPost]
         public async Task<ActionResult<ProductItem>> PostProducto(ProductItem productItem)

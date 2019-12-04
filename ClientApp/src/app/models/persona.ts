@@ -1,7 +1,6 @@
 export class Persona {
     id:number;
     imagen:string;
-    identificacion:string;
     nombre:string;
     apellido:string;
     telefono:string;

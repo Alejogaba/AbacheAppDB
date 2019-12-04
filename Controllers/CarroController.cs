@@ -32,7 +32,7 @@ namespace TaskSharpHTTP.Controllers
         public async Task<List<ProductItem>> BuscarProducto(int user)
         {
            var productitem = _context.ProductItems
-                    .FromSql("SELECT ID_PRODUCTO,TITULO,DESCRIPCION,ESTILO_COLOR,PRECIO,PRODUCTITEM.IMAGEN,ID_CATEGORIA,INVENTARIO FROM CARROITEM JOIN PERSONAITEM USING (ID_PERSONA) JOIN PRODUCTITEM USING (ID_PRODUCTO) WHERE ID_PERSONA={0} ORDER BY ID_PRODUCTO",user)
+                    .FromSql("SELECT ID_PRODUCTO,TITULO,DESCRIPCION,ESTILO_COLOR,PRECIO,PRODUCTITEM.IMAGEN,ID_CATEGORIA,INVENTARIO,ID_VENDEDOR FROM CARROITEM JOIN PERSONAITEM USING (ID_PERSONA) JOIN PRODUCTITEM USING (ID_PRODUCTO) WHERE ID_PERSONA={0} ORDER BY ID_PRODUCTO",user)
                     .ToListAsync();
             return await productitem;
         }
@@ -64,6 +64,18 @@ namespace TaskSharpHTTP.Controllers
             _context.CarroItems.Add(carroitem);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetCarro), new {id = carroitem.Id_carro}, carroitem);
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var Item = await _context.CarroItems.FindAsync(id);
+            if (Item==null)
+            {
+                return NotFound();
+            }
+            _context.CarroItems.Remove(Item);
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
 
      

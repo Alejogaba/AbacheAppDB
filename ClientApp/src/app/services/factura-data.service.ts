@@ -41,6 +41,22 @@ export class FacturaDataService {
         catchError(this.handleError<FacturaDetalles[]>('buscarfacturadetalle', []))
       );
     }
+    buscarhistorialcliente(term: number): Observable<FacturaDetalles[]> {
+      const url = `${this.baseUrl + 'api/Factura/gethistorialcliente?cliente='}${term}`;
+
+      return this.http.get<FacturaDetalles[]>(url).pipe(
+        tap(_ => this.log(`Encontrado el producto "${term}"`)),
+        catchError(this.handleError<FacturaDetalles[]>('buscarfacturadetalle', []))
+      );
+    }
+    buscarhistorialvendedor(term: number): Observable<FacturaDetalles[]> {
+      const url = `${this.baseUrl + 'api/Factura/gethistorialvendedor?vendedor='}${term}`;
+
+      return this.http.get<FacturaDetalles[]>(url).pipe(
+        tap(_ => this.log(`Encontrado el producto "${term}"`)),
+        catchError(this.handleError<FacturaDetalles[]>('buscarfacturadetalle', []))
+      );
+    }
     getbyid(id: number): Observable<Factura> {
       const url = `${this.baseUrl + 'api/Factura'}/${id}`;
   

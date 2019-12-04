@@ -43,5 +43,7 @@ namespace TaskSharpHTTP.Models
         public ICollection<CarroItem> CarroItems { get; set; }
          [JsonIgnore]
         public ICollection<FacturaItem> FacturaItems { get; set; }
+        [JsonIgnore]
+        public ICollection<ProductItem> productItems { get; set; }
     }
 }

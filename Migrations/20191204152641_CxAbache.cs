@@ -9,19 +9,6 @@ namespace ProyectoMorenita.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Carrousels",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Imagen = table.Column<byte[]>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Carrousels", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CATEGORIAITEM",
                 columns: table => new
                 {
@@ -45,23 +32,6 @@ namespace ProyectoMorenita.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DEPARTAMENTOITEM", x => x.ID_DEPARTAMENTO);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MENSAJEITEM",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    Cliente = table.Column<string>(nullable: true),
-                    Mensaje = table.Column<string>(nullable: true),
-                    Vendedor = table.Column<string>(nullable: true),
-                    fecha = table.Column<DateTime>(nullable: false),
-                    Enviado_por = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MENSAJEITEM", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -94,31 +64,6 @@ namespace ProyectoMorenita.Migrations
                     table.PrimaryKey("PK_ETIQUETAITEM", x => x.ID_ETIQUETA);
                     table.ForeignKey(
                         name: "FK_ETIQUETAITEM_CATEGORIAITEM_ID_CATEGORIA",
-                        column: x => x.ID_CATEGORIA,
-                        principalTable: "CATEGORIAITEM",
-                        principalColumn: "ID_CATEGORIA",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PRODUCTITEM",
-                columns: table => new
-                {
-                    ID_PRODUCTO = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    TITULO = table.Column<string>(nullable: true),
-                    DESCRIPCION = table.Column<string>(nullable: true),
-                    ESTILO_COLOR = table.Column<string>(nullable: true),
-                    PRECIO = table.Column<int>(nullable: false),
-                    IMAGEN = table.Column<byte[]>(nullable: true),
-                    ID_CATEGORIA = table.Column<int>(nullable: false),
-                    INVENTARIO = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PRODUCTITEM", x => x.ID_PRODUCTO);
-                    table.ForeignKey(
-                        name: "FK_PRODUCTITEM_CATEGORIAITEM_ID_CATEGORIA",
                         column: x => x.ID_CATEGORIA,
                         principalTable: "CATEGORIAITEM",
                         principalColumn: "ID_CATEGORIA",
@@ -187,6 +132,90 @@ namespace ProyectoMorenita.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FACTURAITEM",
+                columns: table => new
+                {
+                    ID_FACTURA = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    ID_PERSONA = table.Column<int>(nullable: false),
+                    FECHA = table.Column<DateTime>(nullable: false),
+                    NOMBRE_PERSONA = table.Column<string>(nullable: true),
+                    APELLIDO_PERSONA = table.Column<string>(nullable: true),
+                    TELEFONO = table.Column<string>(nullable: true),
+                    DEPARTAMENTO = table.Column<string>(nullable: true),
+                    CIUDAD = table.Column<string>(nullable: true),
+                    DIRECCION = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FACTURAITEM", x => x.ID_FACTURA);
+                    table.ForeignKey(
+                        name: "FK_FACTURAITEM_PERSONAITEM_ID_PERSONA",
+                        column: x => x.ID_PERSONA,
+                        principalTable: "PERSONAITEM",
+                        principalColumn: "ID_PERSONA",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PRODUCTITEM",
+                columns: table => new
+                {
+                    ID_PRODUCTO = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    TITULO = table.Column<string>(nullable: true),
+                    DESCRIPCION = table.Column<string>(nullable: true),
+                    ESTILO_COLOR = table.Column<string>(nullable: true),
+                    PRECIO = table.Column<int>(nullable: false),
+                    IMAGEN = table.Column<byte[]>(nullable: true),
+                    ID_CATEGORIA = table.Column<int>(nullable: false),
+                    INVENTARIO = table.Column<int>(nullable: false),
+                    ID_VENDEDOR = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PRODUCTITEM", x => x.ID_PRODUCTO);
+                    table.ForeignKey(
+                        name: "FK_PRODUCTITEM_CATEGORIAITEM_ID_CATEGORIA",
+                        column: x => x.ID_CATEGORIA,
+                        principalTable: "CATEGORIAITEM",
+                        principalColumn: "ID_CATEGORIA",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PRODUCTITEM_PERSONAITEM_ID_VENDEDOR",
+                        column: x => x.ID_VENDEDOR,
+                        principalTable: "PERSONAITEM",
+                        principalColumn: "ID_PERSONA",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FACTURADETALLEITEM",
+                columns: table => new
+                {
+                    ID_FACTURADETALLE = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    ID_FACTURA = table.Column<int>(nullable: false),
+                    ID_PRODUCTO = table.Column<int>(nullable: false),
+                    TITULO = table.Column<string>(nullable: true),
+                    ESTILO_COLOR = table.Column<string>(nullable: true),
+                    CANTIDAD = table.Column<int>(nullable: false),
+                    PRECIO = table.Column<int>(nullable: false),
+                    TOTAL_PRODUCTO = table.Column<int>(nullable: false),
+                    ID_VENDEDOR = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FACTURADETALLEITEM", x => x.ID_FACTURADETALLE);
+                    table.ForeignKey(
+                        name: "FK_FACTURADETALLEITEM_FACTURAITEM_ID_FACTURA",
+                        column: x => x.ID_FACTURA,
+                        principalTable: "FACTURAITEM",
+                        principalColumn: "ID_FACTURA",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CARROITEM",
                 columns: table => new
                 {
@@ -215,66 +244,6 @@ namespace ProyectoMorenita.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "FACTURAITEM",
-                columns: table => new
-                {
-                    ID_FACTURA = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    ID_PERSONA = table.Column<int>(nullable: false),
-                    FECHA = table.Column<DateTime>(nullable: false),
-                    NOMBRE_PERSONA = table.Column<string>(nullable: true),
-                    APELLIDO_PERSONA = table.Column<string>(nullable: true),
-                    TELEFONO = table.Column<string>(nullable: true),
-                    DEPARTAMENTO = table.Column<string>(nullable: true),
-                    CIUDAD = table.Column<string>(nullable: true),
-                    DIRECCION = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FACTURAITEM", x => x.ID_FACTURA);
-                    table.ForeignKey(
-                        name: "FK_FACTURAITEM_PERSONAITEM_ID_PERSONA",
-                        column: x => x.ID_PERSONA,
-                        principalTable: "PERSONAITEM",
-                        principalColumn: "ID_PERSONA",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "FACTURADETALLEITEM",
-                columns: table => new
-                {
-                    ID_FACTURADETALLE = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    ID_FACTURA = table.Column<int>(nullable: false),
-                    ID_PRODUCTO = table.Column<int>(nullable: false),
-                    TITULO = table.Column<string>(nullable: true),
-                    ESTILO_COLOR = table.Column<string>(nullable: true),
-                    CANTIDAD = table.Column<int>(nullable: false),
-                    PRECIO = table.Column<int>(nullable: false),
-                    TOTAL_PRODUCTO = table.Column<int>(nullable: false),
-                    ID_VENDEDOR = table.Column<int>(nullable: false),
-                    NOMBRE_VENDEDOR = table.Column<string>(nullable: true),
-                    FacturaDetalleItemId_facturadetalle = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FACTURADETALLEITEM", x => x.ID_FACTURADETALLE);
-                    table.ForeignKey(
-                        name: "FK_FACTURADETALLEITEM_FACTURADETALLEITEM_FacturaDetalleItemId_facturadetalle",
-                        column: x => x.FacturaDetalleItemId_facturadetalle,
-                        principalTable: "FACTURADETALLEITEM",
-                        principalColumn: "ID_FACTURADETALLE",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_FACTURADETALLEITEM_FACTURAITEM_ID_FACTURA",
-                        column: x => x.ID_FACTURA,
-                        principalTable: "FACTURAITEM",
-                        principalColumn: "ID_FACTURA",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_CARROITEM_ID_PERSONA",
                 table: "CARROITEM",
@@ -294,11 +263,6 @@ namespace ProyectoMorenita.Migrations
                 name: "IX_ETIQUETAITEM_ID_CATEGORIA",
                 table: "ETIQUETAITEM",
                 column: "ID_CATEGORIA");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FACTURADETALLEITEM_FacturaDetalleItemId_facturadetalle",
-                table: "FACTURADETALLEITEM",
-                column: "FacturaDetalleItemId_facturadetalle");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FACTURADETALLEITEM_ID_FACTURA",
@@ -329,6 +293,11 @@ namespace ProyectoMorenita.Migrations
                 name: "IX_PRODUCTITEM_ID_CATEGORIA",
                 table: "PRODUCTITEM",
                 column: "ID_CATEGORIA");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PRODUCTITEM_ID_VENDEDOR",
+                table: "PRODUCTITEM",
+                column: "ID_VENDEDOR");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -337,16 +306,10 @@ namespace ProyectoMorenita.Migrations
                 name: "CARROITEM");
 
             migrationBuilder.DropTable(
-                name: "Carrousels");
-
-            migrationBuilder.DropTable(
                 name: "ETIQUETAITEM");
 
             migrationBuilder.DropTable(
                 name: "FACTURADETALLEITEM");
-
-            migrationBuilder.DropTable(
-                name: "MENSAJEITEM");
 
             migrationBuilder.DropTable(
                 name: "PRODUCTITEM");

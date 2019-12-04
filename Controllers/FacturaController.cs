@@ -45,6 +45,20 @@ namespace TaskSharpHTTP.Controllers
           
             return productitem;
         }
+        [HttpGet("gethistorialcliente")]
+        public async Task<List<FacturaDetalleItem>> Buscarhistorialcliente(int cliente)
+        {
+            var productitem = await _context.facturaDetalleItems.FromSql("SELECT ID_FACTURADETALLE,ID_FACTURA,ID_PRODUCTO,TITULO,ESTILO_COLOR,CANTIDAD,PRECIO,TOTAL_PRODUCTO,ID_VENDEDORFROM FACTURAITEM JOIN FACTURADETALLEITEM USING (ID_FACTURA) WHERE ID_PERSONA={0}",cliente).ToListAsync();
+          
+            return productitem;
+        }
+        [HttpGet("gethistorialvendedor")]
+        public async Task<List<FacturaDetalleItem>> Buscarhistorialvendedor(int vendedor)
+        {
+            var productitem = await _context.facturaDetalleItems.FromSql("SELECT ID_FACTURADETALLE,ID_FACTURA,ID_PRODUCTO,TITULO,ESTILO_COLOR,CANTIDAD,PRECIO,TOTAL_PRODUCTO,ID_VENDEDOR FROM FACTURAITEM JOIN FACTURADETALLEITEM USING (ID_FACTURA) WHERE ID_VENDEDOR={0}",vendedor).ToListAsync();
+          
+            return productitem;
+        }
         [HttpGet("{id}")]
         public async Task<ActionResult<FacturaItem>> GetProducto(int id)
         {

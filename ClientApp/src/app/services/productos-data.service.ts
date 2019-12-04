@@ -45,6 +45,13 @@ export class ProductosDataService {
       catchError(this.handleError<Producto[]>('buscar', []))
     );
   }
+  buscarcategoria(term: number): Observable<Producto[]> {
+    const url = `${this.baseUrl + 'api/product/buscarcategoria?categoria='}${term}`;
+    return this.http.get<Producto[]>(url).pipe(
+      tap(_ => this.log(`Encontrado el producto "${term}"`)),
+      catchError(this.handleError<Producto[]>('buscarcategoria', []))
+    );
+  }
   addProducto(producto: Producto): Observable<Producto> {
     
     return this.http.post<Producto>(this.baseUrl+'api/product', producto, httpOptions).pipe(

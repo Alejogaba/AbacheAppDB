@@ -12,7 +12,6 @@
           </tr>
         </thead>
         <tr scope="row" *ngFor="let factura of facturadetalles">
-        
           <td><a routerLink="/factura/{{factura.id_factura}}">{{factura.id_factura}}</a></td>
           <td>{{factura.titulo_producto}}</td>
           <td>{{factura.estilo_color}}</td>
