@@ -5,12 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TaskSharpHTTP.Models
 {
-    [Table("PERSONAITEM")]
-    public class PersonaItem
+    public class Persona_carro_producto
     {
-         
-        [Key][JsonProperty("id")][Column("ID_PERSONA")]
+         [JsonProperty("id_producto")][Column("ID_PRODUCTO")]
+        public int Id_producto { get; set; }
+        [Key][JsonProperty("id_persona")][Column("ID_PERSONA")]
         public int Id_persona { get; set; }
+        [JsonProperty("cantidad")]
+        public int Cantidad { get; set; }
+        [JsonProperty("total")]
+        public int Total { get; set; }
+        [JsonProperty("estado")]
+        public string Estado { get; set; }
         [JsonProperty("imagen")][Column("IMAGEN")]
         public byte[] Imagen { get; set; }
         [JsonProperty("nombre")][Column("NOMBRES")]
@@ -21,12 +27,8 @@ namespace TaskSharpHTTP.Models
         public string Telefono { get; set; }
         [JsonProperty("id_departamento")][Column("ID_DEPARTAMENTO")]
         public int Id_departamento { get; set; }
-        [JsonIgnore]
-        public DepartamentoItem departamentoItem { get; set; }
         [JsonProperty("id_ciudad")][Column("ID_CIUDAD")]
         public int Id_ciudad { get; set; }
-        [JsonIgnore]
-        public CiudadItem ciudadItem { get; set; }
         [JsonProperty("direccion")][Column("DIRECCION")]
         public string Direccion { get; set; }
         [JsonProperty("apodo")][Column("APODO")]
@@ -37,9 +39,19 @@ namespace TaskSharpHTTP.Models
         public string Password { get; set; }
         [JsonProperty("id_rol")][Column("ID_ROL")]
         public int Id_rol { get; set; }
-        [JsonIgnore]
-        public RolItem rolItem { get; set; }
-        [JsonIgnore]
-        public ICollection<CarroItem> CarroItems { get; set; }
+        [JsonProperty("titulo")][Column("TITULO")]
+        public string Titulo { get; set; }
+         [JsonProperty("descripcion")][Column("DESCRIPCION")]
+        public string Descripcion { get; set; }
+         [JsonProperty("estilo_color")][Column("ESTILO_COLOR")]
+        public string Estilo_color { get; set; }
+         [JsonProperty("precio")][Column("PRECIO")]
+        public int Precio { get; set; }
+        [JsonProperty("imagen")][Column("IMAGEN")]
+        public byte[] Imagen_p { get; set; }
+        [JsonProperty("id_categoria")][Column("ID_CATEGORIA")]
+        public int Id_categoria { get; set; }
+        [JsonProperty("cantidad")][Column("CANTIDAD")]
+        public int Cantidad_P { get; set; }
     }
 }

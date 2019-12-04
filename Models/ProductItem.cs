@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TaskSharpHTTP.Models
 {
+    [Table("PRODUCTITEM")]
     public class ProductItem
     {
         [Key][JsonProperty("id")][Column("ID_PRODUCTO")]
@@ -24,7 +25,7 @@ namespace TaskSharpHTTP.Models
         public int Id_categoria { get; set; }
         [JsonIgnore]
         public CategoriaItem CategoriaItem { get; set; }
-        [JsonProperty("cantidad")][Column("CANTIDAD")]
+        [JsonProperty("inventario")][Column("INVENTARIO")]
         public int Cantidad { get; set; }
         [JsonIgnore]
         public ICollection<CarroItem> CarroItems { get; set; }

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 namespace TaskSharpHTTP.Models
 {
+     [Table("CATEGORIAITEM")]
     public class CategoriaItem
     {
         [Key][JsonProperty("id")][Column("ID_CATEGORIA")]

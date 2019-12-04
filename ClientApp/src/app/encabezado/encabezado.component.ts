@@ -64,6 +64,9 @@ export class EncabezadoComponent implements OnInit {
     username(): string {
       return this.authservice.getUserName();
   }
+  userid():number{
+return this.authservice.getUserId();
+  }
   logout(){
     this.authservice.logout();
   }

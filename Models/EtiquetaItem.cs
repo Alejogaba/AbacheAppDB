@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TaskSharpHTTP.Models
 {
+     [Table("ETIQUETAITEM")]
     public class EtiquetaItem
     {
         [Key][JsonProperty("id")][Column("ID_ETIQUETA")]

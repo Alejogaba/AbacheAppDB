@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace TaskSharpHTTP.Models
 {
+    [Table("ROLITEM")]
     public class RolItem
     {
         [Key] [JsonProperty("id")] [Column("ID_ROL")]

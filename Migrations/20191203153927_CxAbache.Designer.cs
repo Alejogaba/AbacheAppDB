@@ -10,7 +10,7 @@ using TaskSharpHTTP.Models;
 namespace ProyectoMorenita.Migrations
 {
     [DbContext(typeof(AbacheContext))]
-    [Migration("20191203013941_CxAbache")]
+    [Migration("20191203153927_CxAbache")]
     partial class CxAbache
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,17 +24,23 @@ namespace ProyectoMorenita.Migrations
             modelBuilder.Entity("TaskSharpHTTP.Models.CarroItem", b =>
                 {
                     b.Property<int>("Id_carro")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ID_CARRO");
 
-                    b.Property<int>("Cantidad");
+                    b.Property<int>("Cantidad")
+                        .HasColumnName("CANTIDAD");
 
-                    b.Property<string>("Estado");
+                    b.Property<string>("Estado")
+                        .HasColumnName("ESTADO");
 
-                    b.Property<int>("Id_persona");
+                    b.Property<int>("Id_persona")
+                        .HasColumnName("ID_PERSONA");
 
-                    b.Property<int>("Id_producto");
+                    b.Property<int>("Id_producto")
+                        .HasColumnName("ID_PRODUCTO");
 
-                    b.Property<int>("Total");
+                    b.Property<int>("Total")
+                        .HasColumnName("TOTAL");
 
                     b.HasKey("Id_carro");
 
@@ -42,7 +48,7 @@ namespace ProyectoMorenita.Migrations
 
                     b.HasIndex("Id_producto");
 
-                    b.ToTable("CarroItems");
+                    b.ToTable("CARROITEM");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.Carrousel", b =>
@@ -68,7 +74,7 @@ namespace ProyectoMorenita.Migrations
 
                     b.HasKey("Id_categoria");
 
-                    b.ToTable("CategoriaItems");
+                    b.ToTable("CATEGORIAITEM");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.CiudadItem", b =>
@@ -87,7 +93,7 @@ namespace ProyectoMorenita.Migrations
 
                     b.HasIndex("Id_departamento");
 
-                    b.ToTable("CiudadItem");
+                    b.ToTable("CIUDADITEM");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.DepartamentoItem", b =>
@@ -101,7 +107,7 @@ namespace ProyectoMorenita.Migrations
 
                     b.HasKey("Id_departamento");
 
-                    b.ToTable("DepartamentoItem");
+                    b.ToTable("DEPARTAMENTOITEM");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.EtiquetaItem", b =>
@@ -120,7 +126,86 @@ namespace ProyectoMorenita.Migrations
 
                     b.HasIndex("Id_categoria");
 
-                    b.ToTable("EtiquetaItems");
+                    b.ToTable("ETIQUETAITEM");
+                });
+
+            modelBuilder.Entity("TaskSharpHTTP.Models.FacturaDetalleItem", b =>
+                {
+                    b.Property<int>("Id_facturadetalle")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ID_FACTURADETALLE");
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnName("CANTIDAD");
+
+                    b.Property<string>("Estilo_color")
+                        .HasColumnName("ESTILO_COLOR");
+
+                    b.Property<int?>("FacturaDetalleItemId_facturadetalle");
+
+                    b.Property<int>("Id_factura")
+                        .HasColumnName("ID_FACTURA");
+
+                    b.Property<int>("Id_producto")
+                        .HasColumnName("ID_PRODUCTO");
+
+                    b.Property<int>("Id_vendedor")
+                        .HasColumnName("ID_VENDEDOR");
+
+                    b.Property<string>("Nombre_vendedor")
+                        .HasColumnName("NOMBRE_VENDEDOR");
+
+                    b.Property<int>("Precio")
+                        .HasColumnName("PRECIO");
+
+                    b.Property<string>("Titulo")
+                        .HasColumnName("TITULO");
+
+                    b.Property<int>("Total_producto")
+                        .HasColumnName("TOTAL_PRODUCTO");
+
+                    b.HasKey("Id_facturadetalle");
+
+                    b.HasIndex("FacturaDetalleItemId_facturadetalle");
+
+                    b.HasIndex("Id_factura");
+
+                    b.ToTable("FACTURADETALLEITEM");
+                });
+
+            modelBuilder.Entity("TaskSharpHTTP.Models.FacturaItem", b =>
+                {
+                    b.Property<int>("Id_factura")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ID_CATEGORIA");
+
+                    b.Property<string>("Apellido")
+                        .HasColumnName("APELLIDO_PERSONA");
+
+                    b.Property<string>("Direccion")
+                        .HasColumnName("DIRECCION");
+
+                    b.Property<int>("Id_persona")
+                        .HasColumnName("ID_PERSONA");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnName("NOMBRE_PERSONA");
+
+                    b.Property<string>("Telefono")
+                        .HasColumnName("TELEFONO");
+
+                    b.Property<string>("ciudad")
+                        .HasColumnName("CIUDAD");
+
+                    b.Property<string>("departamento")
+                        .HasColumnName("DEPARTAMENTO");
+
+                    b.Property<DateTime>("fecha")
+                        .HasColumnName("FECHA");
+
+                    b.HasKey("Id_factura");
+
+                    b.ToTable("FACTURAITEM");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.MensajeItem", b =>
@@ -140,7 +225,7 @@ namespace ProyectoMorenita.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MensajeItems");
+                    b.ToTable("MENSAJEITEM");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.PersonaItem", b =>
@@ -190,7 +275,7 @@ namespace ProyectoMorenita.Migrations
 
                     b.HasIndex("Id_rol");
 
-                    b.ToTable("PersonaItems");
+                    b.ToTable("PERSONAITEM");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.ProductItem", b =>
@@ -200,7 +285,7 @@ namespace ProyectoMorenita.Migrations
                         .HasColumnName("ID_PRODUCTO");
 
                     b.Property<int>("Cantidad")
-                        .HasColumnName("CANTIDAD");
+                        .HasColumnName("INVENTARIO");
 
                     b.Property<string>("Descripcion")
                         .HasColumnName("DESCRIPCION");
@@ -224,7 +309,7 @@ namespace ProyectoMorenita.Migrations
 
                     b.HasIndex("Id_categoria");
 
-                    b.ToTable("ProductItems");
+                    b.ToTable("PRODUCTITEM");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.RolItem", b =>
@@ -247,7 +332,7 @@ namespace ProyectoMorenita.Migrations
 
                     b.HasKey("Id_rol");
 
-                    b.ToTable("RolItem");
+                    b.ToTable("ROLITEM");
                 });
 
             modelBuilder.Entity("TaskSharpHTTP.Models.CarroItem", b =>
@@ -276,6 +361,18 @@ namespace ProyectoMorenita.Migrations
                     b.HasOne("TaskSharpHTTP.Models.CategoriaItem", "categoriaItem")
                         .WithMany("EtiquetaItems")
                         .HasForeignKey("Id_categoria")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TaskSharpHTTP.Models.FacturaDetalleItem", b =>
+                {
+                    b.HasOne("TaskSharpHTTP.Models.FacturaDetalleItem")
+                        .WithMany("facturaDetalleItems")
+                        .HasForeignKey("FacturaDetalleItemId_facturadetalle");
+
+                    b.HasOne("TaskSharpHTTP.Models.FacturaItem", "facturaItem")
+                        .WithMany()
+                        .HasForeignKey("Id_factura")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

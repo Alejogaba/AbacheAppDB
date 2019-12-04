@@ -9,5 +9,5 @@ export class Producto {
     precio:number;
   imagen: string;
   id_categoria: number;
-  cantidad: number;
+  inventario: number;
 }

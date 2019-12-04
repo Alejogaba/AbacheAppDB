@@ -6,6 +6,8 @@ import { catchError,tap } from 'rxjs/operators';
 import { Inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { convertActionBinding } from '@angular/compiler/src/compiler_util/expression_converter';
+import { __await } from 'tslib';
 
 
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
@@ -18,28 +20,34 @@ export class AuthserviceService {
     persona:Persona;
   constructor(private http: HttpClient,@Inject('BASE_URL') private baseUrl:string, private toastr:ToastrService,
   private router:Router) { }
-  async login(user: string, password: string) {
-    //validar en el servidor si el usuario y password son válidos.
-    //en el caso que sean válidos se deberian retornar los roles que tiene asociado dicho usuario
-    //se podría encriptar el nombre de la variable
-    await this.rellenar(user,password);
-    if(this.persona!=null){
-        sessionStorage.setItem('id', JSON.stringify(this.persona.id));
-        sessionStorage.setItem('user', this.persona.nombre);
-        this.toastr.success("Inicio sesión como "+this.persona.nombre);
-        this.router.navigate(['/lista-productos']);
-    }else{
-    this.toastr.error("Usuario y/o contraseña incorrectos")
-    }
+ login(user: string, password: string) {
+     this.rellenar(user, password);
+     setTimeout(() => {
+      this.logear();
+  }, 1000);
 }
 
-async rellenar(user: string, password: string){
+logear():Observable<void>{
+  if(this.persona!=null){
+    sessionStorage.setItem('id', JSON.stringify(this.persona.id));
+    sessionStorage.setItem('user', this.persona.nombre);
+    this.toastr.success("Inicio sesión como "+this.persona.nombre);
+    this.router.navigate(['/lista-productos']);
+    return null;
+}else{
+this.toastr.error("Usuario y/o contraseña incorrectos")
+return null;
+}
+};
+
+rellenar(user: string, password: string){
  this.validar(user,password).subscribe( t => this.persona = t);
+ return null;
 }
 validar(username:string, password:string):Observable<Persona>{
     const url = `${this.baseUrl + 'api/Personas/autenticar?email='}${username}${'&password='}${password}`;
     return this.http.get<Persona>(url).pipe(
-        tap(_ => this.log(`'No encontrado'${username}`)),
+        tap(_ => this.log(`'Econtrado '${username}`)),
         catchError(this.handleError<Persona>('validar'))
       );
     }
@@ -61,6 +69,10 @@ hasRole(rol: string): boolean {
 getUserName(): string {
     return sessionStorage.getItem('user') != null ? sessionStorage.getItem('user'):'Anonimo';
 }
+getUserId(): number {
+  return parseInt(sessionStorage.getItem('id') != null ? sessionStorage.getItem('id'):'0');
+}
+
 
 private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

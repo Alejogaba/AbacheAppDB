@@ -5,24 +5,25 @@ using Newtonsoft.Json;
 
 namespace TaskSharpHTTP.Models
 {
+    [Table("CARROITEM")]
     public class CarroItem
     {
         
-        [Key][JsonProperty("id")]
+        [Key][JsonProperty("id")][Column("ID_CARRO")]
         public int Id_carro { get; set; }
-        [JsonProperty("id_cliente")]
+        [JsonProperty("id_cliente")][Column("ID_PERSONA")]
         public int Id_persona { get; set; }
         [JsonIgnore]
         public PersonaItem PersonaItem { get; set; }
-        [JsonProperty("id_producto")]
+        [JsonProperty("id_producto")][Column("ID_PRODUCTO")]
         public int Id_producto { get; set; }
         [JsonIgnore]
         public ProductItem ProductItem { get; set; }
-        [JsonProperty("cantidad")]
+        [JsonProperty("cantidad")][Column("CANTIDAD")]
         public int Cantidad { get; set; }
-        [JsonProperty("total")]
+        [JsonProperty("total")][Column("TOTAL")]
         public int Total { get; set; }
-        [JsonProperty("estado")]
+        [JsonProperty("estado")][Column("ESTADO")]
         public string Estado { get; set; }
     }
 }

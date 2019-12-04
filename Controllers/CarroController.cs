@@ -23,26 +23,47 @@ namespace TaskSharpHTTP.Controllers
         }
        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CarroItem>>> GetCar()
+        public async Task<ActionResult<IEnumerable<CarroItem>>> GetCarro()
         {
             return await _context.CarroItems.ToListAsync();
         }
 
-        [HttpGet("buscar")]
-        public async Task<List<CarroItem>> Buscarproducto(int user,int product)
+        [HttpGet("buscar-producto")]
+        public async Task<List<ProductItem>> BuscarProducto(int user)
         {
-            var productitem = await _context.CarroItems.Where(p => p.Id_persona == user && p.Id_producto==product).ToListAsync();
-          
-            return productitem;
+           var productitem = _context.ProductItems
+                    .FromSql("SELECT ID_PRODUCTO,TITULO,DESCRIPCION,ESTILO_COLOR,PRECIO,PRODUCTITEM.IMAGEN,ID_CATEGORIA,INVENTARIO FROM CARROITEM JOIN PERSONAITEM USING (ID_PERSONA) JOIN PRODUCTITEM USING (ID_PRODUCTO) WHERE ID_PERSONA={0} ORDER BY ID_PRODUCTO",user)
+                    .ToListAsync();
+            return await productitem;
+        }
+        [HttpGet("buscar-carro")]
+        public async Task<List<CarroItem>> BuscarCarro(int user)
+        {
+           var productitem = _context.CarroItems
+                    .FromSql("SELECT ID_CARRO,ID_PERSONA,ID_PRODUCTO,CANTIDAD,TOTAL,ESTADO FROM CARROITEM JOIN PERSONAITEM USING (ID_PERSONA) JOIN PRODUCTITEM USING (ID_PRODUCTO) WHERE ID_PERSONA={0} ORDER BY ID_PRODUCTO",user)
+                    .ToListAsync();
+            return await productitem;
+        }
+        [HttpGet("buscar-persona")]
+        public async Task<ActionResult<PersonaItem>> BuscarUsuario(int user)
+        {
+           var personaitem = _context.PersonaItems
+                    .FromSql("SELECT id_persona,PERSONAITEM.imagen,nombres,apellidos,telefono,id_departamento,id_ciudad,direccion,email,id_rol FROM CARROITEM JOIN PERSONAITEM USING (ID_PERSONA) JOIN PRODUCTITEM USING (ID_PRODUCTO) WHERE ID_PERSONA={0}",user)
+                    .FirstOrDefaultAsync();
+            if (personaitem==null)
+            {
+                return NotFound();
+            }
+            return await personaitem;
         }
 
         
         [HttpPost]
-        public async Task<ActionResult<CarroItem>> PostCar(CarroItem carroitem)
+        public async Task<ActionResult<CarroItem>> PostCarro(CarroItem carroitem)
         {
             _context.CarroItems.Add(carroitem);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetCar), new {id = carroitem.Id_carro}, carroitem);
+            return CreatedAtAction(nameof(GetCarro), new {id = carroitem.Id_carro}, carroitem);
         }
 
      

@@ -1,14 +1,11 @@
 export class Factura {
     id:number;
+    id_persona:string;
     fecha:Date;
-    identificacion:string;
-    nombre:string;
-    apellido:string;
+    nombre_persona:string;
+    apellido_persona:string;
     telefono:string;
+    departamento:string;
+    ciudad:string;
     direccion:string;
-    id_producto:number;
-    titulo:string;
-    tipo:string;
-    cantidad:number;
-    precio:number;
 }

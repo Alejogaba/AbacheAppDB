@@ -19,11 +19,11 @@
 <div class="col-lg-12">
 <h5>Precio: </h5><h4 class="ml-2"> ${{producto.precio}}</h4>
 </div>
-<div class="col-lg-12">
-    <h5>Cantidad: </h5><input type="number" min="1" max="{{producto.cantidad}}"  class="formcontrol ml-2 cantidad-entrada" value="1" [formControl]="rateControl">
+<div *ngIf="carro_compras" class="col-lg-12">
+    <h5>Cantidad: </h5><input type="number" min="1" max="{{producto.cantidad}}" [(ngModel)]="carro_compras.cantidad"  class="formcontrol ml-2 cantidad-entrada" value="1" [formControl]="rateControl">
 </div>
 <div class="col-lg-12">
-       <img src="../../assets/images/shopping-cart-2.svg" width="48px" height="48px" alt="carrito"> <button (click)="encabezado.incrementCounter()" class="btn btn-outline-success ml-2">Añadir al carrito</button>
+       <img src="../../assets/images/shopping-cart-2.svg" width="48px" height="48px" alt="carrito"> <button (click)="addcarro()" class="btn btn-outline-success ml-2">Añadir al carrito</button>
 </div>
 </div>
 </div>
