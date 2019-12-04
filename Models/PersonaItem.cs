@@ -41,5 +41,7 @@ namespace TaskSharpHTTP.Models
         public RolItem rolItem { get; set; }
         [JsonIgnore]
         public ICollection<CarroItem> CarroItems { get; set; }
+         [JsonIgnore]
+        public ICollection<FacturaItem> FacturaItems { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace TaskSharpHTTP.Models
         public int Id_factura { get; set; }
         [JsonProperty("id_persona")][Column("ID_PERSONA")]
         public int Id_persona { get; set; }
+        [JsonIgnore]
+        public PersonaItem PersonaItem { get; set; }
         [JsonProperty("fecha")][Column("FECHA")]
         public DateTime fecha { get; set; }
         [JsonProperty("nombre_persona")][Column("NOMBRE_PERSONA")]
@@ -27,5 +29,7 @@ namespace TaskSharpHTTP.Models
         public string ciudad { get; set; }
         [JsonProperty("direccion")][Column("DIRECCION")]
         public string Direccion { get; set; }
+         [JsonIgnore]
+        public ICollection<FacturaDetalleItem> FacturaDetalleItems { get; set; }
     }    
 }

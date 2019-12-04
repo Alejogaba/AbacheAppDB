@@ -28,7 +28,7 @@ const routes: Routes = [
 {path:'inicio-sesion',component:InicioSesionComponent},
 {path:'registro-producto',component:ProductoRegistroComponent},
 {path:'carrito',component:CarroCompraComponent},
-{path:'factura',component:FacturacionComponent},
+{path:'factura/:id',component:FacturacionComponent},
 {path:'perfil',component:PerfilMenuComponent,children:[
   { path: '', component: LayoutComponent },
   {path:'editar-perfil',component:PerfilComponent,outlet:'submenu-perfil'},

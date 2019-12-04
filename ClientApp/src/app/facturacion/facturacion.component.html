@@ -1,4 +1,4 @@
-<div class="fondo">
+<div *ngIf="factura" class="fondo">
         <div class="container">
             <form>
                                         <div class="col-lg-12">
@@ -7,24 +7,24 @@
                                                     <address>
                                                        <p><strong>Tienda Abuchaibe</strong></p>
                                                         <p>
-                                                        <em>Cliente. Jose Lopez</em>
+                                                        <em>Cliente.{{factura.nombre_persona}} Lopez</em>
                                                         </p>
                                                         <p>
-                                                        <em>Identificacion. 10453452343</em>
+                                                        <em>Identificacion. {{factura.id_persona}}</em>
                                                         </p><p>
-                                                        <em>Telefono. 312543534</em>
+                                                        <em>Telefono. {{factura.telefono}}</em>
                                                         </p>
                                                         <p>
-                                                                        <em>Direccion. Calle 12 #31-42, Valledupar, Cesar</em>
+                                                                        <em>Direccion. {{factura.direccion}}, Valledupar, Cesar</em>
                                                                     </p>
                                                     </address>
                                                 </div>
                                                 <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                                                     <p>
-                                                        <em>N° Factura. 423534546</em>
+                                                        <em>N° Factura. {{factura.id}}</em>
                                                     </p>
                                                     <p>
-                                                        <em>Fecha:1/1/2019</em>
+                                                        <em>Fecha:{{factura.fecha}}</em>
                                                     </p>
                                                     
                                                 </div>
@@ -44,11 +44,11 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td class="col-md-9"><em>my best-friend is transgender</em></td>
-                                                            <td class="col-md-1" style="text-align: center"> 2 </td>
-                                                            <td class="col-md-1 text-center">$28</td>
-                                                            <td class="col-md-1 text-center">$56</td>
+                                                        <tr *ngFor="let facturadetalle of facturadetalles">
+                                                            <td class="col-md-9"><em>{{facturadetalle.titulo_producto}}</em></td>
+                                                            <td class="col-md-1" style="text-align: center"> {{facturadetalle.cantidad_producto}} </td>
+                                                            <td class="col-md-1 text-center">${{facturadetalle.precio_producto}}</td>
+                                                            <td class="col-md-1 text-center">{{facturadetalle.total_producto}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>   </td>

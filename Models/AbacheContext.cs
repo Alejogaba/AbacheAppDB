@@ -17,6 +17,7 @@ public DbSet<Carrousel> Carrousels { get; set; }
 public DbSet<MensajeItem> MensajeItems { get; set; }
 public DbSet<FacturaItem> FacturaItems { get; set; }
 public DbSet<FacturaDetalleItem> facturaDetalleItems { get; set; }
-
+public DbSet<DepartamentoItem> DepartamentoItems { get; set; }
+public DbSet<CiudadItem> CiudadItems { get; set; }
     }
 }

@@ -175,7 +175,7 @@ namespace ProyectoMorenita.Migrations
                 {
                     b.Property<int>("Id_factura")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("ID_CATEGORIA");
+                        .HasColumnName("ID_FACTURA");
 
                     b.Property<string>("Apellido")
                         .HasColumnName("APELLIDO_PERSONA");
@@ -202,6 +202,8 @@ namespace ProyectoMorenita.Migrations
                         .HasColumnName("FECHA");
 
                     b.HasKey("Id_factura");
+
+                    b.HasIndex("Id_persona");
 
                     b.ToTable("FACTURAITEM");
                 });
@@ -369,8 +371,16 @@ namespace ProyectoMorenita.Migrations
                         .HasForeignKey("FacturaDetalleItemId_facturadetalle");
 
                     b.HasOne("TaskSharpHTTP.Models.FacturaItem", "facturaItem")
-                        .WithMany()
+                        .WithMany("FacturaDetalleItems")
                         .HasForeignKey("Id_factura")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TaskSharpHTTP.Models.FacturaItem", b =>
+                {
+                    b.HasOne("TaskSharpHTTP.Models.PersonaItem", "PersonaItem")
+                        .WithMany("FacturaItems")
+                        .HasForeignKey("Id_persona")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

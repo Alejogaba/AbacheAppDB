@@ -8,7 +8,7 @@
       </button> 
     <button type="button" *ngIf="!isAuthenticated()" [routerLink]="['inicio-sesion']" class="btn btn-primary btn-color btn-bg-color btn-sm"><img src="../../assets/images/login.svg" width="30" height="30" class="d-inline-block mr-2" alt="login"><b>Iniciar sesion</b>
       </button>
-      <a href="/registro-usuario">
+      <a [routerLink]="['registro-usuario']">
         <button type="button" *ngIf="!isAuthenticated()" class="btn btn-primary btn-color btn-bg-color btn-sm ml-2"><img src="../../assets/images/key.svg" width="30" height="30" class="d-inline-block mr-2" alt="registro"><b>Registro</b>
         </button>
       </a>

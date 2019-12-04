@@ -20,6 +20,7 @@ export class ListaProductosComponent implements OnInit {
 
   ngOnInit() {
     this.encabezado.getProductos();
+    this.getProductos();
   }
   
   getProductos() {

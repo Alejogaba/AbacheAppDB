@@ -31,6 +31,7 @@ export class ProductosDetallesComponent implements OnInit {
   ngOnInit() {
     this.getProductos();
     this.carro_compras = new CarritoCompras();
+    this.carro_compras.cantidad=1;
     this.rateControl = new FormControl("1", [Validators.max(100), Validators.min(0)])
   }
   addcarro(): void {

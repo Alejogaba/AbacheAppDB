@@ -4,6 +4,11 @@ import{CarroDataService} from '../services/carro-data.service';
 import{EncabezadoComponent} from '../encabezado/encabezado.component';
 import { CarritoCompras } from '../models/carrito-compras';
 import { concat, Observable } from 'rxjs'; // Note, concat from 'rxjs', is not the same as concat from 'rxjs/operators'
+import {Factura} from '../models/factura';
+import {FacturaDetalles} from '../models/factura-detalles';
+import { FacturaDataService } from '../services/factura-data.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 
@@ -15,16 +20,20 @@ import { concat, Observable } from 'rxjs'; // Note, concat from 'rxjs', is not t
 export class CarroCompraComponent implements OnInit {
 productos:Producto[];
 carros:CarritoCompras[];
+factura:Factura;
 cantidad_a_llevar:number;
 stock:string;
 total_general:number;
 total_individual:number;
 clase:string;
-  constructor(private carroservice:CarroDataService, private encabezado:EncabezadoComponent) { }
+  constructor(private carroservice:CarroDataService, private encabezado:EncabezadoComponent,
+    private facturaservice:FacturaDataService,private toastr:ToastrService,private router:Router) { }
   ngOnInit() {
     this.buscarproducto();
     this.buscarcarro();
+    this.factura=new Factura;
    setTimeout(() => {
+    this.factura.id_persona=+sessionStorage.getItem('id');;
     this.calcular_total_general()
 }, 5000);
   }
@@ -33,6 +42,14 @@ clase:string;
     this.calcular_total_individual();
     this.calcular_total_general();
   }
+  crear_factura(){
+    this.facturaservice.add(this.factura).subscribe( f  => {
+      this.toastr.success('Se genero factura con id: '+f.id);
+      this.toastr.info('Cargando factura...');
+      setTimeout(() => {
+        this.router.navigate(['/factura',f.id]);
+    }, 3000); });
+          }
   
   definir_estado(){
  
@@ -55,8 +72,6 @@ clase:string;
     this.carroservice.buscarcarro(this.encabezado.userid()).subscribe(carros => {
       return this.carros = carros;
     });
-    
-  
 }
 
   calcular_total_general():Observable<any>{
@@ -66,8 +81,6 @@ for (let index = 0; index < this.carros.length; index++) {
   const element = this.carros[index];
   this.total_general=this.total_general+element.total;
 }
-  
-
 return null;
   }
   calcular_total_individual(){

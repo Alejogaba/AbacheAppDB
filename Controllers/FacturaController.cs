@@ -39,10 +39,20 @@ namespace TaskSharpHTTP.Controllers
             return personaitem;
         }
         [HttpGet("getfacturadetalle")]
-        public async Task<List<FacturaDetalleItem>> Buscarproducto(int factura)
+        public async Task<List<FacturaDetalleItem>> Buscarfacturadetalle(int factura)
         {
-            var productitem = await _context.facturaDetalleItems.Where(p => p.Id_factura==factura).ToListAsync();
+            var productitem = await _context.facturaDetalleItems.FromSql("SELECT * FROM FACTURADETALLEITEM WHERE ID_FACTURA={0}",factura).ToListAsync();
           
+            return productitem;
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<FacturaItem>> GetProducto(int id)
+        {
+            var productitem = await _context.FacturaItems.FindAsync(id);
+            if (productitem==null)
+            {
+                return NotFound();
+            }
             return productitem;
         }
 

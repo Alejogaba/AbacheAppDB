@@ -30,8 +30,5 @@ namespace TaskSharpHTTP.Models
         public int Id_vendedor { get; set; }
          [JsonProperty("nombre_vendedor")][Column("NOMBRE_VENDEDOR")]
         public string Nombre_vendedor { get; set; }
-        [JsonIgnore]
-        public ICollection<FacturaDetalleItem> facturaDetalleItems { get; set; }
-
     }
 }

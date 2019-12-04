@@ -29,19 +29,16 @@
 		
         <div class="form-group">
 		<label>seleccione departameto</label>
-		<select name="departamento" class="form-control" id="departamento" title="departamento">
-			<option id="departamento">Cesar</option>
-			<option id="departamento">Guajira</option>
-			<option id="departamento">atlantico</option>
+		<select *ngFor="let departamento of departamentos" (change)="buscarciudad(persona.id_departamento)" [(ngModel)]="persona.id_departamento"  name="departamento" class="form-control" id="departamento" title="departamento">
+			<option value="{{departamento.id}}"  id="departamento">{{departamento.nombre}}</option>
 		</select>
 		</div>
 		
 		<div class="form-group">
 		<label>seleccione ciudad</label>
-		<select name="ciudad" class="form-control" id="ciudad" title="ciudad">
-			<option>Valledupar</option>
-			<option>Riohacha</option>
-			<option>Barranquilla</option>
+		<select *ngFor="let ciudad of ciudades" value="{{ciudad.id}}" [(ngModel)]="persona.id_ciudad" name="ciudad" class="form-control" id="ciudad" title="ciudad">
+			<option>{{ciudad.nombre}}</option>
+			
 		</select>
 		</div>
 		<br> 

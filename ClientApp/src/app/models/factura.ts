@@ -1,6 +1,6 @@
 export class Factura {
     id:number;
-    id_persona:string;
+    id_persona:number;
     fecha:Date;
     nombre_persona:string;
     apellido_persona:string;

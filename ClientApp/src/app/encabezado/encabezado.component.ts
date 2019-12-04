@@ -7,6 +7,8 @@ import {Producto} from '../models/producto';
 import {ProductosDataService} from '../services/productos-data.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthserviceService } from '../services/authservice.service';
+import {CarroDataService} from '../services/carro-data.service';
+import {CarritoCompras} from '../models/carrito-compras';
 
 
 
@@ -24,16 +26,23 @@ export class EncabezadoComponent implements OnInit {
   personas:Persona[];
   categorias:Categoria[];
   productos:Producto[];
+  carros:CarritoCompras[];
   
   constructor(private personaservice:PersonasDataService,
    private categoriaservice:CategoriasDataService,
    private productoservice:ProductosDataService,
    private toastr:ToastrService,
-   private authservice:AuthserviceService) { }
+   private authservice:AuthserviceService,
+   private carroservice:CarroDataService) { }
 
   ngOnInit() {
-  
-  }
+    if(this.isAuthenticated){
+  this.buscarcarro();
+  setTimeout(() => {
+    this.incrementCounter();
+}, 4000);
+    }
+}
   seleccionar(producto: Producto) {
     this.seleccionado.emit(producto);
 }
@@ -70,13 +79,17 @@ return this.authservice.getUserId();
   logout(){
     this.authservice.logout();
   }
+  buscarcarro(){
+    this.carroservice.buscarcarro(this.userid()).subscribe(carros => {
+      return this.carros = carros;
+    });
+}
   public incrementCounter() {
-    if (this.isAuthenticated) {
-      this.currentCount++;
-      this.toastr.info("Se añadio al carrito");
-    }else{
-      this.toastr.warning("Debe iniciar sesion para añadir productos al carrito");
-    }
+    this.currentCount=0;
+for (let index = 0; index < this.carros.length; index++) {
+  const element = this.carros[index];
+  this.currentCount=this.currentCount+element.cantidad;
+}
     }
   getAll() {
     this.personaservice.get().subscribe(personas => {

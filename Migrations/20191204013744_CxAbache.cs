@@ -48,26 +48,6 @@ namespace ProyectoMorenita.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FACTURAITEM",
-                columns: table => new
-                {
-                    ID_CATEGORIA = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    ID_PERSONA = table.Column<int>(nullable: false),
-                    FECHA = table.Column<DateTime>(nullable: false),
-                    NOMBRE_PERSONA = table.Column<string>(nullable: true),
-                    APELLIDO_PERSONA = table.Column<string>(nullable: true),
-                    TELEFONO = table.Column<string>(nullable: true),
-                    DEPARTAMENTO = table.Column<string>(nullable: true),
-                    CIUDAD = table.Column<string>(nullable: true),
-                    DIRECCION = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FACTURAITEM", x => x.ID_CATEGORIA);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "MENSAJEITEM",
                 columns: table => new
                 {
@@ -166,40 +146,6 @@ namespace ProyectoMorenita.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FACTURADETALLEITEM",
-                columns: table => new
-                {
-                    ID_FACTURADETALLE = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    ID_FACTURA = table.Column<int>(nullable: false),
-                    ID_PRODUCTO = table.Column<int>(nullable: false),
-                    TITULO = table.Column<string>(nullable: true),
-                    ESTILO_COLOR = table.Column<string>(nullable: true),
-                    CANTIDAD = table.Column<int>(nullable: false),
-                    PRECIO = table.Column<int>(nullable: false),
-                    TOTAL_PRODUCTO = table.Column<int>(nullable: false),
-                    ID_VENDEDOR = table.Column<int>(nullable: false),
-                    NOMBRE_VENDEDOR = table.Column<string>(nullable: true),
-                    FacturaDetalleItemId_facturadetalle = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FACTURADETALLEITEM", x => x.ID_FACTURADETALLE);
-                    table.ForeignKey(
-                        name: "FK_FACTURADETALLEITEM_FACTURADETALLEITEM_FacturaDetalleItemId_facturadetalle",
-                        column: x => x.FacturaDetalleItemId_facturadetalle,
-                        principalTable: "FACTURADETALLEITEM",
-                        principalColumn: "ID_FACTURADETALLE",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_FACTURADETALLEITEM_FACTURAITEM_ID_FACTURA",
-                        column: x => x.ID_FACTURA,
-                        principalTable: "FACTURAITEM",
-                        principalColumn: "ID_CATEGORIA",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "PERSONAITEM",
                 columns: table => new
                 {
@@ -269,6 +215,66 @@ namespace ProyectoMorenita.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "FACTURAITEM",
+                columns: table => new
+                {
+                    ID_FACTURA = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    ID_PERSONA = table.Column<int>(nullable: false),
+                    FECHA = table.Column<DateTime>(nullable: false),
+                    NOMBRE_PERSONA = table.Column<string>(nullable: true),
+                    APELLIDO_PERSONA = table.Column<string>(nullable: true),
+                    TELEFONO = table.Column<string>(nullable: true),
+                    DEPARTAMENTO = table.Column<string>(nullable: true),
+                    CIUDAD = table.Column<string>(nullable: true),
+                    DIRECCION = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FACTURAITEM", x => x.ID_FACTURA);
+                    table.ForeignKey(
+                        name: "FK_FACTURAITEM_PERSONAITEM_ID_PERSONA",
+                        column: x => x.ID_PERSONA,
+                        principalTable: "PERSONAITEM",
+                        principalColumn: "ID_PERSONA",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FACTURADETALLEITEM",
+                columns: table => new
+                {
+                    ID_FACTURADETALLE = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    ID_FACTURA = table.Column<int>(nullable: false),
+                    ID_PRODUCTO = table.Column<int>(nullable: false),
+                    TITULO = table.Column<string>(nullable: true),
+                    ESTILO_COLOR = table.Column<string>(nullable: true),
+                    CANTIDAD = table.Column<int>(nullable: false),
+                    PRECIO = table.Column<int>(nullable: false),
+                    TOTAL_PRODUCTO = table.Column<int>(nullable: false),
+                    ID_VENDEDOR = table.Column<int>(nullable: false),
+                    NOMBRE_VENDEDOR = table.Column<string>(nullable: true),
+                    FacturaDetalleItemId_facturadetalle = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FACTURADETALLEITEM", x => x.ID_FACTURADETALLE);
+                    table.ForeignKey(
+                        name: "FK_FACTURADETALLEITEM_FACTURADETALLEITEM_FacturaDetalleItemId_facturadetalle",
+                        column: x => x.FacturaDetalleItemId_facturadetalle,
+                        principalTable: "FACTURADETALLEITEM",
+                        principalColumn: "ID_FACTURADETALLE",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_FACTURADETALLEITEM_FACTURAITEM_ID_FACTURA",
+                        column: x => x.ID_FACTURA,
+                        principalTable: "FACTURAITEM",
+                        principalColumn: "ID_FACTURA",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_CARROITEM_ID_PERSONA",
                 table: "CARROITEM",
@@ -298,6 +304,11 @@ namespace ProyectoMorenita.Migrations
                 name: "IX_FACTURADETALLEITEM_ID_FACTURA",
                 table: "FACTURADETALLEITEM",
                 column: "ID_FACTURA");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FACTURAITEM_ID_PERSONA",
+                table: "FACTURAITEM",
+                column: "ID_PERSONA");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PERSONAITEM_ID_CIUDAD",
@@ -338,22 +349,22 @@ namespace ProyectoMorenita.Migrations
                 name: "MENSAJEITEM");
 
             migrationBuilder.DropTable(
-                name: "PERSONAITEM");
-
-            migrationBuilder.DropTable(
                 name: "PRODUCTITEM");
 
             migrationBuilder.DropTable(
                 name: "FACTURAITEM");
 
             migrationBuilder.DropTable(
+                name: "CATEGORIAITEM");
+
+            migrationBuilder.DropTable(
+                name: "PERSONAITEM");
+
+            migrationBuilder.DropTable(
                 name: "CIUDADITEM");
 
             migrationBuilder.DropTable(
                 name: "ROLITEM");
-
-            migrationBuilder.DropTable(
-                name: "CATEGORIAITEM");
 
             migrationBuilder.DropTable(
                 name: "DEPARTAMENTOITEM");
