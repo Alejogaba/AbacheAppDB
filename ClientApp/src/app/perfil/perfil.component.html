@@ -6,56 +6,78 @@
 		                </div>
 		            </div>
 		            <div class="row">
-		                <div class="col-md-12">
-		                    <form>
-                        <!-- <div class="text-center">
-                                      <span *Ng></span>
-                                            <img [src]="imgURL" *ngIf="imgURL" class="avatar img-circle img-thumbnail" alt="http://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                                            <h6>Imagen de perfil</h6>
-                                            <input #imageInput
-                                            type="file"
-                                            accept="image/*"
-                                            (change)="processFile(imageInput)">
-                                          </div> 
-                              <div class="form-group row">
-                                <label for="username" class="col-4 col-form-label">User Name*</label> 
-                                <div class="col-8">
-                                  <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
-                                </div>
-                              </div>-->
-                              <div class="form-group row">
-                                <label for="name" class="col-4 col-form-label">Nombres</label> 
-                                <div class="col-8">
-                                  <input id="name" name="name"  class="form-control here" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="lastname" class="col-4 col-form-label">Apellidos</label> 
-                                <div class="col-8">
-                                  <input id="lastname" name="lastname"  class="form-control here" type="text">
-                                </div>
-                              </div>
-                              
-                              <div class="form-group row">
-                                <label for="email" class="col-4 col-form-label">Correo electronico</label> 
-                                <div class="col-8">
-                                  <input id="email" name="email"  class="form-control here" required="required" type="text">
-                                </div>
-                              </div>
-                             
-                            
-                              <div class="form-group row">
-                                <label for="newpass" class="col-4 col-form-label">Contraseña</label> 
-                                <div class="col-8">
-                                  <input id="newpass" name="newpass" class="form-control here" type="text">
-                                </div>
-                              </div> 
-                              <div class="form-group row">
-                                <div class="offset-4 col-8">
-                                  <button name="submit" type="submit" class="btn btn-primary">Actualizar perfil</button>
-                                </div>
-                              </div>
-                            </form>
-		                </div>
-		            </div>
+                  <div class="col-lg-12">
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <h2>Registro de Usuario</h2>
+                    <div class="form-group">
+                      <label>Nombres</label>
+                      <input type="text" formControlName="nombre" value="{{persona.nombre}}" [(ngModel)]="persona.nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
+                      <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                      <div *ngIf="f.nombre.errors.required">Campo Obligatorio</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Apellidos</label>
+                      <input type="text" formControlName="apellido" value="{{persona.apellido}}" [(ngModel)]="persona.apellido" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellido.errors }" />
+                      <div *ngIf="submitted && f.apellido.errors" class="invalid-feedback">
+                        <div *ngIf="f.apellido.errors.required">Campo obligatorio</div>
+                      </div>
+                      </div>
+                      
+                      <div class="form-group">
+                      <label>seleccione departameto</label>
+                      <select  formControlName="id_departamento" value="{{persona.id_departamento}}"  (change)="buscarciudad(persona.id_departamento)" [(ngModel)]="persona.id_departamento"   class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id_departamento.errors }">
+                        <option *ngFor="let departamento of departamentos" value="{{departamento.id}}"  id="departamento">{{departamento.nombre}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.id_departamento.errors" class="invalid-feedback">
+                        <div *ngIf="f.id_departamento.errors.required">Campo obligatorio</div>
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                      <label>seleccione ciudad</label>
+                      <select  formControlName="id_ciudad" value="{{persona.id_ciudad}}" [(ngModel)]="persona.id_ciudad"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id_ciudad.errors }">
+                        <option  *ngFor="let ciudad of ciudades" id="ciudad"value="{{ciudad.id}}">{{ciudad.nombre}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.id_ciudad.errors" class="invalid-feedback">
+                        <div *ngIf="f.id_ciudad.errors.required">Campo obligatorio</div>
+                        </div>
+                      </div>
+                      <br> 
+                    <div class="form-group">
+                      <label>Direccion</label>
+                      <input type="text" formControlName="direccion" value="{{persona.direccion}}" [(ngModel)]="persona.direccion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }" />
+                      <div *ngIf="submitted && f.direccion.errors" class="invalid-feedback">
+                      <div *ngIf="f.direccion.errors.required">Campo obligatorio</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Telefono</label>
+                      <input type="text" formControlName="telefono" value="{{persona.telefono}}" [(ngModel)]="persona.telefono" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" />
+                      <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
+                        <div *ngIf="f.telefono.errors.required">Campo obligatorio</div>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                      <label>Contraseña</label>
+                      <input type="Password" placeholder="Contraseña" formControlName="password2" (onkey)="validarcontrasena()"[(ngModel)]="password2"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" />
+                      <div *ngIf="submitted && f.password2.errors" class="invalid-feedback">
+                        <div *ngIf="f.password2.errors.required">Campo obligatorio</div>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                      <input type="Password"placeholder="Repita contraseña" formControlName="password" (onKey)="validarcontrasena()" value="{{persona.password}}" [(ngModel)]="persona.password"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors || (password2!=persona.password)}" />
+                      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Campo obligatorio</div>
+                      </div>
+                      <div *ngIf="(password2!=persona.password)" class="invalid-feedback">
+                        <div *ngIf="(password2!=persona.password)">Las contraseñas deben coincidir</div>
+                        </div>
+                      </div>
+                    <div class="text-center">
+                      <button class="btn btn-success mr-1" >Actualizar datos</button>
+                    </div>
+                    </form>
+                  </div>
+                  </div>
 		        

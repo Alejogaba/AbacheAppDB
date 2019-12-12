@@ -51,20 +51,27 @@ namespace TaskSharpHTTP.Controllers
         [HttpGet("buscarcategoria")]
         public async Task<List<ProductItem>> Buscarcategoria(int categoria)
         {
-            var productitem = await _context.ProductItems.Where(p => p.Id_categoria == categoria).ToListAsync();
+            var productitem = await _context.ProductItems.Where(p => p.Id_producto == categoria).ToListAsync();
           
             return productitem;
         }
 
-        //Post: api/product
-        [HttpPost]
-        public async Task<ActionResult<ProductItem>> PostProducto(ProductItem productItem)
+      
+         [HttpPost]
+        public async Task<ActionResult<ProductItem>> Post(ProductItem productitem)
         {
-            _context.ProductItems.Add(productItem);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetProducto), new { id = productItem.Id_producto }, productItem);
+             _context.ProductItems.Add(productitem);
+            try
+            {
+            await _context.SaveChangesAsync(); 
+            }
+            catch (DbUpdateException)
+        {
+            return BadRequest();
+        }   
+            return CreatedAtAction(nameof(GetProducto), new { id = productitem.Id_producto }, productitem);
         }
-        
+
 
         //Put: api/product:id
         [HttpPut("{id}")]

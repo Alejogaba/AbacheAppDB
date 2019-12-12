@@ -13,7 +13,7 @@ namespace TaskSharpHTTP.Models
     {
         [Key][JsonProperty("id")][Column("ID_DEPARTAMENTO")]
         public int Id_departamento { get; set; }
-        [JsonProperty("nombre")][Column("NOMBRE")]
+        [JsonProperty("nombre")][Column("NOMBRE",TypeName="VARCHAR2(10)")]
         public string Nombre { get; set; }
          [JsonIgnore]
         public ICollection<PersonaItem> PersonaItems { get; set; }

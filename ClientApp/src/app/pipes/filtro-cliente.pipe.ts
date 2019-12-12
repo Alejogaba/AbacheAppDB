@@ -12,8 +12,6 @@ return productos.filter(productos =>
 productos.titulo.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
 ||
 productos.descripcion.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
-);
-
-  }
+);}
 
 }

@@ -34,6 +34,7 @@ import { FiltroClientePipe } from './pipes/filtro-cliente.pipe';
 import { ProductoEditarComponent } from './producto-editar/producto-editar.component';
 import { PerfilChatComponent } from './perfil-chat/perfil-chat.component';
 import { HistorialVentasComponent } from './historial-ventas/historial-ventas.component';
+import { FiltroProductoPipe } from './pipes/filtro-producto.pipe';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { HistorialVentasComponent } from './historial-ventas/historial-ventas.co
     FiltroClientePipe,
     ProductoEditarComponent,
     PerfilChatComponent,
-    HistorialVentasComponent
+    HistorialVentasComponent,
+    FiltroProductoPipe
 
   ],
   imports: [
@@ -72,7 +74,7 @@ import { HistorialVentasComponent } from './historial-ventas/historial-ventas.co
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(), 
-    
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },

@@ -1,76 +1,95 @@
-<div>
     
 
-
-<a href=""></a>
 <div class="container">
-	<form>
-		<div class="form-group">
-			<label>Nombres</label>
-			<input type="text" class="form-control" placeholder="Juan Aledaño"  name="nombres" id="nombres" [(ngModel)]="persona.nombre">
-
-		</div>
-		<div class="form-group">
-			<label>Apellidos</label>
-			<input type="text" class="form-control" placeholder="Garcia Espinosa"  name="apellidos" id="apellidos" [(ngModel)]="persona.apellido">
-
-		</div>
-		
-		
-
-		<div class="form-group">
-			<label>identificacion</label>
-			<input type="text" class="form-control" id="identificacion" name="identificacion" placeholder="1065544433" [(ngModel)]="persona.id">
-		</div>
-
-
-    
-    <div class="form-group" id="result"></div>
-		
-        <div class="form-group">
-		<label>seleccione departameto</label>
-		<select  (change)="buscarciudad(persona.id_departamento)" [(ngModel)]="persona.id_departamento"  name="departamento" class="form-control" id="departamento" title="departamento">
-			<option *ngFor="let departamento of departamentos" value="{{departamento.id}}"  id="departamento">{{departamento.nombre}}</option>
-		</select>
-		</div>
-		
-		<div class="form-group">
-		<label>seleccione ciudad</label>
-		<select *ngFor="let ciudad of ciudades" value="{{ciudad.id}}" [(ngModel)]="persona.id_ciudad" name="ciudad" class="form-control" id="ciudad" title="ciudad">
-			<option value="{{ciudad.id}}">{{ciudad.nombre}}</option>
+	<div class="row">
+		<div class="col-lg-12">
+		  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+			<h2>Registro de Usuario</h2>
+			<div class="form-group">
+			  <label>Nombres</label>
+			  <input type="text" formControlName="nombre" [(ngModel)]="persona.nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
+			  <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+				<div *ngIf="f.nombre.errors.required">Campo Obligatorio</div>
+			  </div>
+			</div>
+			<div class="form-group">
+				<label>Apellidos</label>
+				<input type="text" formControlName="apellido" [(ngModel)]="persona.apellido" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellido.errors }" />
+				<div *ngIf="submitted && f.apellido.errors" class="invalid-feedback">
+				  <div *ngIf="f.apellido.errors.required">Campo obligatorio</div>
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label>identificacion</label>
+				<input type="number" formControlName="id" placeholder="Ingrese su identificacion sin puntos"  [(ngModel)]="persona.id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id.errors }" />
+				<div *ngIf="submitted && f.id.errors" class="invalid-feedback">
+				  <div *ngIf="f.id.errors.required">Campo obligatorio</div>
+				  <div *ngIf="f.id.errors.min">No ingrese valores negativos</div>
+				</div>
+			  </div>
+			  
+			  <div class="form-group">
+				<label>seleccione departameto</label>
+				<select  formControlName="id_departamento"  (change)="buscarciudad(persona.id_departamento)" [(ngModel)]="persona.id_departamento"   class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id_departamento.errors }">
+					<option *ngFor="let departamento of departamentos" value="{{departamento.id}}"  id="departamento">{{departamento.nombre}}</option>
+				</select>
+				<div *ngIf="submitted && f.id_departamento.errors" class="invalid-feedback">
+					<div *ngIf="f.id_departamento.errors.required">Campo obligatorio</div>
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				<label>seleccione ciudad</label>
+				<select  formControlName="id_ciudad" [(ngModel)]="persona.id_ciudad"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id_ciudad.errors }">
+					<option  *ngFor="let ciudad of ciudades" id="ciudad"value="{{ciudad.id}}">{{ciudad.nombre}}</option>
+				</select>
+				<div *ngIf="submitted && f.id_ciudad.errors" class="invalid-feedback">
+					<div *ngIf="f.id_ciudad.errors.required">Campo obligatorio</div>
+				  </div>
+				</div>
+				<br> 
+			<div class="form-group">
+			  <label>Direccion</label>
+			  <input type="text" formControlName="direccion" [(ngModel)]="persona.direccion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }" />
+			  <div *ngIf="submitted && f.direccion.errors" class="invalid-feedback">
+				<div *ngIf="f.direccion.errors.required">Campo obligatorio</div>
+			  </div>
+			</div>
+			<div class="form-group">
+				<label>Telefono</label>
+				<input type="text" formControlName="telefono" [(ngModel)]="persona.telefono" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" />
+				<div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
+				  <div *ngIf="f.telefono.errors.required">Campo obligatorio</div>
+				</div>
+			  </div>
+			<div class="form-group">
+				<label>Correo electronico</label>
+				<input type="text" formControlName="email" [(ngModel)]="persona.email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+				<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+				  <div *ngIf="f.email.errors.required">Campo obligatorio</div>
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label>Contraseña</label>
+				<input type="Password" placeholder="Contraseña" formControlName="password2" (onkey)="validarcontrasena()"[(ngModel)]="password2"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" />
+				<div *ngIf="submitted && f.password2.errors" class="invalid-feedback">
+				  <div *ngIf="f.password2.errors.required">Campo obligatorio</div>
+				</div>
+			  </div>
+			  <div class="form-group">
+				<input type="Password"placeholder="Repita contraseña" formControlName="password" (onKey)="validarcontrasena()" [(ngModel)]="persona.password"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors || (password2!=persona.password)}" />
+				<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+				  <div *ngIf="f.password.errors.required">Campo obligatorio</div>
+				</div>
+				<div *ngIf="(password2!=persona.password)" class="invalid-feedback">
+					<div *ngIf="(password2!=persona.password)">Las contraseñas deben coincidir</div>
+				  </div>
+			  </div>
 			
-		</select>
-		</div>
-		<br> 
-
-		<div class="form-group">
-			<label>Direccion</label>
-			<input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="Calle 11 #12-22" [(ngModel)]="persona.direccion"> 
+			<div class="text-center">
+			  <button class="btn btn-success mr-1" >Registrar</button>
 			</div>
-
-
-        <div class="form-group">
-		<label>Correo electronico</label>
-		<input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="Ejemplo@gmail.com" [(ngModel)]="persona.email">
+		  </form>
 		</div>
-		
-		<div class="form-group">
-			<label>Telefono</label>
-			<input type="text" class="form-control" name="Usuario" id="Usuario" placeholder="542342" [(ngModel)]="persona.telefono">
-			</div>
-
-        <div class="form-group">
-		<label>Contraseña</label>
-		<input type="Password" class="form-control" name="Contraseña" id="Contraseña" placeholder="Digite su contraseña">
-		<input type="Password" class="form-control" name="Contraseña" id="Contraseña" placeholder="Repetir contraseña" [(ngModel)]="persona.password">
-		
-	</div>
-		
-
-		<button class="btn btn-primary" (click)="add()">Registrarse</button>
-
-
-	</form>
-</div>
-
+	  </div>
 </div>

@@ -17,6 +17,7 @@ import{ListaUsuariosComponent} from './lista-usuarios/lista-usuarios.component';
 import{ProductoEditarComponent} from './producto-editar/producto-editar.component';
 import{PerfilChatComponent} from './perfil-chat/perfil-chat.component';
 import { HistorialVentasComponent } from './historial-ventas/historial-ventas.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 
 const routes: Routes = [
@@ -30,12 +31,12 @@ const routes: Routes = [
 {path:'registro-producto',component:ProductoRegistroComponent},
 {path:'carrito',component:CarroCompraComponent},
 {path:'factura/:id',component:FacturacionComponent},
-{path:'perfil',component:PerfilMenuComponent,children:[
+{path:'perfil',component:PerfilMenuComponent, canActivate: [AuthGuardGuard],children:[
   { path: '', component: LayoutComponent },
   {path:'editar-perfil',component:PerfilComponent,outlet:'submenu-perfil'},
 {path:'historial-compras',component:HistorialComprasComponent,outlet:'submenu-perfil'},
 {path:'historial-ventas',component:HistorialVentasComponent,outlet:'submenu-perfil'},
-{path:'lista-usuarios',component:ListaUsuariosComponent,outlet:'submenu-perfil'},
+{path:'lista-usuarios',component:ListaUsuariosComponent,outlet:'submenu-perfil', canActivate: [AuthGuardGuard], data: { role:'1'}},
 {path:'mensajes',component:PerfilChatComponent,outlet:'submenu-perfil'}]},
   
   ];

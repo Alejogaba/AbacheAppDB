@@ -11,16 +11,10 @@ namespace TaskSharpHTTP.Models
     [Table("ROLITEM")]
     public class RolItem
     {
-        [Key] [JsonProperty("id")] [Column("ID_ROL")]
+        [Key][JsonProperty("id")] [Column("ID_ROL")]
         public int Id_rol { get; set; }
         [JsonProperty("nombre")][Column("NOMBRE")]
         public string Nombre { get; set; }
-        [JsonProperty("permiso_compra")][Column("PERMISO_COMPRA")]
-        public string Permiso_compra { get; set; }
-        [JsonProperty("permiso_venta")][Column("PERMISO_VENTA")]
-        public string Permiso_venta { get; set; }
-        [JsonProperty("gestion_usuarios")][Column("GESTION_USUARIOS")]
-        public string Gestion_usuarios { get; set; }
          [JsonIgnore]
         public ICollection<PersonaItem> PersonaItems { get; set; }
     }

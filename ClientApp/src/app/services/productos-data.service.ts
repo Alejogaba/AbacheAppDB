@@ -52,13 +52,7 @@ export class ProductosDataService {
       catchError(this.handleError<Producto[]>('buscarcategoria', []))
     );
   }
-  addProducto(producto: Producto): Observable<Producto> {
-    
-    return this.http.post<Producto>(this.baseUrl+'api/product', producto, httpOptions).pipe(
-      tap((newProducto: Producto) => this.log(`Se registro la informacion con el id=${newProducto.id}`)),
-      catchError(this.handleError<Producto>('addProducto'))
-      );
-    }
+ 
     
     Upload(image: File,producto: Producto): Observable<Producto> {
       const formData = new FormData();
@@ -83,6 +77,15 @@ export class ProductosDataService {
     catchError(this.handleError<any>('modificar'))
   );
 }
+
+addProducto(producto: Producto): Observable<Producto> {
+    
+  return this.http.post<Producto>(this.baseUrl+'api/product', producto, httpOptions).pipe(
+    tap((newProducto: Producto) => this.log(`Se registro la informacion con el id=${newProducto.id}`)),
+    catchError(this.handleError<Producto>('addProducto'))
+    );
+  }
+
 
   delete(producto: Producto | number): Observable<Producto> {
     const id = typeof producto === 'number' ? producto : producto.id;

@@ -30,7 +30,7 @@ export class CategoriasDataService {
   }
   addCategoria(task: Categoria): Observable<Categoria> {
     return this.http.post<Categoria>(this.baseUrl+'api/categoria', task, httpOptions).pipe(
-      tap((newProducto: Categoria) => this.log(`Se registro la informacion con el id=${newProducto.id}`)),
+      tap((newProducto: Categoria) => this.log(`Se registro la informacion con el id=${newProducto.id_categoria}`)),
       catchError(this.handleError<Categoria>('addCategoria'))
       );
     }

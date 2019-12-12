@@ -7,6 +7,7 @@ import {CiudadDataService} from '../services/ciudad-data.service';
 import {DepartamentoDataService} from '../services/departamento-data.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -16,19 +17,48 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 persona:Persona;
-  constructor(private personadataservice:PersonasDataService,
+password2:string;
+passwordvalida:boolean;
+registerForm: FormGroup;
+submitted = false;
+departamentos:Departamento[];
+departament:Departamento;
+ciudades:Ciudad[];
+    constructor( private formBuilder: FormBuilder,private personadataservice:PersonasDataService,
     private ciudadservice:CiudadDataService,
     private departamentoservice:DepartamentoDataService,
     private toastr:ToastrService,
     private router:Router) { }
-departamentos:Departamento[];
-departament:Departamento;
-ciudades:Ciudad[]
+
   ngOnInit() {
+    this.passwordvalida=true;
+    this.password2=null;
     this.persona= new Persona();
+    this.ciudades= [];
     this.persona.id_rol=1;
     this.getDepartamento();
+    this.registerForm = this.formBuilder.group({
+      nombre:[this.persona.nombre, Validators.required],
+      apellido:[this.persona.apellido, Validators.required],
+      id: [this.persona.id, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]*$")]],
+      direccion:[this.persona.direccion, Validators.required],
+      telefono:[this.persona.telefono, Validators.required],
+      email:[this.persona.email, Validators.required],
+      password:[this.persona.password, Validators.required],
+      password2:[this.password2, Validators.required],
+      id_departamento:[this.persona.id_departamento, Validators.required],
+      id_ciudad:[this.persona.id_ciudad, Validators.required]
+  });
   }
+  get f() { return this.registerForm.controls; }
+  onSubmit() {
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+  
+        return;
+    }
+      this.add();
+}
   getDepartamento() {
     this.departamentoservice.get().subscribe(dpto => {
       return this.departamentos = dpto;
@@ -39,12 +69,19 @@ ciudades:Ciudad[]
           return this.ciudades = ciudad;
         });
     }
+    validarcontrasena(){
+      if (this.persona.password==this.password2) {
+        this.passwordvalida= true;
+      }else{
+        this.passwordvalida= false;
+      }
+    }
   add(): void {
     if (!this.persona) { return; }
     this.personadataservice.addPersona(this.persona)
       .subscribe( task  => {
           this.toastr.success('Registro exitoso');
-          this.router.navigate(['/lista-productos']);
+          this.router.navigate(['/inicio-sesion']);
              });
   }
 }

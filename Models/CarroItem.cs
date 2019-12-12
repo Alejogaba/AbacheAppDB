@@ -19,11 +19,11 @@ namespace TaskSharpHTTP.Models
         public int Id_producto { get; set; }
         [JsonIgnore]
         public ProductItem ProductItem { get; set; }
-        [JsonProperty("cantidad")][Column("CANTIDAD")]
+        [JsonProperty("cantidad")][Column("CANTIDAD",TypeName="Number(3)")]
         public int Cantidad { get; set; }
         [JsonProperty("total")][Column("TOTAL")]
         public int Total { get; set; }
-        [JsonProperty("estado")][Column("ESTADO")]
+        [JsonProperty("estado")][Column("ESTADO",TypeName="varchar2(30)")]
         public string Estado { get; set; }
     }
 }

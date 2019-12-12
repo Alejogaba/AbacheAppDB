@@ -7,8 +7,6 @@ export class Producto {
     descripcion:string;
     estilo_color:string;
     precio:number;
-  imagen: string;
-  id_categoria: number;
   inventario: number;
   id_vendedor:number;
 }

@@ -27,7 +27,7 @@ namespace ProyectoMorenita.Migrations
                 {
                     ID_DEPARTAMENTO = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    NOMBRE = table.Column<string>(nullable: true)
+                    NOMBRE = table.Column<string>(type: "VARCHAR2(10)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,10 +40,7 @@ namespace ProyectoMorenita.Migrations
                 {
                     ID_ROL = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    NOMBRE = table.Column<string>(nullable: true),
-                    PERMISO_COMPRA = table.Column<string>(nullable: true),
-                    PERMISO_VENTA = table.Column<string>(nullable: true),
-                    GESTION_USUARIOS = table.Column<string>(nullable: true)
+                    NOMBRE = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -76,7 +73,7 @@ namespace ProyectoMorenita.Migrations
                 {
                     ID_CIUDAD = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    NOMBRE = table.Column<string>(nullable: true),
+                    NOMBRE = table.Column<string>(type: "VARCHAR2(10)", nullable: true),
                     ID_DEPARTAMENTO = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -97,15 +94,15 @@ namespace ProyectoMorenita.Migrations
                     ID_PERSONA = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     IMAGEN = table.Column<byte[]>(nullable: true),
-                    NOMBRES = table.Column<string>(nullable: true),
-                    APELLIDOS = table.Column<string>(nullable: true),
-                    TELEFONO = table.Column<string>(nullable: true),
+                    NOMBRES = table.Column<string>(type: "VARCHAR2(20)", nullable: true),
+                    APELLIDOS = table.Column<string>(type: "VARCHAR2(20)", nullable: true),
+                    TELEFONO = table.Column<string>(type: "VARCHAR2(10)", nullable: true),
                     ID_DEPARTAMENTO = table.Column<int>(nullable: false),
                     ID_CIUDAD = table.Column<int>(nullable: false),
-                    DIRECCION = table.Column<string>(nullable: true),
-                    APODO = table.Column<string>(nullable: true),
-                    EMAIL = table.Column<string>(nullable: true),
-                    PASSWORD = table.Column<string>(nullable: true),
+                    DIRECCION = table.Column<string>(type: "VARCHAR2(15)", nullable: true),
+                    APODO = table.Column<string>(type: "VARCHAR2(10)", nullable: true),
+                    EMAIL = table.Column<string>(type: "VARCHAR2(20)", nullable: true),
+                    PASSWORD = table.Column<string>(type: "VARCHAR2(20)", nullable: true),
                     ID_ROL = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -139,12 +136,12 @@ namespace ProyectoMorenita.Migrations
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     ID_PERSONA = table.Column<int>(nullable: false),
                     FECHA = table.Column<DateTime>(nullable: false),
-                    NOMBRE_PERSONA = table.Column<string>(nullable: true),
-                    APELLIDO_PERSONA = table.Column<string>(nullable: true),
-                    TELEFONO = table.Column<string>(nullable: true),
-                    DEPARTAMENTO = table.Column<string>(nullable: true),
-                    CIUDAD = table.Column<string>(nullable: true),
-                    DIRECCION = table.Column<string>(nullable: true)
+                    NOMBRE_PERSONA = table.Column<string>(type: "VARCHAR2(20)", nullable: true),
+                    APELLIDO_PERSONA = table.Column<string>(type: "VARCHAR2(20)", nullable: true),
+                    TELEFONO = table.Column<string>(type: "VARCHAR2(10)", nullable: true),
+                    DEPARTAMENTO = table.Column<string>(type: "VARCHAR2(10)", nullable: true),
+                    CIUDAD = table.Column<string>(type: "VARCHAR2(10)", nullable: true),
+                    DIRECCION = table.Column<string>(type: "VARCHAR2(15)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -163,24 +160,16 @@ namespace ProyectoMorenita.Migrations
                 {
                     ID_PRODUCTO = table.Column<int>(nullable: false)
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
-                    TITULO = table.Column<string>(nullable: true),
-                    DESCRIPCION = table.Column<string>(nullable: true),
-                    ESTILO_COLOR = table.Column<string>(nullable: true),
+                    TITULO = table.Column<string>(type: "VARCHAR2(50)", nullable: true),
+                    DESCRIPCION = table.Column<string>(type: "VARCHAR2(500)", nullable: true),
+                    ESTILO_COLOR = table.Column<string>(type: "VARCHAR2(15)", nullable: true),
                     PRECIO = table.Column<int>(nullable: false),
-                    IMAGEN = table.Column<byte[]>(nullable: true),
-                    ID_CATEGORIA = table.Column<int>(nullable: false),
                     INVENTARIO = table.Column<int>(nullable: false),
                     ID_VENDEDOR = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PRODUCTITEM", x => x.ID_PRODUCTO);
-                    table.ForeignKey(
-                        name: "FK_PRODUCTITEM_CATEGORIAITEM_ID_CATEGORIA",
-                        column: x => x.ID_CATEGORIA,
-                        principalTable: "CATEGORIAITEM",
-                        principalColumn: "ID_CATEGORIA",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PRODUCTITEM_PERSONAITEM_ID_VENDEDOR",
                         column: x => x.ID_VENDEDOR,
@@ -197,9 +186,9 @@ namespace ProyectoMorenita.Migrations
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     ID_FACTURA = table.Column<int>(nullable: false),
                     ID_PRODUCTO = table.Column<int>(nullable: false),
-                    TITULO = table.Column<string>(nullable: true),
-                    ESTILO_COLOR = table.Column<string>(nullable: true),
-                    CANTIDAD = table.Column<int>(nullable: false),
+                    TITULO = table.Column<string>(type: "VARCHAR2(50)", nullable: true),
+                    ESTILO_COLOR = table.Column<string>(type: "VARCHAR2(15)", nullable: true),
+                    CANTIDAD = table.Column<byte>(type: "NUMBER(4)", nullable: false),
                     PRECIO = table.Column<int>(nullable: false),
                     TOTAL_PRODUCTO = table.Column<int>(nullable: false),
                     ID_VENDEDOR = table.Column<int>(nullable: false)
@@ -223,9 +212,9 @@ namespace ProyectoMorenita.Migrations
                         .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     ID_PERSONA = table.Column<int>(nullable: false),
                     ID_PRODUCTO = table.Column<int>(nullable: false),
-                    CANTIDAD = table.Column<int>(nullable: false),
+                    CANTIDAD = table.Column<byte>(type: "Number(3)", nullable: false),
                     TOTAL = table.Column<int>(nullable: false),
-                    ESTADO = table.Column<string>(nullable: true)
+                    ESTADO = table.Column<string>(type: "varchar2(30)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -290,11 +279,6 @@ namespace ProyectoMorenita.Migrations
                 column: "ID_ROL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PRODUCTITEM_ID_CATEGORIA",
-                table: "PRODUCTITEM",
-                column: "ID_CATEGORIA");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PRODUCTITEM_ID_VENDEDOR",
                 table: "PRODUCTITEM",
                 column: "ID_VENDEDOR");
@@ -315,10 +299,10 @@ namespace ProyectoMorenita.Migrations
                 name: "PRODUCTITEM");
 
             migrationBuilder.DropTable(
-                name: "FACTURAITEM");
+                name: "CATEGORIAITEM");
 
             migrationBuilder.DropTable(
-                name: "CATEGORIAITEM");
+                name: "FACTURAITEM");
 
             migrationBuilder.DropTable(
                 name: "PERSONAITEM");

@@ -31,6 +31,7 @@ logear():Observable<void>{
   if(this.persona!=null){
     sessionStorage.setItem('id', JSON.stringify(this.persona.id));
     sessionStorage.setItem('user', this.persona.nombre);
+    sessionStorage.setItem('roles',  JSON.stringify(this.persona.id_rol));
     this.toastr.success("Inicio sesión como "+this.persona.nombre);
     this.router.navigate(['/lista-productos']);
     return null;

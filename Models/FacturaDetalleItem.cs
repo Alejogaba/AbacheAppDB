@@ -16,11 +16,11 @@ namespace TaskSharpHTTP.Models
         public FacturaItem facturaItem { get; set; }
         [JsonProperty("id_producto")][Column("ID_PRODUCTO")]
         public int Id_producto { get; set; }
-        [JsonProperty("titulo_producto")][Column("TITULO")]
+        [JsonProperty("titulo_producto")][Column("TITULO",TypeName="VARCHAR2(50)")]
         public string Titulo { get; set; }
-         [JsonProperty("estilo_color")][Column("ESTILO_COLOR")]
+         [JsonProperty("estilo_color")][Column("ESTILO_COLOR",TypeName="VARCHAR2(15)")]
         public string Estilo_color { get; set; }
-        [JsonProperty("cantidad_producto")][Column("CANTIDAD")]
+        [JsonProperty("cantidad_producto")][Column("CANTIDAD",TypeName="NUMBER(4)")]
         public int Cantidad { get; set; }
          [JsonProperty("precio_producto")][Column("PRECIO")]
         public int Precio { get; set; }

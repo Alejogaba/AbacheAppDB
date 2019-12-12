@@ -13,11 +13,11 @@ namespace TaskSharpHTTP.Models
         public int Id_persona { get; set; }
         [JsonProperty("imagen")][Column("IMAGEN")]
         public byte[] Imagen { get; set; }
-        [JsonProperty("nombre")][Column("NOMBRES")]
+        [JsonProperty("nombre")][Column("NOMBRES",TypeName="VARCHAR2(20)")]
         public string Nombre { get; set; }
-        [JsonProperty("apellido")][Column("APELLIDOS")]
+        [JsonProperty("apellido")][Column("APELLIDOS",TypeName="VARCHAR2(20)")]
         public string Apellido { get; set; }
-        [JsonProperty("telefono")][Column("TELEFONO")]
+        [JsonProperty("telefono")][Column("TELEFONO",TypeName="VARCHAR2(10)")]
         public string Telefono { get; set; }
         [JsonProperty("id_departamento")][Column("ID_DEPARTAMENTO")]
         public int Id_departamento { get; set; }
@@ -27,13 +27,13 @@ namespace TaskSharpHTTP.Models
         public int Id_ciudad { get; set; }
         [JsonIgnore]
         public CiudadItem ciudadItem { get; set; }
-        [JsonProperty("direccion")][Column("DIRECCION")]
+        [JsonProperty("direccion")][Column("DIRECCION",TypeName="VARCHAR2(15)")]
         public string Direccion { get; set; }
-        [JsonProperty("apodo")][Column("APODO")]
+        [JsonProperty("apodo")][Column("APODO",TypeName="VARCHAR2(10)")]
         public string Apodo { get; set; }
-        [JsonProperty("email")][Column("EMAIL")]
+        [JsonProperty("email")][Column("EMAIL",TypeName="VARCHAR2(20)")]
         public string Email { get; set; }
-        [JsonProperty("password")][Column("PASSWORD")]
+        [JsonProperty("password")][Column("PASSWORD",TypeName="VARCHAR2(20)")]
         public string Password { get; set; }
         [JsonProperty("id_rol")][Column("ID_ROL")]
         public int Id_rol { get; set; }
@@ -44,6 +44,6 @@ namespace TaskSharpHTTP.Models
          [JsonIgnore]
         public ICollection<FacturaItem> FacturaItems { get; set; }
         [JsonIgnore]
-        public ICollection<ProductItem> productItems { get; set; }
+        public ICollection<ProductItem> ProductItems { get; set; }
     }
 }

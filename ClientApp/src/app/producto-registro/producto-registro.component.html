@@ -5,59 +5,74 @@
                                             <h6>Imagen producto</h6>
                                             <input #imageInput type="file" accept="image/*"
                                             (change)="processFile(imageInput)" >
-                </div>
-                
-                <div class="form-group">
-                        <label>Nombre producto</label>
-                        <input type="text" class="form-control"  value='{{producto.titulo}}' name="nombre" [(ngModel)]="producto.titulo">
-                    </div>
-                    <div class="form-group">
-                            <label>Precio</label>
-                            <input type="number" class="form-control" min="1" value='1' name="precio" value='{{producto.precio}}' [(ngModel)]="producto.precio">
-                        </div>
-                        <div class="form-group">
-                                <label>Estilo/Color</label>
-                                <input type="text" class="form-control" name="color" value='{{producto.estilo_color}}' [(ngModel)]="producto.estilo_color">
+                                            
+                </div> 
+                <div class="container">
+                  <div class="row">
+                          <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
+                                  <span class="glyphicon glyphicon-cog"></span>+ Añadir nueva categoria
+                              </button>
+                  <div id="filter-panel" class="collapse filter-panel">
+                      <div class="panel panel-default">
+                          <div class="panel-body">
+                              <form class="form-inline" role="form">
+                                  <label>Nombre categoria</label>
+                                  <input type="text" [(ngModel)]="ncategoria.nombre" class="form-control ml-2" name="ncategoria">
+                                  <button class="btn btn-success mr-3 ml-2" (click)="addcategoria()">Registrar categoria</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>    
+                  </div>
+          </div>
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                              <h2>Registro de producto</h2>
+                              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                  <label>Nombre del producto titulo{{producto.titulo}} des{{producto.descripcion}}vend {{producto.id_vendedor}}est  {{producto.estilo_color}} inv{{producto.inventario}}  pre{{producto.precio}}</label>
+                                  <input type="text" formControlName="titulo"[(ngModel)]="producto.titulo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }" />
+                                  <div *ngIf="submitted && f.titulo.errors" class="invalid-feedback">
+                                    <div *ngIf="f.titulo.errors.required">Campo obligatorio</div>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Precio del producto</label>
+                                    <input type="number" formControlName="precio" [(ngModel)]="producto.precio" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.precio.errors }" />
+                                    <div *ngIf="submitted && f.precio.errors" class="invalid-feedback">
+                                      <div *ngIf="f.precio.errors.required">Campo obligatorio</div>
+                                      <div *ngIf="f.precio.errors.min">El precio debe ser mayor a 0</div>
+                                    </div>
+                                  </div>
+                                <div class="form-group">
+                                  <label>Estilo/color del producto</label>
+                                  <input type="text" formControlName="estilo_color" [(ngModel)]="producto.estilo_color" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.estilo_color.errors }" />
+                                  <div *ngIf="submitted && f.estilo_color.errors" class="invalid-feedback">
+                                    <div *ngIf="f.estilo_color.errors.required">Campo obligatorio</div>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label>Cantidad de productos en inventario</label>
+                                  <input type="number" formControlName="inventario"  [(ngModel)]="producto.inventario" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.inventario.errors }" />
+                                  <div *ngIf="submitted && f.inventario.errors" class="invalid-feedback">
+                                    <div *ngIf="f.inventario.errors.required">Campo obligatorio</div>
+                                    <div *ngIf="f.inventario.errors.min">Debe ser mayor a 0</div>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descripcion del producto</label>
+                                    <textarea class="form-control"  rows="8" formControlName="descripcion" [(ngModel)]="producto.descripcion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }">
+                                    </textarea>
+                                    <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                                      <div *ngIf="f.descripcion.errors.required">Campo obligatorio</div>
+                                    </div>
+                                  </div>
+                                <div class="text-center">
+                                  <button class="btn btn-success mr-1" >Registrar</button>
+                                </div>
+                              </form>
                             </div>
-                            <div class="form-group">
-                                    <label>Categoria</label>
-                                    {{categoria_producto.nombre}}
-                                    <select class="form-control" [(ngModel)]="producto.id_categoria" name="categoria" ><option *ngFor="let categoria of categorias"  value="{{categoria.id}}">{{categoria.nombre}}</option></select>
-                                
-                                    <div class="container">
-                                        <div class="row">
-                                                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
-                                                        <span class="glyphicon glyphicon-cog"></span>+ Añadir nueva categoria
-                                                    </button>
-                                        <div id="filter-panel" class="collapse filter-panel">
-                                            <div class="panel panel-default">
-                                                <div class="panel-body">
-                                                    <form class="form-inline" role="form">
-                                                        <label>Nombre categoria</label>
-                                                        <input type="text" [(ngModel)]="categoria.nombre" class="form-control ml-2" name="ncategoria">
-                                                        <button class="btn btn-success mr-3 ml-2" (click)="addcategoria()">Registrar categoria</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>    
-                                        
-                                        </div>
-                                </div>
-                                </div>
-                             <div class="form-group">
-                                       <!-- <label>Etiquetas</label>
-                              <tag-input placeholder="Añadir etiqueta" secondaryPlaceholder="Ingrese Etiquetas"></tag-input>
-                                             </div>-->
-                                         <div class="form-group">
-                                            <label>Cantidad de productos disponibles</label>
-                                            <input type="number" value="1" min="1" class="form-control" name="cantidad"value='{{producto.inventario}}' [(ngModel)]="producto.cantidad">
-                                        </div>
-                    <div class="form-group">
-                            <label>Descripcion de producto</label>
-                            <textarea class="form-control" rows="8" id="comment" value='{{producto.descripcion}}'[(ngModel)]="producto.descripcion"></textarea>
-                        </div>
-                        <button class="btn btn-primary mr-3" (click)="refresh()">Refrescar</button><button class="btn btn-primary" (click)="addproducto()">Registrar</button>
-
+                          </div>
 </div>
     
     

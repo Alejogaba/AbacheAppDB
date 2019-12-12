@@ -26,10 +26,12 @@ namespace ProyectoMorenita.Migrations
                         .HasColumnName("ID_CARRO");
 
                     b.Property<int>("Cantidad")
-                        .HasColumnName("CANTIDAD");
+                        .HasColumnName("CANTIDAD")
+                        .HasColumnType("Number(3)");
 
                     b.Property<string>("Estado")
-                        .HasColumnName("ESTADO");
+                        .HasColumnName("ESTADO")
+                        .HasColumnType("varchar2(30)");
 
                     b.Property<int>("Id_persona")
                         .HasColumnName("ID_PERSONA");
@@ -73,7 +75,8 @@ namespace ProyectoMorenita.Migrations
                         .HasColumnName("ID_DEPARTAMENTO");
 
                     b.Property<string>("Nombre")
-                        .HasColumnName("NOMBRE");
+                        .HasColumnName("NOMBRE")
+                        .HasColumnType("VARCHAR2(10)");
 
                     b.HasKey("Id_ciudad");
 
@@ -89,7 +92,8 @@ namespace ProyectoMorenita.Migrations
                         .HasColumnName("ID_DEPARTAMENTO");
 
                     b.Property<string>("Nombre")
-                        .HasColumnName("NOMBRE");
+                        .HasColumnName("NOMBRE")
+                        .HasColumnType("VARCHAR2(10)");
 
                     b.HasKey("Id_departamento");
 
@@ -122,10 +126,12 @@ namespace ProyectoMorenita.Migrations
                         .HasColumnName("ID_FACTURADETALLE");
 
                     b.Property<int>("Cantidad")
-                        .HasColumnName("CANTIDAD");
+                        .HasColumnName("CANTIDAD")
+                        .HasColumnType("NUMBER(4)");
 
                     b.Property<string>("Estilo_color")
-                        .HasColumnName("ESTILO_COLOR");
+                        .HasColumnName("ESTILO_COLOR")
+                        .HasColumnType("VARCHAR2(15)");
 
                     b.Property<int>("Id_factura")
                         .HasColumnName("ID_FACTURA");
@@ -140,7 +146,8 @@ namespace ProyectoMorenita.Migrations
                         .HasColumnName("PRECIO");
 
                     b.Property<string>("Titulo")
-                        .HasColumnName("TITULO");
+                        .HasColumnName("TITULO")
+                        .HasColumnType("VARCHAR2(50)");
 
                     b.Property<int>("Total_producto")
                         .HasColumnName("TOTAL_PRODUCTO");
@@ -159,25 +166,31 @@ namespace ProyectoMorenita.Migrations
                         .HasColumnName("ID_FACTURA");
 
                     b.Property<string>("Apellido")
-                        .HasColumnName("APELLIDO_PERSONA");
+                        .HasColumnName("APELLIDO_PERSONA")
+                        .HasColumnType("VARCHAR2(20)");
 
                     b.Property<string>("Direccion")
-                        .HasColumnName("DIRECCION");
+                        .HasColumnName("DIRECCION")
+                        .HasColumnType("VARCHAR2(15)");
 
                     b.Property<int>("Id_persona")
                         .HasColumnName("ID_PERSONA");
 
                     b.Property<string>("Nombre")
-                        .HasColumnName("NOMBRE_PERSONA");
+                        .HasColumnName("NOMBRE_PERSONA")
+                        .HasColumnType("VARCHAR2(20)");
 
                     b.Property<string>("Telefono")
-                        .HasColumnName("TELEFONO");
+                        .HasColumnName("TELEFONO")
+                        .HasColumnType("VARCHAR2(10)");
 
                     b.Property<string>("ciudad")
-                        .HasColumnName("CIUDAD");
+                        .HasColumnName("CIUDAD")
+                        .HasColumnType("VARCHAR2(10)");
 
                     b.Property<string>("departamento")
-                        .HasColumnName("DEPARTAMENTO");
+                        .HasColumnName("DEPARTAMENTO")
+                        .HasColumnType("VARCHAR2(10)");
 
                     b.Property<DateTime>("fecha")
                         .HasColumnName("FECHA");
@@ -196,16 +209,20 @@ namespace ProyectoMorenita.Migrations
                         .HasColumnName("ID_PERSONA");
 
                     b.Property<string>("Apellido")
-                        .HasColumnName("APELLIDOS");
+                        .HasColumnName("APELLIDOS")
+                        .HasColumnType("VARCHAR2(20)");
 
                     b.Property<string>("Apodo")
-                        .HasColumnName("APODO");
+                        .HasColumnName("APODO")
+                        .HasColumnType("VARCHAR2(10)");
 
                     b.Property<string>("Direccion")
-                        .HasColumnName("DIRECCION");
+                        .HasColumnName("DIRECCION")
+                        .HasColumnType("VARCHAR2(15)");
 
                     b.Property<string>("Email")
-                        .HasColumnName("EMAIL");
+                        .HasColumnName("EMAIL")
+                        .HasColumnType("VARCHAR2(20)");
 
                     b.Property<int>("Id_ciudad")
                         .HasColumnName("ID_CIUDAD");
@@ -220,13 +237,16 @@ namespace ProyectoMorenita.Migrations
                         .HasColumnName("IMAGEN");
 
                     b.Property<string>("Nombre")
-                        .HasColumnName("NOMBRES");
+                        .HasColumnName("NOMBRES")
+                        .HasColumnType("VARCHAR2(20)");
 
                     b.Property<string>("Password")
-                        .HasColumnName("PASSWORD");
+                        .HasColumnName("PASSWORD")
+                        .HasColumnType("VARCHAR2(20)");
 
                     b.Property<string>("Telefono")
-                        .HasColumnName("TELEFONO");
+                        .HasColumnName("TELEFONO")
+                        .HasColumnType("VARCHAR2(10)");
 
                     b.HasKey("Id_persona");
 
@@ -245,33 +265,28 @@ namespace ProyectoMorenita.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ID_PRODUCTO");
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnName("INVENTARIO");
-
                     b.Property<string>("Descripcion")
-                        .HasColumnName("DESCRIPCION");
+                        .HasColumnName("DESCRIPCION")
+                        .HasColumnType("VARCHAR2(500)");
 
                     b.Property<string>("Estilo_color")
-                        .HasColumnName("ESTILO_COLOR");
-
-                    b.Property<int>("Id_categoria")
-                        .HasColumnName("ID_CATEGORIA");
+                        .HasColumnName("ESTILO_COLOR")
+                        .HasColumnType("VARCHAR2(15)");
 
                     b.Property<int>("Id_persona")
                         .HasColumnName("ID_VENDEDOR");
 
-                    b.Property<byte[]>("Imagen")
-                        .HasColumnName("IMAGEN");
+                    b.Property<int>("Inventario")
+                        .HasColumnName("INVENTARIO");
 
                     b.Property<int>("Precio")
                         .HasColumnName("PRECIO");
 
                     b.Property<string>("Titulo")
-                        .HasColumnName("TITULO");
+                        .HasColumnName("TITULO")
+                        .HasColumnType("VARCHAR2(50)");
 
                     b.HasKey("Id_producto");
-
-                    b.HasIndex("Id_categoria");
 
                     b.HasIndex("Id_persona");
 
@@ -284,17 +299,8 @@ namespace ProyectoMorenita.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ID_ROL");
 
-                    b.Property<string>("Gestion_usuarios")
-                        .HasColumnName("GESTION_USUARIOS");
-
                     b.Property<string>("Nombre")
                         .HasColumnName("NOMBRE");
-
-                    b.Property<string>("Permiso_compra")
-                        .HasColumnName("PERMISO_COMPRA");
-
-                    b.Property<string>("Permiso_venta")
-                        .HasColumnName("PERMISO_VENTA");
 
                     b.HasKey("Id_rol");
 
@@ -366,13 +372,8 @@ namespace ProyectoMorenita.Migrations
 
             modelBuilder.Entity("TaskSharpHTTP.Models.ProductItem", b =>
                 {
-                    b.HasOne("TaskSharpHTTP.Models.CategoriaItem", "CategoriaItem")
-                        .WithMany("ProductItems")
-                        .HasForeignKey("Id_categoria")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("TaskSharpHTTP.Models.PersonaItem", "PersonaItem")
-                        .WithMany("productItems")
+                        .WithMany("ProductItems")
                         .HasForeignKey("Id_persona")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

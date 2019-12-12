@@ -4,8 +4,8 @@
 		<div class="col-md-3 ">
 		     <div class="list-group ">
               <button [routerLink]="['/perfil', { outlets: {'submenu-perfil':['editar-perfil']}}]" class="list-group-item list-group-item-action">Perfil</button>
+			<!--<button [routerLink]="['/perfil', { outlets: {'submenu-perfil':['mensajes']}}]" class="list-group-item list-group-item-action">Mensajes</button>-->
 			  <button [routerLink]="['/perfil', { outlets: {'submenu-perfil':['historial-compras']}}]" class="list-group-item list-group-item-action">Historial de compras</button>
-			  <!--<button [routerLink]="['/perfil', { outlets: {'submenu-perfil':['mensajes']}}]" class="list-group-item list-group-item-action">Mensajes</button>-->
 			  <button [routerLink]="['/perfil', { outlets: {'submenu-perfil':['historial-ventas']}}]" class="list-group-item list-group-item-action">Historial de ventas</button>
 			  <button [routerLink]="['/perfil', { outlets: {'submenu-perfil':['lista-usuarios']}}]" class="list-group-item list-group-item-action">Lista de usuarios</button>
               <a [routerLink]="['']" (click)="encabezado.logout()" class="list-group-item list-group-item-action">Cerrar sesion</a>

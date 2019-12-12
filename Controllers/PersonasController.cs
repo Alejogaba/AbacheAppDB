@@ -52,12 +52,30 @@ namespace TaskSharpHTTP.Controllers
         [HttpPost]
         public async Task<ActionResult<PersonaItem>> PostPersona(PersonaItem personaitem)
         {
-            _context.PersonaItems.Add(personaitem);
-            await _context.SaveChangesAsync();
+             _context.PersonaItems.Add(personaitem);
+            try
+            {
+            await _context.SaveChangesAsync(); 
+            }
+            catch (DbUpdateException)
+        {
+            if ((EmailExists(personaitem.Email)))
+                {
+                    ModelState.AddModelError("Email", "Ese correo ya esta registrado");
+                    var problemDetails = new ValidationProblemDetails(ModelState)
+                    {
+                        Status = StatusCodes.Status500InternalServerError,
+                    };
+                    return BadRequest(problemDetails);
+                }
+        }   
             return CreatedAtAction(nameof(GetPersona), new { id = personaitem.Id_persona }, personaitem);
         }
 
-     
+     private bool EmailExists(string email)
+        {
+            return _context.PersonaItems.Any(e => e.Email== email);
+        }
         }
    
 }

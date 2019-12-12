@@ -23,7 +23,7 @@ namespace TaskSharpHTTP.Controllers
         }
        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoriaItem>>> GetPersona()
+        public async Task<ActionResult<IEnumerable<CategoriaItem>>> GetCategoria()
         {
             return await _context.CategoriaItems.ToListAsync();
         }
